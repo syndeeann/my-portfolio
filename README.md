@@ -76,15 +76,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Update package.json
 Add a homepage property to the top of your package.json file. The format is https://{username}.github.io/{repo-name}:
-`{
+### `{
   "name": "my-app",
   "version": "0.1.0",
   "homepage": "https://yourusername.github.io/your-repo-name",
   // ... rest of the file
 }`
 
-Add `predeploy` and `deploy` scripts to the scripts object:
-"scripts": {
+### Add `predeploy` and `deploy` scripts to the scripts object:
+
+### "scripts": {
   "predeploy": "npm run build",
   "deploy": "gh-pages -d build",
   "start": "react-scripts start",
@@ -92,4 +93,4 @@ Add `predeploy` and `deploy` scripts to the scripts object:
   ...
 }
 
-Run: `npm run deploy`
+### Run: `npm run deploy`
