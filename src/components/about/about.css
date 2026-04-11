@@ -77,12 +77,20 @@
         gap: 0;
     }
     .about__me{
-        width: 50%;
+        width: 40%;
         margin: 2rem auto 4rem;
+    }
+
+    .about__content {
+        margin-top: 2rem;
     }
 
     .about__content p{
         margin: 1rem 0 1.5rem;
+    }
+
+    #about h2 {
+        margin-bottom: 4rem;
     }
 }
 
@@ -104,5 +112,9 @@
 
     .about__content p {
         margin: 1.5rem 0;
+    }
+
+    .me {
+        padding: 0;
     }
 }

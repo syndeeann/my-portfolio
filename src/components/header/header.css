@@ -2,6 +2,7 @@ header {
     height: 100vh;
     padding-top: 7rem;
     overflow: hidden;
+    background-color: var(--color-bg-variant);
 }
 
 .header__container{
@@ -38,15 +39,15 @@ header {
 
 /* ==================== CTA ==================== */
 .me{
-    background: linear-gradient(var(--color-primary), transparent);
+    background-color: transparent;
     width: 22rem;
-    height: 30rem;
+    height: 35rem;
     position: absolute;
     left: calc(50% - 11rem);
     margin-top: 4rem;
     border-radius: 12rem 12rem 0 0;
     overflow: hidden;
-    padding: 5rem 1.5rem 1.5rem 1.5rem;
+    padding: 5rem 1.5rem 0rem 1.5rem;
 }
 
 /* ==================== SCROLL DOWN ==================== */
@@ -54,10 +55,14 @@ header {
 .scroll__down {
     position: absolute;
     right: -2.3rem;
-    bottom: 5rem;
-    transform: rotate(90deg);
+    bottom: 3rem;
     font-weight: 300;
-    font-size: 0.9rem;
+    font-size: 2rem;
+    background-color: var(--color-bg);
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 5px;
+    border-radius: 50%;
 }
 
 /* ================== MEDIA QUERIES (MEDIUM DEVICES) ========================*/
@@ -75,5 +80,12 @@ header {
     }
     .header__socials, .scroll__down{
         display: none;
+    }
+}
+
+@media screen and (max-width: 970px){
+    .me{
+        margin-top: 0rem;
+        padding: 0rem 1.5rem 0rem 1.5rem;
     }
 }

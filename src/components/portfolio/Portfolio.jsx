@@ -36,15 +36,19 @@ const Portfolio = () => {
 
       <div className="container porfolio__container">
         {
-          data.map(({id, image, title, github, demo}) => {
+          data.map(({id, image, title, demo}) => {
             return (
               <article key={id} className="portfolio__item">
               <div className="portfolio__item-image">
                 <img src={image} alt={title} />
               </div>
               <h3>{title}</h3>
-              <div class="portfolio__item-cta">
-                <a href={demo} className='btn btn-primary' target="_blank">Live Demo</a>
+              <div className="portfolio__item-cta">
+                { demo ? (
+                  <a href={demo} className='btn btn-primary' target="_blank" rel="noreferrer">View Site</a>
+                ) : (
+                  <i>Demo link unavailable. This is an offline app.</i>
+                )}
               </div>
             </article>
             )
