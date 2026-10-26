@@ -4,6 +4,8 @@ Personal portfolio of **Syndee Ann Sevilla**, Software Engineer · Content Creat
 
 Live site: https://syndeeann.github.io/my-portfolio/
 
+**Version 2** (branch `feature/portfolio-v2`): dark and elegant, violet and cyan, with a luminous form that morphs as you scroll between sections.
+
 A single static page (`index.html`) with no build step:
 
 - `index.html` — the whole site (HTML, CSS and JavaScript)
