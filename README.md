@@ -4,6 +4,8 @@ Personal portfolio of **Syndee Ann Sevilla**, Software Engineer · Content Creat
 
 Live site: https://syndeeann.github.io/my-portfolio/
 
+**Version 4** (branch `feature/portfolio-v4`): AI-focused. Cinematic night-shoot design featuring AI video creation, Claude, Google Flow, CapCut and Microsoft Fabric, the Kwento: Kilabot AI video pipeline as a case study, and a short software engineering background.
+
 A single static page (`index.html`) with no build step:
 
 - `index.html` — the whole site (HTML, CSS and JavaScript)
