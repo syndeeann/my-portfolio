@@ -4,6 +4,8 @@ Personal portfolio of **Syndee Ann Sevilla**, Software Engineer · Content Creat
 
 Live site: https://syndeeann.github.io/my-portfolio/
 
+**Version 3** (branch `feature/portfolio-v3`): light with deep-teal sections, teal and tangerine accents, bento layout, stacking experience cards and a live Manila clock.
+
 A single static page (`index.html`) with no build step:
 
 - `index.html` — the whole site (HTML, CSS and JavaScript)
