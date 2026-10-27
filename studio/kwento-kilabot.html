@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kwento: Kilabot Studio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<meta name="analytics-page-type" content="workflow">
+<meta name="analytics-workflow" content="kwento_kilabot">
+<script src="../assets/analytics.js"></script>
 <meta name="description" content="Kwento: Kilabot: Syndee Ann Sevilla's AI horror studio. Claude writes Tagalog folklore stories, films them in Google Flow, and posts them to YouTube, Facebook, Instagram and TikTok.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -349,6 +352,7 @@ footer a { color: var(--bone); }
   <div class="wrap">
     <span>© 2026 Syndee Ann Sevilla · Kwento: Kilabot</span>
     <span>Made with Claude, Google Flow and prompt engineering</span>
+    <span>This site uses Google Analytics to understand how visitors use it.</span>
   </div>
 </footer>
 
@@ -385,6 +389,8 @@ footer a { color: var(--bone); }
     { n: 1, id: '7g0JkRndtfM', url: 'https://www.youtube.com/watch?v=7g0JkRndtfM', title: 'Bote, Diyaryo, at Alaala', folk: 'Magbobote', dur: '3:07', sum: 'A 3 AM junk buyer pays cash for painful memories, and the narrator learns what his mother has already sold.' },
   ];
   document.getElementById('storyCount').textContent = VIDEOS.length;
+  const T = (n, p) => { try { window.track && window.track(n, p); } catch (_) {} };
+  const vp = (v, extra) => Object.assign({ video_provider: 'youtube', video_title: `Kilabot #${v.n}: ${v.title}`, video_url: v.url || `https://youtube.com/shorts/${v.id}`, video_id: v.id || '(none)', video_number: v.n }, extra || {});
   const short = id => { const v = VIDEOS.find(x => x.id === id); return (v && v.url) || `https://youtube.com/shorts/${id}`; };
   const platsHTML = v => `
     ${v.id ? `<a href="${short(v.id)}" target="_blank" rel="noopener">YouTube ↗</a>` : `<a href="${YT_CH}" target="_blank" rel="noopener">YouTube channel ↗</a>`}
@@ -464,7 +470,7 @@ footer a { color: var(--bone); }
       events: {
         onReady: e => { e.target.mute(); e.target.playVideo(); },
         onStateChange: e => {
-          if (e.data === YT.PlayerState.PLAYING) card.classList.add('playing');
+          if (e.data === YT.PlayerState.PLAYING) { card.classList.add('playing'); if (!card.dataset.tv) { card.dataset.tv = '1'; T('video_trailer_view', vp(v, { video_source: 'trailer' })); } }
           if (e.data === YT.PlayerState.ENDED) { e.target.seekTo(0, true); e.target.playVideo(); }
         },
         onError: () => card.classList.remove('playing'),
@@ -480,22 +486,50 @@ footer a { color: var(--bone); }
     }, 200);
   }
   const modal = document.getElementById('modal'), mPlayer = document.getElementById('mPlayer');
-  let lastFocus = null;
+  let lastFocus = null, modalPlayer = null, modalTimer = 0, modalVid = null, modalMax = 0;
   const openFull = v => {
     players.forEach(p => { try { p.pauseVideo(); } catch (_) {} });
     document.getElementById('mNum').textContent = `Kilabot #${v.n} · ${v.folk}`;
     document.getElementById('mTitle').textContent = v.title;
     document.getElementById('mSum').textContent = v.sum;
     document.getElementById('mPlats').innerHTML = platsHTML(v);
-    mPlayer.innerHTML = `<iframe src="https://www.youtube.com/embed/${v.id}?autoplay=1&playsinline=1&rel=0" title="${v.title}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    modalVid = v; modalMax = 0; const sent = new Set();
+    if (window.YT && YT.Player) {
+      mPlayer.innerHTML = '<div id="mYT"></div>';
+      modalPlayer = new YT.Player('mYT', {
+        videoId: v.id, width: '100%', height: '100%',
+        playerVars: { autoplay: 1, playsinline: 1, rel: 0 },
+        events: { onStateChange: e => {
+          if (e.data === YT.PlayerState.PLAYING && !sent.has('start')) { sent.add('start'); T('video_start', vp(v, { video_source: 'on_page_player', video_percent: 0 })); }
+          if (e.data === YT.PlayerState.ENDED && !sent.has('complete')) { sent.add('complete'); modalMax = 100; T('video_complete', vp(v, { video_source: 'on_page_player', video_percent: 100 })); }
+        } },
+      });
+      modalTimer = setInterval(() => {
+        try {
+          const d = modalPlayer.getDuration(), t = modalPlayer.getCurrentTime();
+          if (!d) return;
+          const pct = t / d * 100; modalMax = Math.max(modalMax, pct);
+          [10, 25, 50, 75, 90].forEach(m => { if (pct >= m && !sent.has(m)) { sent.add(m); T('video_progress', vp(v, { video_source: 'on_page_player', video_percent: m, video_current_time: Math.round(t), video_duration: Math.round(d) })); } });
+        } catch (_) {}
+      }, 1000);
+    } else {
+      mPlayer.innerHTML = `<iframe src="https://www.youtube.com/embed/${v.id}?autoplay=1&playsinline=1&rel=0" title="${v.title}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    }
     lastFocus = document.activeElement;
     modal.hidden = false; body.style.overflow = 'hidden';
     document.getElementById('mClose').focus();
   };
-  const closeFull = () => { mPlayer.innerHTML = ''; modal.hidden = true; body.style.overflow = ''; if (lastFocus) lastFocus.focus(); };
+  const closeFull = () => { if (modalVid) T('ui_interaction', vp(modalVid, { interaction_type: 'video_close', interaction_label: `Kilabot #${modalVid.n}`, video_percent: Math.round(modalMax) })); clearInterval(modalTimer); try { modalPlayer && modalPlayer.destroy(); } catch (_) {} modalPlayer = null; modalVid = null; mPlayer.innerHTML = ''; modal.hidden = true; body.style.overflow = ''; if (lastFocus) lastFocus.focus(); };
   document.getElementById('mClose').addEventListener('click', closeFull);
   modal.addEventListener('click', e => { if (e.target === modal) closeFull(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeFull(); });
+  const destOf = (a, here) => here ? 'on_page_player' : /youtu/.test(a.href) ? 'youtube' : /facebook/.test(a.href) ? 'facebook' : /instagram/.test(a.href) ? 'instagram' : /tiktok/.test(a.href) ? 'tiktok' : 'other';
+  document.addEventListener('click', e => {
+    const a = e.target.closest('.vid a, #mPlats a'); if (!a) return;
+    const card = a.closest('.vid'); const v = card ? VIDEOS[+card.dataset.i] : modalVid; if (!v) return;
+    const here = a.dataset.full !== undefined && ytState === 'on' && !(e.metaKey || e.ctrlKey || e.shiftKey);
+    T('video_click', vp(v, { video_destination: destOf(a, here), link_group: card ? 'video_card' : 'video_player' }));
+  }, true);
   vids.addEventListener('click', e => {
     const a = e.target.closest('[data-full]');
     if (!a || ytState !== 'on' || e.metaKey || e.ctrlKey || e.shiftKey) return;
@@ -566,7 +600,7 @@ footer a { color: var(--bone); }
     Object.values(nodes).forEach(n => n.classList.toggle('sel', n.dataset.id === id));
   };
   showDetail('generate');
-  Object.values(nodes).forEach(n => n.addEventListener('click', () => showDetail(n.dataset.id)));
+  Object.values(nodes).forEach(n => n.addEventListener('click', () => { showDetail(n.dataset.id); T('ui_interaction', { interaction_type: 'workflow_step_view', interaction_label: n.dataset.id }); }));
 
   const consoleEl = document.getElementById('console');
   const log = (time, text, cls = 'g') => { const line = document.createElement('div'); line.innerHTML = `<span class="t">${time}</span> <span class="${cls}"></span>`; line.lastChild.textContent = text; consoleEl.appendChild(line); consoleEl.scrollTop = consoleEl.scrollHeight; };
@@ -583,8 +617,9 @@ footer a { color: var(--bone); }
   const light = (id, cls = 'done') => { const n = nodes[id]; n.classList.remove('warn'); n.classList.add('lit', cls); setTimeout(() => n.classList.remove('lit'), reduce ? 0 : 900); };
   const runBtn = document.getElementById('runBtn');
   let running = false;
-  const run = async () => {
+  const run = async (trigger) => {
     if (running) return; running = true; runBtn.disabled = true;
+    T('ui_interaction', { interaction_type: 'workflow_run', interaction_label: trigger === 'auto' ? 'auto' : 'button' });
     Object.values(nodes).forEach(n => n.classList.remove('done', 'warn', 'lit'));
     Object.values(wires).forEach(w => w.classList.remove('flowing'));
     consoleEl.innerHTML = '';
@@ -605,8 +640,8 @@ footer a { color: var(--bone); }
     light('log'); showDetail('log'); log('09:05', 'Saved to the video log ✓ · see you tomorrow at dawn');
     running = false; runBtn.disabled = false; runBtn.textContent = 'Run it again';
   };
-  runBtn.addEventListener('click', run);
-  if (hasIO) { const dio = new IntersectionObserver(es => { if (es[0].isIntersecting) { run(); dio.disconnect(); } }, { threshold: .45 }); dio.observe(flow); }
+  runBtn.addEventListener('click', () => run('button'));
+  if (hasIO) { const dio = new IntersectionObserver(es => { if (es[0].isIntersecting) { run('auto'); dio.disconnect(); } }, { threshold: .45 }); dio.observe(flow); }
 
   /* ---------- reveals ---------- */
   if (hasIO) {
@@ -642,7 +677,7 @@ footer a { color: var(--bone); }
   const gate = document.getElementById('gate');
   const setLight = (x, y) => { gate.style.setProperty('--fx', x + 'px'); gate.style.setProperty('--fy', y + 'px'); };
   let userLight = false;
-  gate.addEventListener('pointermove', e => { userLight = true; const r = gate.getBoundingClientRect(); setLight(e.clientX - r.left, e.clientY - r.top); });
+  gate.addEventListener('pointermove', e => { if (!userLight) T('ui_interaction', { interaction_type: 'flashlight', interaction_label: 'hero' }); userLight = true; const r = gate.getBoundingClientRect(); setLight(e.clientX - r.left, e.clientY - r.top); });
   const sweep = () => { if (!userLight || matchMedia('(hover: none)').matches) { const r = gate.getBoundingClientRect(); setLight(r.width / 2 + Math.sin(scrollY / 140 + performance.now() / 1600) * r.width * .28, clamp(innerHeight * .45 - r.top, 80, r.height - 80)); } if (!reduce) requestAnimationFrame(sweep); };
   sweep();
 
