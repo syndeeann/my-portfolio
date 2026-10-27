@@ -382,10 +382,10 @@ footer a { color: var(--bone); }
     { n: 4, id: 'nJJ29cWjPDo', title: 'Tabi-tabi Po', folk: 'Nuno sa punso', dur: '0:52', sum: 'A family flattens a punso to build their house in Cavite. The nuno thanks them: their new house is his bigger punso.' },
     { n: 3, id: 'rXdRtgvImKk', title: 'Ang Ilaw sa Laot', folk: 'Santelmo', dur: '0:49', sum: 'A capsized fisherman follows a santelmo to shore, finds his mother crying over his slippers, and realizes he is the light now.' },
     { n: 2, id: 'Ns7v0NvKDRM', title: 'Mahina ang Tiktik', folk: 'Tiktik', dur: '0:50', sum: "A night-patrol tanod is relieved the tiktik sounds far away, until the faint tik-tik comes from his own wife's throat." },
-    { n: 1, id: null, title: 'Bote, Diyaryo, at Alaala', folk: 'Magbobote', dur: '3:07', sum: 'A 3 AM junk buyer pays cash for painful memories, and the narrator learns what his mother has already sold.' },
+    { n: 1, id: '7g0JkRndtfM', url: 'https://www.youtube.com/watch?v=7g0JkRndtfM', title: 'Bote, Diyaryo, at Alaala', folk: 'Magbobote', dur: '3:07', sum: 'A 3 AM junk buyer pays cash for painful memories, and the narrator learns what his mother has already sold.' },
   ];
   document.getElementById('storyCount').textContent = VIDEOS.length;
-  const short = id => `https://youtube.com/shorts/${id}`;
+  const short = id => { const v = VIDEOS.find(x => x.id === id); return (v && v.url) || `https://youtube.com/shorts/${id}`; };
   const platsHTML = v => `
     ${v.id ? `<a href="${short(v.id)}" target="_blank" rel="noopener">YouTube ↗</a>` : `<a href="${YT_CH}" target="_blank" rel="noopener">YouTube channel ↗</a>`}
     <a href="${FB}" target="_blank" rel="noopener">Facebook ↗</a>
