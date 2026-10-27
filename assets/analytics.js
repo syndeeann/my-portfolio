@@ -9,7 +9,7 @@
 (function () {
   'use strict';
 
-  var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';   // <-- your Measurement ID
+  var GA_MEASUREMENT_ID = 'G-X3XPDCS4SZ';   // <-- your Measurement ID
   var SITE_VERSION = 'v4';
 
   /* ---------- page context (from <meta name="analytics-*"> tags) ---------- */
