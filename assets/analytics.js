@@ -1,15 +1,17 @@
 /*
- * Google Analytics 4 tracking for syndeeann.github.io/my-portfolio
- * Tracking plan and Looker Studio guide: docs/ANALYTICS.md
+ * Analytics for syndeeann.github.io/my-portfolio, via Google Tag Manager (GTM-K8G85R8D).
  *
- * SETUP: paste your GA4 Measurement ID below (Admin > Data streams > your web stream).
- * Until it is set, nothing is sent to Google. Add ?ga_debug=1 to any page URL to see
- * every event in the browser console and in GA4 DebugView.
+ * This file only pushes events to the data layer. Google Tag Manager turns each one into a
+ * GA4 event (G-X3XPDCS4SZ): one custom-event trigger + one GA4 event tag per event, with a
+ * data layer variable for every parameter. Tracking plan + Looker Studio guide: docs/ANALYTICS.md
+ *
+ * Add ?ga_debug=1 to any page URL to log every data layer push in the browser console,
+ * or use Preview in Google Tag Manager to watch tags fire.
  */
 (function () {
   'use strict';
 
-  var GA_MEASUREMENT_ID = 'G-X3XPDCS4SZ';   // <-- your Measurement ID
+  var GTM_CONTAINER_ID = 'GTM-K8G85R8D';
   var SITE_VERSION = 'v4';
 
   /* ---------- page context (from <meta name="analytics-*"> tags) ---------- */
@@ -19,38 +21,39 @@
   };
   var PAGE_TYPE = meta('page-type', 'portfolio');      // portfolio | workflow
   var WORKFLOW = meta('workflow', '(none)');            // e.g. kwento_kilabot
-  var enabled = /^G-[A-Z0-9]{4,}$/.test(GA_MEASUREMENT_ID) && GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX';
   var debug = /[?&]ga_debug=1/.test(location.search);
 
-  /* ---------- gtag ---------- */
+  /* ---------- data layer + Google Tag Manager ---------- */
   window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-  if (enabled) {
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
-    document.head.appendChild(s);
-    window.gtag('js', new Date());
-    window.gtag('set', { page_type: PAGE_TYPE, workflow_name: WORKFLOW, site_version: SITE_VERSION });
-    var cfg = { page_type: PAGE_TYPE, workflow_name: WORKFLOW, site_version: SITE_VERSION };
-    if (debug) cfg.debug_mode = true;
-    window.gtag('config', GA_MEASUREMENT_ID, cfg);
-  } else if (debug) {
-    console.info('[analytics] Measurement ID not set: events are logged here only.');
-  }
+  window.dataLayer.push({ page_type: PAGE_TYPE, workflow_name: WORKFLOW, site_version: SITE_VERSION });
+  (function (w, d, l, i) {
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var j = d.createElement('script');
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i;
+    d.head.appendChild(j);
+  })(window, document, 'dataLayer', GTM_CONTAINER_ID);
+
+  /* every parameter any event uses: cleared on each push so values never leak between events */
+  var KEYS = ['section_name', 'percent_scrolled', 'link_text', 'link_url', 'link_type', 'link_group', 'link_platform',
+    'interaction_type', 'interaction_label', 'video_title', 'video_url', 'video_provider', 'video_id', 'video_number',
+    'video_source', 'video_destination', 'video_percent', 'video_current_time', 'video_duration', 'contact_method'];
 
   /* ---------- helpers ---------- */
   var clean = function (v) {
     if (v === undefined || v === null) return v;
     if (typeof v !== 'string') return v;
-    return v.replace(/[\u{1F000}-\u{1FAFF}\u{2190}-\u{21FF}\u{2600}-\u{27BF}\u{FE0F}↗→]/gu, '')
+    return v.replace(/[\u{1F000}-\u{1FAFF}\u{2190}-\u{21FF}\u{2600}-\u{27BF}\u{FE0F}]/gu, '')
       .replace(/\s+/g, ' ').trim().slice(0, 100);
   };
   var track = function (name, params) {
     var p = { page_type: PAGE_TYPE, workflow_name: WORKFLOW, site_version: SITE_VERSION };
     for (var k in params || {}) if (Object.prototype.hasOwnProperty.call(params, k)) p[k] = clean(params[k]);
+    var push = { event: name };
+    KEYS.forEach(function (key) { push[key] = undefined; });
+    for (var q in p) push[q] = p[q];
     if (debug) console.info('[analytics]', name, p);
-    if (enabled) window.gtag('event', name, p);
+    window.dataLayer.push(push);
   };
   window.track = track;
 
