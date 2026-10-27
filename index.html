@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Syndee Ann Sevilla</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<meta name="analytics-page-type" content="portfolio">
+<script src="assets/analytics.js"></script>
 <meta name="description" content="Syndee Ann Sevilla: AI Specialist and AI video creator. Claude, Google Flow, CapCut and Microsoft Fabric, backed by nine years of software engineering.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -486,6 +488,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="wrap">
     <span>© 2026 Syndee Ann Sevilla</span>
     <span>AI Specialist · AI Video Creator · Software Engineer</span>
+    <span>This site uses Google Analytics to understand how visitors use it.</span>
   </div>
 </footer>
 
@@ -602,7 +605,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     setTimeout(type, reduce ? 0 : 450);
   };
   const chips = [...document.querySelectorAll('[data-run]')];
-  chips.forEach(b => b.addEventListener('click', () => { chips.forEach(c => c.setAttribute('aria-pressed', c === b)); play(+b.dataset.run); clearInterval(auto); }));
+  chips.forEach(b => b.addEventListener('click', () => { try { window.track && window.track('ui_interaction', { interaction_type: 'claude_demo_step', interaction_label: runs[+b.dataset.run].q }); } catch (_) {} chips.forEach(c => c.setAttribute('aria-pressed', c === b)); play(+b.dataset.run); clearInterval(auto); }));
   let ai = 0; play(0);
   const auto = setInterval(() => { ai = (ai + 1) % runs.length; chips.forEach((c, n) => c.setAttribute('aria-pressed', n === ai)); play(ai); }, 9000);
 
@@ -610,8 +613,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   const kilCard = document.getElementById('kilCard'), flash = document.getElementById('flash');
   let hoverMood = 0, viewMood = 0;
   const setMood = () => { moodTarget = Math.max(hoverMood, viewMood); body.classList.toggle('dread', moodTarget > .5); if (reduce) mood = moodTarget; };
-  kilCard.addEventListener('pointerenter', () => { hoverMood = .75; setMood(); });
-  kilCard.addEventListener('pointerleave', () => { hoverMood = 0; setMood(); });
+  const T = (n, p) => { try { window.track && window.track(n, p); } catch (_) {} };
+  let hoverTimer = 0, hoverSent = false;
+  kilCard.addEventListener('pointerenter', () => { hoverMood = .75; setMood(); if (!hoverSent) hoverTimer = setTimeout(() => { hoverSent = true; T('ui_interaction', { interaction_type: 'workflow_card_hover', interaction_label: 'kwento_kilabot' }); }, 800); });
+  kilCard.addEventListener('pointerleave', () => { hoverMood = 0; setMood(); clearTimeout(hoverTimer); });
+  document.querySelectorAll('.wf-soon').forEach(c => c.addEventListener('click', () => T('ui_interaction', { interaction_type: 'workflow_interest', interaction_label: c.querySelector('h3').textContent })));
   kilCard.addEventListener('focus', () => { hoverMood = .75; setMood(); });
   kilCard.addEventListener('blur', () => { hoverMood = 0; setMood(); });
   if (hasIO && matchMedia('(hover: none)').matches) {

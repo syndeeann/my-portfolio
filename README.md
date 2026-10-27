@@ -10,6 +10,7 @@ A single static page (`index.html`) with no build step:
 
 - `index.html` — the main portfolio page
 - `studio/kwento-kilabot.html` — the Kwento: Kilabot AI Studio workflow page (workflow diagram + YouTube trailers). New workflows get their own page in `studio/`
+- `assets/analytics.js` — Google Analytics 4 tracking (set the Measurement ID here); tracking plan and Looker Studio guide in `docs/ANALYTICS.md`
 - `syndee.jpg` — profile photo
 - `Syndee-Ann-Sevilla-CV.pdf` — downloadable CV
 
