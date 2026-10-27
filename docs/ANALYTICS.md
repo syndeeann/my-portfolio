@@ -1,13 +1,22 @@
-# Analytics: Google Analytics 4 + Looker Studio
+# Analytics: Google Tag Manager + GA4 + Looker Studio
 
-Both pages load `assets/analytics.js`, which sends a small, consistent set of events to Google Analytics 4 (GA4). Nothing is sent until a Measurement ID is set.
+**How it's wired:** both pages load `assets/analytics.js`, which loads Google Tag Manager container **GTM-K8G85R8D** and pushes every event to the data layer. Tag Manager turns each one into a GA4 event for property stream **G-X3XPDCS4SZ**.
 
-## 1. Turn it on
+In Tag Manager (the same idea as rules and data elements in Adobe Launch):
 
-1. In [Google Analytics](https://analytics.google.com), create a property (**Admin → Create → Property**), then add a **Web** data stream for `https://syndeeann.github.io`.
-2. Copy the stream's **Measurement ID** (it looks like `G-AB12CD34EF`).
-3. In `assets/analytics.js`, replace `G-XXXXXXXXXX` with it and push to the live site (`gh-pages`).
-4. Check it works: open any page with `?ga_debug=1` at the end of the address, for example `https://syndeeann.github.io/my-portfolio/?ga_debug=1`. Each event appears in the browser console and in GA4 under **Admin → DebugView**.
+| Folder | What's in it |
+|---|---|
+| 01 · GA4 tags | `GA4 - Google tag (page views)` fires on every page; one `GA4 - Event - <event>` tag per event |
+| 02 · Triggers (custom events) | `CE - <event>`: a Custom Event trigger matching the data layer `event` name |
+| 03 · Variables (data layer) | `DLV - <parameter>`: one Data Layer Variable per event parameter, plus `CONST - GA4 Measurement ID` |
+
+To add a new event: push it with `track('event_name', {...})` from the page, then in Tag Manager add a `CE - event_name` trigger, the `DLV - ...` variables it needs, and a `GA4 - Event - event_name` tag, and publish.
+
+## 1. Check it's working
+
+- **Tag Manager Preview:** in Tag Manager, click **Preview**, enter `https://syndeeann.github.io/my-portfolio/`, and click around. Each data layer event and the tag it fired are listed.
+- **GA4:** **Reports → Realtime**, or **Admin → DebugView** while Preview is running.
+- **Browser console:** add `?ga_debug=1` to any page address to log every data layer push.
 
 ## 2. Enhanced measurement settings
 
