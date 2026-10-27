@@ -8,7 +8,8 @@ Live site: https://syndeeann.github.io/my-portfolio/
 
 A single static page (`index.html`) with no build step:
 
-- `index.html` — the whole site (HTML, CSS and JavaScript)
+- `index.html` — the main portfolio page
+- `studio/kwento-kilabot.html` — the Kwento: Kilabot AI Studio workflow page (workflow diagram + YouTube trailers). New workflows get their own page in `studio/`
 - `syndee.jpg` — profile photo
 - `Syndee-Ann-Sevilla-CV.pdf` — downloadable CV
 
