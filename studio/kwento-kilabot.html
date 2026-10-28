@@ -135,9 +135,9 @@ body.leaving .curtain { opacity: 1; background: #f1f3ff; transition: opacity .7s
 .node.plat b { font-size: 1.1rem; }
 /* desktop placement: a snake through 4 columns */
 .n-schedule { grid-area: 1 / 1; } .n-queue { grid-area: 1 / 2; } .n-story { grid-area: 1 / 3; } .n-prompts { grid-area: 1 / 4; }
-.n-generate { grid-area: 2 / 4; } .n-compile { grid-area: 2 / 3; } .n-qc { grid-area: 2 / 2; } .n-captions { grid-area: 3 / 2 / 4 / 4; }
+.n-generate { grid-area: 2 / 4; } .n-clipqc { grid-area: 2 / 3; } .n-compile { grid-area: 2 / 2; } .n-qc { grid-area: 2 / 1; } .n-captions { grid-area: 3 / 1 / 4 / 5; }
 .n-yt { grid-area: 4 / 1; } .n-fb { grid-area: 4 / 2; } .n-ig { grid-area: 4 / 3; } .n-tt { grid-area: 4 / 4; }
-.n-log { grid-area: 5 / 2 / 6 / 4; }
+.n-log { grid-area: 5 / 2 / 6 / 4; } .n-portfolio { grid-area: 6 / 2 / 7 / 4; }
 .d-bottom { position: relative; margin-top: 34px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; }
 .d-bottom > * { min-width: 0; }
 .console { border-radius: 16px; background: rgba(0,0,0,.55); border: 1px solid rgba(209,26,34,.2); padding: 16px 18px; font-family: var(--font-mono); font-size: .76rem; line-height: 1.7; color: var(--ash); height: 220px; overflow-y: auto; }
@@ -158,7 +158,7 @@ body.leaving .curtain { opacity: 1; background: #f1f3ff; transition: opacity .7s
   .flow > .node.plat { grid-column: auto; padding: 10px 4px; }
   .node.plat b { font-size: .8rem; overflow-wrap: anywhere; }
   .node.plat small { font-size: .6rem; }
-  .flow > .n-log { grid-column: 1 / -1; }
+  .flow > .n-log, .flow > .n-portfolio { grid-column: 1 / -1; }
   .d-bottom { grid-template-columns: 1fr; }
 }
 
@@ -268,7 +268,7 @@ footer a { color: var(--bone); }
       <p class="sub">Tagalog horror stories from Filipino folklore. Claude writes them, films them in Google Flow, cuts them and posts them, every single morning.</p>
       <div class="specs">
         <div><b id="storyCount">4</b>stories so far</div>
-        <div><b>8:45 AM</b>daily, Manila</div>
+        <div><b>8:05 AM</b>daily, Manila</div>
         <div><b>1–3</b>videos a day</div>
         <div><b>4</b>platforms</div>
       </div>
@@ -282,28 +282,30 @@ footer a { color: var(--bone); }
       <div class="head rv">
         <span class="k-log">The workflow</span>
         <h2>A studio that <i>runs itself</i></h2>
-        <p>Every step below is done by Claude, guided by prompts I engineered. Press run to watch a night's story move through the pipeline, or tap any step to see what happens there.</p>
+        <p>Every step below is done by Claude, with a team of skills I built: Marites writes, Senyorita prompts, Perpekto checks, Jaiman edits and Chelsea publishes. Press run to watch a night's story move through the pipeline, or tap any step to see what happens there.</p>
       </div>
       <div class="diagram rv">
         <div class="d-top">
-          <span class="lbl"><b>●</b> pipeline: google-flow-reels-automation · trigger: daily 8:45 AM</span>
+          <span class="lbl"><b>●</b> pipeline: google-flow-reels-automation · trigger: daily 8:05 AM</span>
           <button class="run" id="runBtn" type="button">Run tonight's story</button>
         </div>
         <div class="flow" id="flow">
           <svg class="wires" id="wires" aria-hidden="true"></svg>
           <button class="node n-schedule" data-id="schedule" type="button"><span class="ix">01 · TRIGGER</span><b>Wake at dawn</b><small>Scheduled task</small><i class="ok">✓</i></button>
-          <button class="node n-queue claude" data-id="queue" type="button"><span class="ix">02 · QUEUE</span><b>Pick a legend</b><small>Claude</small><i class="ok">✓</i></button>
-          <button class="node n-story claude" data-id="story" type="button"><span class="ix">03 · STORY</span><b>Write the tale</b><small>Claude</small><i class="ok">✓</i></button>
-          <button class="node n-prompts claude" data-id="prompts" type="button"><span class="ix">04 · PROMPTS</span><b>Prompt each shot</b><small>Claude · prompt engineering</small><i class="ok">✓</i></button>
+          <button class="node n-queue claude" data-id="queue" type="button"><span class="ix">02 · QUEUE</span><b>Pick the theme</b><small>Claude</small><i class="ok">✓</i></button>
+          <button class="node n-story claude" data-id="story" type="button"><span class="ix">03 · STORY</span><b>Write the tale</b><small>Marites · storyteller</small><i class="ok">✓</i></button>
+          <button class="node n-prompts claude" data-id="prompts" type="button"><span class="ix">04 · PROMPTS</span><b>Prompt each shot</b><small>Senyorita · prompt expert</small><i class="ok">✓</i></button>
           <button class="node n-generate claude" data-id="generate" type="button"><span class="ix">05 · GENERATE</span><b>Film in Google Flow</b><small>Claude · Google Flow · Veo</small><i class="ok">✓</i></button>
-          <button class="node n-compile claude" data-id="compile" type="button"><span class="ix">06 · COMPILE</span><b>Stitch the reel</b><small>Jaiman · ffmpeg</small><i class="ok">✓</i></button>
-          <button class="node n-qc claude" data-id="qc" type="button"><span class="ix">07 · QUALITY</span><b>Check its own work</b><small>Claude · QC script</small><i class="ok">✓</i></button>
-          <button class="node n-captions claude" data-id="captions" type="button"><span class="ix">08 · CAPTIONS</span><b>Write the captions</b><small>Claude</small><i class="ok">✓</i></button>
+          <button class="node n-clipqc claude" data-id="clipqc" type="button"><span class="ix">06 · CLIPS</span><b>Check every clip</b><small>Perpekto · video QA</small><i class="ok">✓</i></button>
+          <button class="node n-compile claude" data-id="compile" type="button"><span class="ix">07 · COMPILE</span><b>Stitch the reel</b><small>Jaiman · ffmpeg</small><i class="ok">✓</i></button>
+          <button class="node n-qc claude" data-id="qc" type="button"><span class="ix">08 · QUALITY</span><b>Check the video</b><small>Perpekto · QC script</small><i class="ok">✓</i></button>
+          <button class="node n-captions claude" data-id="captions" type="button"><span class="ix">09 · CAPTIONS</span><b>Write the captions</b><small>Claude</small><i class="ok">✓</i></button>
           <button class="node plat n-yt" data-id="yt" type="button"><b>YouTube</b><small>Short</small><i class="ok">✓</i></button>
           <button class="node plat n-fb" data-id="fb" type="button"><b>Facebook</b><small>Reel</small><i class="ok">✓</i></button>
           <button class="node plat n-ig" data-id="ig" type="button"><b>Instagram</b><small>Reel</small><i class="ok">✓</i></button>
           <button class="node plat n-tt" data-id="tt" type="button"><b>TikTok</b><small>Video</small><i class="ok">✓</i></button>
-          <button class="node n-log claude" data-id="log" type="button"><span class="ix">10 · ARCHIVE</span><b>Save to the video log</b><small>Claude · video log</small><i class="ok">✓</i></button>
+          <button class="node n-log claude" data-id="log" type="button"><span class="ix">11 · ARCHIVE</span><b>Save to the video log</b><small>Claude · video log</small><i class="ok">✓</i></button>
+          <button class="node n-portfolio claude" data-id="portfolio" type="button"><span class="ix">12 · SHOWCASE</span><b>Update the portfolio</b><small>Chelsea · portfolio updater</small><i class="ok">✓</i></button>
         </div>
         <div class="d-bottom">
           <div class="console" id="console" aria-live="polite" aria-label="Run log"><span class="t">$</span> waiting for dawn…</div>
@@ -545,25 +547,27 @@ footer a { color: var(--bone); }
 
   /* ---------- workflow diagram ---------- */
   const DETAIL = {
-    schedule: ['01 · Trigger', 'Wake at dawn', 'A scheduled Claude task starts the run at 8:45 every morning in Manila, with a 2:45 PM catch-up if anything is left unfinished.', 'Scheduled task'],
-    queue: ['02 · Queue', 'Pick a legend', 'Claude takes the next ready topic from the queue: the creature or legend, a premise and a twist idea. I add legends, or ask Claude to.', 'Claude · topic queue'],
-    story: ['03 · Story', 'Write the tale', 'Claude writes a Tagalog horror story in short beats, each sized to one clip: a hook, a slow build, and a twist ending.', 'Claude'],
-    prompts: ['04 · Prompts', 'Prompt each shot', 'Every beat becomes a 9:16 Google Flow prompt with the same foggy, moonlit look, consistent characters and a hushed Tagalog narrator.', 'Claude · prompt engineering'],
+    schedule: ['01 · Trigger', 'Wake at dawn', 'A scheduled Claude task starts the run at 8:05 every morning in Manila, with a 2:45 PM catch-up if anything is left unfinished.', 'Scheduled task'],
+    queue: ['02 · Queue', 'Pick the theme', 'Claude takes the next ready topic from the queue and rotates the theme: Filipino folklore, abandoned buildings, call center nights, school horrors and spooky-but-safe tales for kids. I add ideas, or ask Claude to.', 'Claude · topic queue'],
+    story: ['03 · Story', 'Write the tale', 'Marites learns the concept of the page, then writes a Tagalog horror story and a clip-by-clip script: a hook in two seconds, a mystery, a turn, one quiet beat and a twist in the last line.', 'Marites · storyteller'],
+    prompts: ['04 · Prompts', 'Prompt each shot', 'Senyorita turns every beat into a thorough 9:16 Google Flow prompt: the foggy, moonlit look, consistent characters, a hushed off-screen narrator, and nobody on screen lip-syncing.', 'Senyorita · ai-prompt-expert'],
     generate: ['05 · Generate', 'Film in Google Flow', 'Claude opens Google Flow in the browser, generates each clip with native narration, downloads them, and stays within the day\'s credit budget.', 'Claude · Google Flow · Veo'],
-    compile: ['06 · Compile', 'Stitch the reel', 'Jaiman puts the clips in story order and joins them into one 720 × 1280 reel with frame-locked audio, small enough to upload to every platform.', 'Jaiman · ffmpeg'],
-    qc: ['07 · Quality check', 'Check its own work', 'A QC script checks sync, clip order, repeats and black frames, and Claude reviews the frames itself. If anything fails, it re-cuts or regenerates and checks again, up to two rounds.', 'Claude · QC script · auto-fix'],
-    captions: ['08 · Captions', 'Write the captions', 'A YouTube Shorts title, description and tags, plus captions and hashtags for Facebook, Instagram and TikTok.', 'Claude'],
-    yt: ['09 · Post', 'YouTube', 'Posted as a public Short and labeled as AI-generated content.', 'Claude · YouTube'],
-    fb: ['09 · Post', 'Facebook', 'Posted as a Reel on the Kwento: Kilabot page.', 'Claude · Facebook'],
-    ig: ['09 · Post', 'Instagram', 'Posted as a Reel with its own caption.', 'Claude · Instagram'],
-    tt: ['09 · Post', 'TikTok', 'Posted with its own caption and hashtags.', 'Claude · TikTok'],
-    log: ['10 · Archive', 'Save to the video log', 'Every video, its quality report and its links are saved to a video log, where I can ask for a fix or a re-cut.', 'Claude · video log'],
+    clipqc: ['06 · Clips', 'Check every clip', 'Perpekto checks each raw clip against the story Marites wrote: the right scene for its line, no text or watermark, no garbled faces or hands, narration present, nobody lip-syncing. A bad clip is regenerated on its own, never the whole story.', 'Perpekto · flow-clip-qa'],
+    compile: ['07 · Compile', 'Stitch the reel', 'Jaiman puts the clips in the order Marites wrote, trims and joins them into one 720 × 1280 reel with frame-locked audio, small enough to upload to every platform.', 'Jaiman · video-editor · ffmpeg'],
+    qc: ['08 · Quality check', 'Check the video', 'Perpekto checks the finished video again: story order, sync, repeats, black or frozen frames, joins and size, plus the QC script. A fail goes back to Jaiman or to Flow, up to two rounds. Only a pass is posted.', 'Perpekto · flow-clip-qa · QC script'],
+    captions: ['09 · Captions', 'Write the captions', 'A YouTube Shorts title, description and tags, plus captions and hashtags for Facebook, Instagram and TikTok.', 'Claude'],
+    yt: ['10 · Post', 'YouTube', 'Posted as a public Short and labeled as AI-generated content.', 'Claude · YouTube'],
+    fb: ['10 · Post', 'Facebook', 'Posted as a Reel on the Kwento: Kilabot page.', 'Claude · Facebook'],
+    ig: ['10 · Post', 'Instagram', 'Posted as a Reel with its own caption.', 'Claude · Instagram'],
+    tt: ['10 · Post', 'TikTok', 'Posted with its own caption and hashtags.', 'Claude · TikTok'],
+    portfolio: ['12 · Showcase', 'Update the portfolio', 'After the video is posted, Chelsea adds it to this portfolio with a NEW badge for its first week, and keeps this workflow and the skills section current.', 'Chelsea · portfolio-updater'],
+    log: ['11 · Archive', 'Save to the video log', 'Every video, its quality report and its links are saved to a video log, where I can ask for a fix or a re-cut.', 'Claude · video log'],
   };
   const EDGES = [
-    ['schedule', 'queue'], ['queue', 'story'], ['story', 'prompts'], ['prompts', 'generate'], ['generate', 'compile'], ['compile', 'qc'],
-    ['qc', 'compile', 'loop', 'auto-fix'], ['qc', 'captions'],
+    ['schedule', 'queue'], ['queue', 'story'], ['story', 'prompts'], ['prompts', 'generate'], ['generate', 'clipqc'], ['clipqc', 'compile'], ['compile', 'qc'],
+    ['clipqc', 'generate', 'loop', 'regenerate'], ['qc', 'compile', 'loop', 're-cut'], ['qc', 'captions'],
     ['captions', 'yt'], ['captions', 'fb'], ['captions', 'ig'], ['captions', 'tt'],
-    ['yt', 'log'], ['fb', 'log'], ['ig', 'log'], ['tt', 'log'],
+    ['yt', 'log'], ['fb', 'log'], ['ig', 'log'], ['tt', 'log'], ['log', 'portfolio'],
   ];
   const flow = document.getElementById('flow'), svg = document.getElementById('wires');
   const nodes = Object.fromEntries([...flow.querySelectorAll('.node')].map(n => [n.dataset.id, n]));
@@ -631,20 +635,24 @@ footer a { color: var(--bone); }
     Object.values(wires).forEach(w => w.classList.remove('flowing'));
     consoleEl.innerHTML = '';
     const v = VIDEOS[0];
-    log('08:45', 'Scheduled run started'); light('schedule'); showDetail('schedule'); await wait(500);
-    await spark('schedule>queue'); light('queue'); log('08:45', `Picked a legend: ${v.folk}`); await wait(300);
-    await spark('queue>story'); light('story'); log('08:47', `Story written: "${v.title}" in 6 beats`); await wait(300);
-    await spark('story>prompts'); light('prompts'); log('08:48', '6 Google Flow prompts ready'); await wait(300);
-    await spark('prompts>generate'); light('generate'); showDetail('generate'); log('08:52', 'Generating clips in Google Flow… 6 of 6 downloaded'); await wait(500);
-    await spark('generate>compile'); light('compile'); log('08:58', 'Reel compiled at 720 × 1280'); await wait(300);
-    await spark('compile>qc'); nodes.qc.classList.add('warn'); showDetail('qc'); log('08:58', 'Quality check: voice drifts out of sync in clip 4', 'w'); await wait(700);
-    await spark('qc>compile'); light('compile'); log('08:59', 'Auto-fix: re-cut with frame-locked audio'); await wait(300);
-    await spark('compile>qc'); light('qc'); log('09:00', 'Quality check passed ✓'); await wait(300);
-    await spark('qc>captions'); light('captions'); log('09:01', 'Captions written for 4 platforms'); await wait(300);
+    log('08:05', 'Scheduled run started'); light('schedule'); showDetail('schedule'); await wait(500);
+    await spark('schedule>queue'); light('queue'); log('08:05', `Picked the next theme: ${v.folk}`); await wait(300);
+    await spark('queue>story'); light('story'); log('08:07', `Marites wrote "${v.title}" in 6 beats`); await wait(300);
+    await spark('story>prompts'); light('prompts'); log('08:09', 'Senyorita: 6 Google Flow prompts ready'); await wait(300);
+    await spark('prompts>generate'); light('generate'); showDetail('generate'); log('08:15', 'Generating clips in Google Flow… 6 of 6 downloaded'); await wait(500);
+    await spark('generate>clipqc'); nodes.clipqc.classList.add('warn'); showDetail('clipqc'); log('08:25', 'Perpekto: clip 4 does not match its line', 'w'); await wait(700);
+    await spark('clipqc>generate'); light('generate'); log('08:26', 'Regenerated clip 4 only'); await wait(300);
+    await spark('generate>clipqc'); light('clipqc'); log('08:31', 'All clips match the story ✓'); await wait(300);
+    await spark('clipqc>compile'); light('compile'); log('08:36', 'Jaiman compiled the reel at 720 × 1280'); await wait(300);
+    await spark('compile>qc'); nodes.qc.classList.add('warn'); showDetail('qc'); log('08:37', 'Perpekto: voice drifts out of sync in clip 4', 'w'); await wait(700);
+    await spark('qc>compile'); light('compile'); log('08:38', 'Jaiman: re-cut with frame-locked audio'); await wait(300);
+    await spark('compile>qc'); light('qc'); log('08:40', 'Final quality check passed ✓'); await wait(300);
+    await spark('qc>captions'); light('captions'); log('08:41', 'Captions written for 4 platforms'); await wait(300);
     await Promise.all(['yt', 'fb', 'ig', 'tt'].map(p => spark('captions>' + p)));
-    ['yt', 'fb', 'ig', 'tt'].forEach(p => light(p)); log('09:05', 'Posted to YouTube, Facebook, Instagram and TikTok'); await wait(300);
+    ['yt', 'fb', 'ig', 'tt'].forEach(p => light(p)); log('08:45', 'Posted to YouTube, Facebook, Instagram and TikTok'); await wait(300);
     await Promise.all(['yt', 'fb', 'ig', 'tt'].map(p => spark(p + '>log')));
-    light('log'); showDetail('log'); log('09:05', 'Saved to the video log ✓ · see you tomorrow at dawn');
+    light('log'); log('08:46', 'Saved to the video log ✓'); await wait(300);
+    await spark('log>portfolio'); light('portfolio'); showDetail('portfolio'); log('08:47', 'Chelsea added it to the portfolio ✓ · see you tomorrow at dawn');
     running = false; runBtn.disabled = false; runBtn.textContent = 'Run it again';
   };
   runBtn.addEventListener('click', () => run('button'));

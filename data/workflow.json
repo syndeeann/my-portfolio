@@ -5,35 +5,35 @@
       "intro": "How a Kwento: Kilabot story goes from an idea to a published video.",
       "steps": [
         {
-          "title": "Pick the next topic",
-          "text": "The next topic comes from a queue of Filipino folklore ideas, so there is always a story ready to make.",
+          "title": "Pick the next theme",
+          "text": "The next story comes from a queue of horror ideas that rotates through Filipino folklore, abandoned buildings, call center nights, school horrors and spooky-but-safe tales for kids.",
           "tools": [
             "GitHub"
           ],
           "tag": "QUEUE",
-          "log": "Picked a legend from the queue"
+          "log": "Picked the next theme from the queue"
         },
         {
           "title": "Write the story",
-          "text": "Claude writes a Tagalog horror script in clip-sized beats: a hook, a build and a twist, with an angle viewers have not seen before.",
+          "text": "Marites learns the concept of the page, then writes a Tagalog horror story and a clip-by-clip script: a hook in two seconds, a mystery, a turn, one quiet beat and a twist in the last line.",
           "skills": [
             "storyteller"
           ],
           "tag": "STORY",
-          "log": "Story written in 6 beats"
+          "log": "Story and script written in 12 clips"
         },
         {
           "title": "Write the prompts",
-          "text": "Every narration line gets a vertical video prompt that shows what is being said. The narrator stays off screen, so nobody on screen lip-syncs.",
+          "text": "Senyorita turns the script into thorough Google Flow prompts. Each shows what its line says, the narrator stays off screen, and nobody on screen lip-syncs.",
           "skills": [
             "ai-prompt-expert"
           ],
           "tag": "PROMPTS",
-          "log": "6 Google Flow prompts ready"
+          "log": "12 Google Flow prompts ready"
         },
         {
           "title": "Generate in Google Flow",
-          "text": "The clips are generated in Google Flow, one prompt per clip.",
+          "text": "The clips are generated in Google Flow, one prompt per clip, and downloaded.",
           "tools": [
             "Google Flow",
             "Veo",
@@ -43,52 +43,73 @@
           "log": "Clips generated in Google Flow"
         },
         {
-          "title": "Edit and sync",
+          "title": "Check every clip",
+          "text": "Perpekto checks each raw clip against the story Marites wrote: the right scene, no text or watermark, no garbled faces, narration present, nobody lip-syncing. A bad clip is regenerated on its own.",
+          "skills": [
+            "flow-clip-qa"
+          ],
+          "tag": "CLIPS",
+          "log": "All clips match the story ✓",
+          "warn": "Clip check: the picture in clip 4 does not match its line",
+          "loop": {
+            "to": 3,
+            "label": "regenerate clip",
+            "log": "Regenerated clip 4 only"
+          }
+        },
+        {
+          "title": "Edit and compile",
           "text": "Jaiman puts the clips in the order Marites wrote, joins them without a glitch and locks the voice-over to its picture.",
           "tools": [
             "ffmpeg"
           ],
-          "tag": "COMPILE",
-          "log": "Reel compiled at 720 × 1280",
           "skills": [
             "video-editor"
-          ]
+          ],
+          "tag": "COMPILE",
+          "log": "Reel compiled at 720 × 1280"
         },
         {
-          "title": "Quality check",
-          "text": "Automatic checks and a visual review catch black frames, cut-off narration, wrong scenes, text overlays and lip movement before anything is delivered.",
+          "title": "Check the finished video",
+          "text": "Perpekto checks the whole video again: story order, sync, black or frozen frames, joins, size and lip movement. Only a pass lets it go out.",
           "skills": [
             "flow-clip-qa"
           ],
           "tag": "QUALITY",
-          "log": "Quality check passed ✓",
-          "warn": "Quality check: voice drifts out of sync in one clip",
+          "log": "Final quality check passed ✓",
+          "warn": "Final check: voice drifts out of sync in one clip",
           "loop": {
-            "to": 4,
-            "label": "auto-fix",
-            "log": "Auto-fix: re-cut with frame-locked audio"
+            "to": 5,
+            "label": "re-cut",
+            "log": "Re-cut with frame-locked audio"
           }
         },
         {
-          "title": "Publish and showcase",
-          "text": "The video is posted to Facebook and YouTube, then added to this portfolio with a NEW badge for its first week.",
-          "skills": [
-            "portfolio-updater"
-          ],
+          "title": "Post to YouTube and Facebook",
+          "text": "Only after the final check passes, the video is posted to YouTube and Facebook with its captions.",
           "tools": [
             "Facebook",
             "YouTube"
           ],
-          "tag": "PUBLISH",
-          "log": "Posted to Facebook and YouTube · NEW badge on the portfolio"
+          "tag": "POST",
+          "log": "Posted to YouTube and Facebook"
+        },
+        {
+          "title": "Update the portfolio",
+          "text": "Chelsea adds the posted video to this portfolio with a NEW badge for its first week, and keeps this workflow and the skills section current.",
+          "skills": [
+            "portfolio-updater"
+          ],
+          "tag": "SHOWCASE",
+          "log": "Added to the portfolio · NEW badge for 7 days"
         }
       ],
-      "trigger": "daily 8:45 AM",
+      "trigger": "daily 8:05 AM",
       "run_label": "Run tonight's story",
       "start_log": "Scheduled run started",
       "end_log": "Posted and saved to the video log ✓ · see you tomorrow at dawn",
-      "claude_does": "every step above except choosing which legends go in the queue.",
-      "i_do": "engineer the prompts, add legends to the queue and ask for fixes."
+      "claude_does": "every step above except choosing which themes go in the queue.",
+      "i_do": "engineer the skills, add ideas to the queue and ask for fixes."
     },
     "ads": {
       "title": "Ads",
