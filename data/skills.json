@@ -1,6 +1,6 @@
 {
   "repo": "https://github.com/syndeeann/custom-claude-skills",
-  "generated": "2026-10-28",
+  "generated": "2026-10-29",
   "skills": [
     {
       "id": "storyteller",
@@ -18,9 +18,10 @@
         "tiktok-shop-ads"
       ],
       "category": "content",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "order": 1,
-      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/storyteller"
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/storyteller",
+      "persona": "Marites"
     },
     {
       "id": "ai-prompt-expert",
@@ -38,9 +39,10 @@
         "tiktok-shop-ads"
       ],
       "category": "content",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "order": 2,
-      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/ai-prompt-expert"
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/ai-prompt-expert",
+      "persona": "Senyorita"
     },
     {
       "id": "flow-clip-qa",
@@ -58,9 +60,10 @@
         "tiktok-shop-ads"
       ],
       "category": "qa",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "order": 3,
-      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/flow-clip-qa"
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/flow-clip-qa",
+      "persona": "Perpekto"
     },
     {
       "id": "portfolio-updater",
@@ -81,9 +84,10 @@
         "portfolio"
       ],
       "category": "automation",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "order": 4,
-      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/portfolio-updater"
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/portfolio-updater",
+      "persona": "Chelsea"
     }
   ]
 }
