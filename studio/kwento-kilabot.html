@@ -8,7 +8,7 @@
 <meta name="analytics-page-type" content="workflow">
 <meta name="analytics-workflow" content="kwento_kilabot">
 <script src="../assets/analytics.js"></script>
-<meta name="description" content="Kwento: Kilabot: Syndee Ann Sevilla's AI horror studio. Claude writes Tagalog folklore stories, films them in Google Flow, and posts them to YouTube, Facebook, Instagram and TikTok.">
+<meta name="description" content="Kwento: Kilabot: Syndee Ann Sevilla's AI horror studio. Claude writes Tagalog folklore stories, films them in Google Flow, and posts them to YouTube and Facebook.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IM+Fell+English:ital@0;1&display=swap">
@@ -136,7 +136,7 @@ body.leaving .curtain { opacity: 1; background: #f1f3ff; transition: opacity .7s
 /* desktop placement: a snake through 4 columns */
 .n-schedule { grid-area: 1 / 1; } .n-queue { grid-area: 1 / 2; } .n-story { grid-area: 1 / 3; } .n-prompts { grid-area: 1 / 4; }
 .n-generate { grid-area: 2 / 4; } .n-clipqc { grid-area: 2 / 3; } .n-compile { grid-area: 2 / 2; } .n-qc { grid-area: 2 / 1; } .n-captions { grid-area: 3 / 1 / 4 / 5; }
-.n-yt { grid-area: 4 / 1; } .n-fb { grid-area: 4 / 2; } .n-ig { grid-area: 4 / 3; } .n-tt { grid-area: 4 / 4; }
+.n-yt { grid-area: 4 / 2; } .n-fb { grid-area: 4 / 3; }
 .n-log { grid-area: 5 / 2 / 6 / 4; } .n-portfolio { grid-area: 6 / 2 / 7 / 4; }
 .d-bottom { position: relative; margin-top: 34px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; }
 .d-bottom > * { min-width: 0; }
@@ -270,7 +270,7 @@ footer a { color: var(--bone); }
         <div><b id="storyCount">4</b>stories so far</div>
         <div><b>8:05 AM</b>daily, Manila</div>
         <div><b>1–3</b>videos a day</div>
-        <div><b>4</b>platforms</div>
+        <div><b>2</b>platforms</div>
       </div>
       <p class="hint">Move your light around</p>
     </div>
@@ -302,8 +302,6 @@ footer a { color: var(--bone); }
           <button class="node n-captions claude" data-id="captions" type="button"><span class="ix">09 · CAPTIONS</span><b>Write the captions</b><small>Claude</small><i class="ok">✓</i></button>
           <button class="node plat n-yt" data-id="yt" type="button"><b>YouTube</b><small>Short</small><i class="ok">✓</i></button>
           <button class="node plat n-fb" data-id="fb" type="button"><b>Facebook</b><small>Reel</small><i class="ok">✓</i></button>
-          <button class="node plat n-ig" data-id="ig" type="button"><b>Instagram</b><small>Reel</small><i class="ok">✓</i></button>
-          <button class="node plat n-tt" data-id="tt" type="button"><b>TikTok</b><small>Video</small><i class="ok">✓</i></button>
           <button class="node n-log claude" data-id="log" type="button"><span class="ix">11 · ARCHIVE</span><b>Save to the video log</b><small>Claude · video log</small><i class="ok">✓</i></button>
           <button class="node n-portfolio claude" data-id="portfolio" type="button"><span class="ix">12 · SHOWCASE</span><b>Update the portfolio</b><small>Chelsea · portfolio updater</small><i class="ok">✓</i></button>
         </div>
@@ -555,19 +553,17 @@ footer a { color: var(--bone); }
     clipqc: ['06 · Clips', 'Check every clip', 'Perpekto checks each raw clip against the story Marites wrote: the right scene for its line, no text or watermark, no garbled faces or hands, narration present, nobody lip-syncing. A bad clip is regenerated on its own, never the whole story.', 'Perpekto · flow-clip-qa'],
     compile: ['07 · Compile', 'Stitch the reel', 'Jaiman puts the clips in the order Marites wrote, trims and joins them into one 720 × 1280 reel with frame-locked audio, small enough to upload to every platform.', 'Jaiman · video-editor · ffmpeg'],
     qc: ['08 · Quality check', 'Check the video', 'Perpekto checks the finished video again: story order, sync, repeats, black or frozen frames, joins and size, plus the QC script. A fail goes back to Jaiman or to Flow, up to two rounds. Only a pass is posted.', 'Perpekto · flow-clip-qa · QC script'],
-    captions: ['09 · Captions', 'Write the captions', 'A YouTube Shorts title, description and tags, plus captions and hashtags for Facebook, Instagram and TikTok.', 'Claude'],
+    captions: ['09 · Captions', 'Write the captions', 'A YouTube Shorts title, description and tags, plus a caption and hashtags for Facebook.', 'Claude'],
     yt: ['10 · Post', 'YouTube', 'Posted as a public Short and labeled as AI-generated content.', 'Claude · YouTube'],
     fb: ['10 · Post', 'Facebook', 'Posted as a Reel on the Kwento: Kilabot page.', 'Claude · Facebook'],
-    ig: ['10 · Post', 'Instagram', 'Posted as a Reel with its own caption.', 'Claude · Instagram'],
-    tt: ['10 · Post', 'TikTok', 'Posted with its own caption and hashtags.', 'Claude · TikTok'],
     portfolio: ['12 · Showcase', 'Update the portfolio', 'After the video is posted, Chelsea adds it to this portfolio with a NEW badge for its first week, and keeps this workflow and the skills section current.', 'Chelsea · portfolio-updater'],
     log: ['11 · Archive', 'Save to the video log', 'Every video, its quality report and its links are saved to a video log, where I can ask for a fix or a re-cut.', 'Claude · video log'],
   };
   const EDGES = [
     ['schedule', 'queue'], ['queue', 'story'], ['story', 'prompts'], ['prompts', 'generate'], ['generate', 'clipqc'], ['clipqc', 'compile'], ['compile', 'qc'],
     ['clipqc', 'generate', 'loop', 'regenerate'], ['qc', 'compile', 'loop', 're-cut'], ['qc', 'captions'],
-    ['captions', 'yt'], ['captions', 'fb'], ['captions', 'ig'], ['captions', 'tt'],
-    ['yt', 'log'], ['fb', 'log'], ['ig', 'log'], ['tt', 'log'], ['log', 'portfolio'],
+    ['captions', 'yt'], ['captions', 'fb'],
+    ['yt', 'log'], ['fb', 'log'], ['log', 'portfolio'],
   ];
   const flow = document.getElementById('flow'), svg = document.getElementById('wires');
   const nodes = Object.fromEntries([...flow.querySelectorAll('.node')].map(n => [n.dataset.id, n]));
@@ -647,10 +643,10 @@ footer a { color: var(--bone); }
     await spark('compile>qc'); nodes.qc.classList.add('warn'); showDetail('qc'); log('08:37', 'Perpekto: voice drifts out of sync in clip 4', 'w'); await wait(700);
     await spark('qc>compile'); light('compile'); log('08:38', 'Jaiman: re-cut with frame-locked audio'); await wait(300);
     await spark('compile>qc'); light('qc'); log('08:40', 'Final quality check passed ✓'); await wait(300);
-    await spark('qc>captions'); light('captions'); log('08:41', 'Captions written for 4 platforms'); await wait(300);
-    await Promise.all(['yt', 'fb', 'ig', 'tt'].map(p => spark('captions>' + p)));
-    ['yt', 'fb', 'ig', 'tt'].forEach(p => light(p)); log('08:45', 'Posted to YouTube, Facebook, Instagram and TikTok'); await wait(300);
-    await Promise.all(['yt', 'fb', 'ig', 'tt'].map(p => spark(p + '>log')));
+    await spark('qc>captions'); light('captions'); log('08:41', 'Captions written for YouTube and Facebook'); await wait(300);
+    await Promise.all(['yt', 'fb'].map(p => spark('captions>' + p)));
+    ['yt', 'fb'].forEach(p => light(p)); log('08:45', 'Posted to YouTube and Facebook'); await wait(300);
+    await Promise.all(['yt', 'fb'].map(p => spark(p + '>log')));
     light('log'); log('08:46', 'Saved to the video log ✓'); await wait(300);
     await spark('log>portfolio'); light('portfolio'); showDetail('portfolio'); log('08:47', 'Chelsea added it to the portfolio ✓ · see you tomorrow at dawn');
     running = false; runBtn.disabled = false; runBtn.textContent = 'Run it again';
