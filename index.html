@@ -370,9 +370,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <div>
             <span class="live"><i></i>Workflow 01 · live · runs daily</span>
             <h3>Kwento: <i>Kilabot</i></h3>
-            <p class="desc">An AI horror studio. Claude writes Tagalog folklore stories, films them in Google Flow, compiles and checks each reel, and posts it to four platforms every morning.</p>
-            <div class="chain" aria-label="Workflow steps"><span>Story</span><em>→</em><span>Prompts</span><em>→</em><span>Google Flow</span><em>→</em><span>Compile</span><em>→</em><span>Quality check</span><em>→</em><span>Post ×4</span></div>
-            <div class="wf-stats"><div><b data-studio-total="stories">4</b>stories so far</div><div><b>4</b>platforms</div><div><b>8:05 AM</b>daily</div></div>
+            <p class="desc">An AI horror studio. Claude writes Tagalog folklore stories, films them in Google Flow, checks every clip, compiles and re-checks each reel, and posts it to YouTube and Facebook every morning.</p>
+            <div class="chain" aria-label="Workflow steps"><span>Story</span><em>→</em><span>Prompts</span><em>→</em><span>Google Flow</span><em>→</em><span>Clip check</span><em>→</em><span>Compile</span><em>→</em><span>Final check</span><em>→</em><span>Post ×2</span></div>
+            <div class="wf-stats"><div><b data-studio-total="stories">4</b>stories so far</div><div><b>2</b>platforms</div><div><b>8:05 AM</b>daily</div></div>
             <span class="enter">Enter the studio <span aria-hidden="true">→</span></span>
           </div>
           <div class="thumbs" aria-hidden="true">
@@ -585,7 +585,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   const runs = [
     { q: 'Write a 45-second Tagalog horror reel about a duwende.', a: 'Here is your script in 6 beats. Beat 1 (hook): a child steps on an anthill mound at dusk. Beats 2–4 build the dread. Beat 6 is the twist. I also wrote one 9:16 prompt per clip.', render: 0 },
     { q: 'Generate the clips in Google Flow.', a: 'Opening Google Flow and generating 6 clips from my prompts: dark foggy night, cold blue moonlight, hushed Tagalog narrator. Downloading each one.', render: 6 },
-    { q: 'Compile it and post it everywhere.', a: 'Compiled 6 clips into one 720×1280 reel and ran the quality check: voice in sync, clips in order, passed. Posted with captions to YouTube, Facebook, Instagram and TikTok.', render: -1 },
+    { q: 'Compile it and post it everywhere.', a: 'Compiled 6 clips into one 720×1280 reel and ran the quality check: voice in sync, clips in order, passed. Posted with captions to YouTube and Facebook.', render: -1 },
   ];
   let runToken = 0;
   const play = i => {
@@ -605,7 +605,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           const rr = document.createElement('div'); rr.className = 'render'; rr.innerHTML = '<i></i>'.repeat(6); m.appendChild(rr);
           [...rr.children].forEach((c, n) => setTimeout(() => { if (my === runToken) c.classList.add('done'); }, reduce ? 0 : 400 + n * 380));
         }
-        if (r.render === -1) { const ok = document.createElement('div'); ok.style.cssText = 'margin-top:10px;font-family:var(--font-mono);font-size:.74rem;color:var(--lime)'; ok.textContent = '✓ live on YouTube · Facebook · Instagram · TikTok'; m.appendChild(ok); }
+        if (r.render === -1) { const ok = document.createElement('div'); ok.style.cssText = 'margin-top:10px;font-family:var(--font-mono);font-size:.74rem;color:var(--lime)'; ok.textContent = '✓ live on YouTube · Facebook'; m.appendChild(ok); }
       }
     };
     setTimeout(type, reduce ? 0 : 450);
