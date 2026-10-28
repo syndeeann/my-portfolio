@@ -4,51 +4,302 @@
       "title": "Stories",
       "intro": "How a Kwento: Kilabot story goes from an idea to a published video.",
       "steps": [
-        {"title": "Pick the next topic", "text": "The next topic comes from a queue of Filipino folklore ideas, so there is always a story ready to make.", "tools": ["GitHub"]},
-        {"title": "Write the story", "text": "Claude writes a Tagalog horror script in clip-sized beats: a hook, a build and a twist, with an angle viewers have not seen before.", "skills": ["storyteller"]},
-        {"title": "Write the prompts", "text": "Every narration line gets a vertical video prompt that shows what is being said. The narrator stays off screen, so nobody on screen lip-syncs.", "skills": ["ai-prompt-expert"]},
-        {"title": "Generate in Google Flow", "text": "The clips are generated in Google Flow, one prompt per clip.", "tools": ["Google Flow", "Veo", "Omni"]},
-        {"title": "Edit and sync", "text": "The clips are joined and the voice-over is locked to the picture.", "tools": ["ffmpeg"]},
-        {"title": "Quality check", "text": "Automatic checks and a visual review catch black frames, cut-off narration, wrong scenes, text overlays and lip movement before anything is delivered.", "skills": ["flow-clip-qa"]},
-        {"title": "Publish and showcase", "text": "The video is posted to Facebook and YouTube, then added to this portfolio with a NEW badge for its first week.", "skills": ["portfolio-updater"], "tools": ["Facebook", "YouTube"]}
-      ]
+        {
+          "title": "Pick the next topic",
+          "text": "The next topic comes from a queue of Filipino folklore ideas, so there is always a story ready to make.",
+          "tools": [
+            "GitHub"
+          ],
+          "tag": "QUEUE",
+          "log": "Picked a legend from the queue"
+        },
+        {
+          "title": "Write the story",
+          "text": "Claude writes a Tagalog horror script in clip-sized beats: a hook, a build and a twist, with an angle viewers have not seen before.",
+          "skills": [
+            "storyteller"
+          ],
+          "tag": "STORY",
+          "log": "Story written in 6 beats"
+        },
+        {
+          "title": "Write the prompts",
+          "text": "Every narration line gets a vertical video prompt that shows what is being said. The narrator stays off screen, so nobody on screen lip-syncs.",
+          "skills": [
+            "ai-prompt-expert"
+          ],
+          "tag": "PROMPTS",
+          "log": "6 Google Flow prompts ready"
+        },
+        {
+          "title": "Generate in Google Flow",
+          "text": "The clips are generated in Google Flow, one prompt per clip.",
+          "tools": [
+            "Google Flow",
+            "Veo",
+            "Omni"
+          ],
+          "tag": "GENERATE",
+          "log": "Clips generated in Google Flow"
+        },
+        {
+          "title": "Edit and sync",
+          "text": "The clips are joined and the voice-over is locked to the picture.",
+          "tools": [
+            "ffmpeg"
+          ],
+          "tag": "COMPILE",
+          "log": "Reel compiled at 720 × 1280"
+        },
+        {
+          "title": "Quality check",
+          "text": "Automatic checks and a visual review catch black frames, cut-off narration, wrong scenes, text overlays and lip movement before anything is delivered.",
+          "skills": [
+            "flow-clip-qa"
+          ],
+          "tag": "QUALITY",
+          "log": "Quality check passed ✓",
+          "warn": "Quality check: voice drifts out of sync in one clip",
+          "loop": {
+            "to": 4,
+            "label": "auto-fix",
+            "log": "Auto-fix: re-cut with frame-locked audio"
+          }
+        },
+        {
+          "title": "Publish and showcase",
+          "text": "The video is posted to Facebook and YouTube, then added to this portfolio with a NEW badge for its first week.",
+          "skills": [
+            "portfolio-updater"
+          ],
+          "tools": [
+            "Facebook",
+            "YouTube"
+          ],
+          "tag": "PUBLISH",
+          "log": "Posted to Facebook and YouTube · NEW badge on the portfolio"
+        }
+      ],
+      "trigger": "daily 8:45 AM",
+      "run_label": "Run tonight's story",
+      "start_log": "Scheduled run started",
+      "end_log": "Posted and saved to the video log ✓ · see you tomorrow at dawn",
+      "claude_does": "every step above except choosing which legends go in the queue.",
+      "i_do": "engineer the prompts, add legends to the queue and ask for fixes."
     },
     "ads": {
       "title": "Ads",
       "intro": "How a TikTok Shop ad is made, from a product listing to a published video.",
       "steps": [
-        {"title": "Pick a product", "text": "A product from my TikTok Shop showcase, studied for what it does and how people really use it.", "tools": ["TikTok Shop"]},
-        {"title": "Write the ad", "text": "Claude writes a Taglish, UGC-style script with an honest angle. Every claim comes from the product listing.", "skills": ["storyteller"]},
-        {"title": "Write the prompts", "text": "Prompts keep the product looking exactly like its listing photo, with the Ate Host speaking on camera and silent hero shots in between.", "skills": ["ai-prompt-expert"]},
-        {"title": "Generate in Google Flow", "text": "Narrated clips use the Ate Host character, and product hero shots use Veo.", "tools": ["Google Flow", "Veo", "Omni"]},
-        {"title": "Edit and sync", "text": "The clips are joined and the voice-over is locked to the picture.", "tools": ["ffmpeg"]},
-        {"title": "Quality check", "text": "The same checks as every video, plus a minimum length and a product-accuracy check.", "skills": ["flow-clip-qa"]},
-        {"title": "Approve, post and showcase", "text": "I approve each ad before it goes to TikTok with the product linked, then it is added to this portfolio.", "skills": ["portfolio-updater"], "tools": ["TikTok"]}
-      ]
+        {
+          "title": "Pick a product",
+          "text": "A product from my TikTok Shop showcase, studied for what it does and how people really use it.",
+          "tools": [
+            "TikTok Shop"
+          ],
+          "tag": "PRODUCT",
+          "log": "Product picked and studied"
+        },
+        {
+          "title": "Write the ad",
+          "text": "Claude writes a Taglish, UGC-style script with an honest angle. Every claim comes from the product listing.",
+          "skills": [
+            "storyteller"
+          ],
+          "tag": "SCRIPT",
+          "log": "Taglish ad script written"
+        },
+        {
+          "title": "Write the prompts",
+          "text": "Prompts keep the product looking exactly like its listing photo, with the Ate Host speaking on camera and silent hero shots in between.",
+          "skills": [
+            "ai-prompt-expert"
+          ],
+          "tag": "PROMPTS",
+          "log": "Prompts written, product matches its listing photo"
+        },
+        {
+          "title": "Generate in Google Flow",
+          "text": "Narrated clips use the Ate Host character, and product hero shots use Veo.",
+          "tools": [
+            "Google Flow",
+            "Veo",
+            "Omni"
+          ],
+          "tag": "GENERATE",
+          "log": "Clips generated in Google Flow"
+        },
+        {
+          "title": "Edit and sync",
+          "text": "The clips are joined and the voice-over is locked to the picture.",
+          "tools": [
+            "ffmpeg"
+          ],
+          "tag": "COMPILE",
+          "log": "Ad compiled and voice-over synced"
+        },
+        {
+          "title": "Quality check",
+          "text": "The same checks as every video, plus a minimum length and a product-accuracy check.",
+          "skills": [
+            "flow-clip-qa"
+          ],
+          "tag": "QUALITY",
+          "log": "Quality check passed ✓",
+          "warn": "Quality check: product looks different from its listing photo in one clip",
+          "loop": {
+            "to": 3,
+            "label": "auto-fix",
+            "log": "Fix: regenerate that clip from the listing photo"
+          }
+        },
+        {
+          "title": "Approve, post and showcase",
+          "text": "I approve each ad before it goes to TikTok with the product linked, then it is added to this portfolio.",
+          "skills": [
+            "portfolio-updater"
+          ],
+          "tools": [
+            "TikTok"
+          ],
+          "tag": "PUBLISH",
+          "log": "Approved, posted to TikTok · added to the portfolio"
+        }
+      ],
+      "trigger": "per product",
+      "run_label": "Run a sample ad",
+      "start_log": "New product picked",
+      "end_log": "Ad approved, posted and added to the portfolio ✓",
+      "claude_does": "the script, prompts, checks and portfolio update.",
+      "i_do": "choose the product and approve every ad before it is posted."
     },
     "kids": {
       "title": "Kids",
       "intro": "The same video pipeline, used for videos made for kids.",
       "steps": [
-        {"title": "Choose the idea", "text": "Start from what the video should show or teach."},
-        {"title": "Write the script", "text": "Claude writes the script in clip-sized beats.", "skills": ["storyteller"]},
-        {"title": "Write the prompts", "text": "Every line gets a prompt that shows what is being said.", "skills": ["ai-prompt-expert"]},
-        {"title": "Generate in Google Flow", "text": "The clips are generated in Google Flow.", "tools": ["Google Flow", "Veo"]},
-        {"title": "Quality check", "text": "Every clip is checked before it is delivered.", "skills": ["flow-clip-qa"]},
-        {"title": "Publish and showcase", "text": "The finished video is added to this portfolio.", "skills": ["portfolio-updater"]}
-      ]
+        {
+          "title": "Choose the idea",
+          "text": "Start from what the video should show or teach.",
+          "tag": "IDEA",
+          "log": "Idea chosen"
+        },
+        {
+          "title": "Write the script",
+          "text": "Claude writes the script in clip-sized beats.",
+          "skills": [
+            "storyteller"
+          ],
+          "tag": "SCRIPT",
+          "log": "Script written in clip-sized beats"
+        },
+        {
+          "title": "Write the prompts",
+          "text": "Every line gets a prompt that shows what is being said.",
+          "skills": [
+            "ai-prompt-expert"
+          ],
+          "tag": "PROMPTS",
+          "log": "Prompts written"
+        },
+        {
+          "title": "Generate in Google Flow",
+          "text": "The clips are generated in Google Flow.",
+          "tools": [
+            "Google Flow",
+            "Veo"
+          ],
+          "tag": "GENERATE",
+          "log": "Clips generated in Google Flow"
+        },
+        {
+          "title": "Quality check",
+          "text": "Every clip is checked before it is delivered.",
+          "skills": [
+            "flow-clip-qa"
+          ],
+          "tag": "QUALITY",
+          "log": "Quality check passed ✓",
+          "warn": "Quality check: a clip has stray text on screen",
+          "loop": {
+            "to": 3,
+            "label": "regenerate",
+            "log": "Fix: regenerate that clip with a cleaner prompt"
+          }
+        },
+        {
+          "title": "Publish and showcase",
+          "text": "The finished video is added to this portfolio.",
+          "skills": [
+            "portfolio-updater"
+          ],
+          "tag": "PUBLISH",
+          "log": "Added to the portfolio"
+        }
+      ],
+      "trigger": "per idea",
+      "run_label": "Run a sample video",
+      "start_log": "New idea received",
+      "end_log": "Video checked and added to the portfolio ✓",
+      "claude_does": "the script, prompts and checks.",
+      "i_do": "choose the idea and review the result."
     },
     "apps": {
       "title": "Applications",
       "intro": "How a web or mobile application goes from an idea to a live link.",
       "note": "A working outline that will grow as I add more Claude skills for building apps.",
       "steps": [
-        {"title": "Define the app", "text": "Start from the problem and the people who will use it, and decide what the first version has to do."},
-        {"title": "Build with Claude", "text": "Claude helps write and review the code, trace bugs and draft the documentation.", "tools": ["Claude"]},
-        {"title": "Test and refine", "text": "Check it on the web and on mobile, and fix what breaks."},
-        {"title": "Deploy", "text": "Publish the web app or package the mobile app.", "tools": ["GitHub"]},
-        {"title": "Showcase", "text": "The app is added to this studio with a live link and its source.", "skills": ["portfolio-updater"]}
-      ]
+        {
+          "title": "Define the app",
+          "text": "Start from the problem and the people who will use it, and decide what the first version has to do.",
+          "tag": "DEFINE",
+          "log": "Problem and first version defined"
+        },
+        {
+          "title": "Build with Claude",
+          "text": "Claude helps write and review the code, trace bugs and draft the documentation.",
+          "tools": [
+            "Claude"
+          ],
+          "tag": "BUILD",
+          "log": "Code written and reviewed with Claude"
+        },
+        {
+          "title": "Test and refine",
+          "text": "Check it on the web and on mobile, and fix what breaks.",
+          "tag": "TEST",
+          "log": "Tested on web and mobile",
+          "warn": "Test: a button is cut off on a small phone",
+          "loop": {
+            "to": 1,
+            "label": "fix",
+            "log": "Fix: layout adjusted with Claude"
+          }
+        },
+        {
+          "title": "Deploy",
+          "text": "Publish the web app or package the mobile app.",
+          "tools": [
+            "GitHub"
+          ],
+          "tag": "DEPLOY",
+          "log": "Deployed"
+        },
+        {
+          "title": "Showcase",
+          "text": "The app is added to this studio with a live link and its source.",
+          "skills": [
+            "portfolio-updater"
+          ],
+          "tag": "SHOWCASE",
+          "log": "Added to the portfolio with a live link"
+        }
+      ],
+      "trigger": "per app",
+      "run_label": "Run a sample app",
+      "start_log": "New app idea received",
+      "end_log": "App shipped and added to the portfolio ✓",
+      "claude_does": "code, review, debugging and documentation.",
+      "i_do": "define the problem, test on real devices and decide what ships."
     }
   }
 }
