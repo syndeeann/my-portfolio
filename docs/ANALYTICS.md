@@ -152,7 +152,7 @@ The footer of each page says the site uses Google Analytics. GA4 doesn't log or 
 
 ## 8. Studios and workflows (kept up to date by the portfolio-updater skill)
 
-Do not edit this section by hand: the skill rewrites it whenever it publishes. Last sync: 2026-10-28.
+Do not edit this section by hand: the skill rewrites it whenever it publishes. Last sync: 2026-10-29.
 
 Every studio page reports its own `workflow_name`, and clicks on a studio card or link send `workflow_open` with it.
 
@@ -173,6 +173,5 @@ Every studio page reports its own `workflow_name`, and clicks on a studio card o
 - Table: Link text, Click platform, Event count, filter Click group = `skills_used` or `claude_skills` (which skills people open, and the GitHub button).
 
 **Pending manual steps** (only you can do these; the skill cannot reach GA4, Tag Manager or Looker Studio). Tick them off, then tell Claude "confirm analytics" so the list resets:
-- [ ] Tag Manager: import `docs/gtm-container-GTM-K8G85R8D.json` (Admin, Import container, Merge, overwrite conflicting items), check it in Preview, then Publish. Changed: `GA4 - Event - video_start` (now sends link_group, video_destination).
 - [ ] Looker Studio: open the report and check the Workflow drop-down lists `ads`, `kids`, `apps`; add the studio charts from section 8 of `docs/ANALYTICS.md` to page 4.
 <!-- portfolio-updater:end -->
