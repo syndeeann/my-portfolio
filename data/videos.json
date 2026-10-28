@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "kwento-kilabot-linya-trese",
+      "studio": "stories",
+      "project": "kwento-kilabot",
+      "type": "video",
+      "title": "Linya Trese",
+      "description": "A BPO graveyard-shift agent watches the forbidden 3 AM line ring one desk closer each night.",
+      "published": "2026-10-28",
+      "language": "Tagalog",
+      "duration_s": 106,
+      "youtube": "dNpQf1pS3sc"
+    },
+    {
+      "id": "kwento-kilabot-tiktik-sa-palayan",
+      "studio": "stories",
+      "project": "kwento-kilabot",
+      "type": "video",
+      "title": "Mahina ang Tiktik",
+      "description": "A night-patrol tanod is relieved that the tiktik's call sounds far away, until the faint tik-tik comes from his own wife's throat.",
+      "published": "2026-10-27",
+      "language": "Tagalog",
+      "duration_s": 50,
+      "youtube": "Ns7v0NvKDRM"
+    },
+    {
+      "id": "kwento-kilabot-santelmo-sa-laot",
+      "studio": "stories",
+      "project": "kwento-kilabot",
+      "type": "video",
+      "title": "Ang Ilaw sa Laot",
+      "description": "A capsized fisherman follows a santelmo to shore, finds his mother crying over his slippers, and realizes he is the light now.",
+      "published": "2026-10-27",
+      "language": "Tagalog",
+      "duration_s": 49,
+      "youtube": "rXdRtgvImKk"
+    },
+    {
+      "id": "kwento-kilabot-nuno-sa-punso-cavite",
+      "studio": "stories",
+      "project": "kwento-kilabot",
+      "type": "video",
+      "title": "Tabi-tabi Po",
+      "description": "A family flattens a punso to build their house in Cavite. The nuno thanks them: their new house is his bigger punso.",
+      "published": "2026-10-27",
+      "language": "Tagalog",
+      "duration_s": 52,
+      "youtube": "nJJ29cWjPDo"
+    },
+    {
+      "id": "kwento-kilabot-bote-diyaryo-alaala",
+      "studio": "stories",
+      "project": "kwento-kilabot",
+      "type": "video",
+      "title": "Bote, Diyaryo, at Alaala",
+      "description": "A 3 AM junk buyer pays cash for painful memories, and the narrator learns what his mother has already sold.",
+      "published": "2026-10-27",
+      "language": "Tagalog",
+      "duration_s": 187,
+      "youtube": "7g0JkRndtfM"
+    }
+  ]
+}

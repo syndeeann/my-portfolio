@@ -1,0 +1,19 @@
+{
+  "projects": {
+    "kwento-kilabot": {
+      "name": "Kwento: Kilabot",
+      "studio": "stories",
+      "summary": "Tagalog horror stories based on Filipino folklore, posted to Facebook and YouTube."
+    },
+    "tiktok-shop-ads": {
+      "name": "TikTok Shop Ads",
+      "studio": "ads",
+      "summary": "Taglish UGC-style affiliate ads for TikTok Shop products."
+    },
+    "portfolio": {
+      "name": "This portfolio",
+      "studio": null,
+      "summary": "The portfolio site itself."
+    }
+  }
+}

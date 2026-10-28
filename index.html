@@ -272,6 +272,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   .io .mod:not(.in) .meter i { transform: none; }
 }
 </style>
+<link rel="stylesheet" href="assets/studio.css">
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8G85R8D" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
@@ -290,6 +291,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <ul class="menu">
       <li><a href="#focus">Focus</a></li>
       <li><a class="kil" href="#studio">AI Studio</a></li>
+      <li><a href="#workflow">Workflow</a></li>
+      <li><a href="#claude-skills">Claude Skills</a></li>
       <li><a href="#credentials">Credentials</a></li>
       <li><a href="#origin">Background</a></li>
     </ul>
@@ -370,7 +373,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
             <h3>Kwento: <i>Kilabot</i></h3>
             <p class="desc">An AI horror studio. Claude writes Tagalog folklore stories, films them in Google Flow, compiles and checks each reel, and posts it to four platforms every morning.</p>
             <div class="chain" aria-label="Workflow steps"><span>Story</span><em>→</em><span>Prompts</span><em>→</em><span>Google Flow</span><em>→</em><span>Compile</span><em>→</em><span>Quality check</span><em>→</em><span>Post ×4</span></div>
-            <div class="wf-stats"><div><b>4</b>stories so far</div><div><b>4</b>platforms</div><div><b>8:45 AM</b>daily</div></div>
+            <div class="wf-stats"><div><b data-studio-total="stories">4</b>stories so far</div><div><b>4</b>platforms</div><div><b>8:45 AM</b>daily</div></div>
             <span class="enter">Enter the studio <span aria-hidden="true">→</span></span>
           </div>
           <div class="thumbs" aria-hidden="true">
@@ -379,25 +382,42 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
             <div class="thumb"><canvas data-seed="2"></canvas><img src="https://i.ytimg.com/vi/Ns7v0NvKDRM/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span>Mahina ang Tiktik</span></div>
           </div>
         </a>
-        <article class="wf-soon rv" style="--ac: var(--lime)">
-          <div class="lbl"><span>Workflow 02</span><b>In development</b></div>
-          <h3>Advertisement videos</h3>
-          <p>Product and brand ads made with AI video. Claude writes the script and shot list, Google Flow films it, and every cut is sized for each platform.</p>
-          <div class="chain"><span>Brief</span><em>→</em><span>Script</span><em>→</em><span>Storyboard</span><em>→</em><span>Google Flow</span><em>→</em><span>Edit</span><em>→</em><span>Deliver</span></div>
-        </article>
-        <article class="wf-soon rv" style="--ac: var(--pink); --d:.08s">
-          <div class="lbl"><span>Workflow 03</span><b>Coming soon</b></div>
-          <h3>Kids videos</h3>
-          <p>Gentle, colorful stories and learning videos for children, with Claude keeping every script age-appropriate and kind.</p>
-          <div class="chain"><span>Lesson idea</span><em>→</em><span>Story</span><em>→</em><span>Safety check</span><em>→</em><span>Google Flow</span><em>→</em><span>Publish</span></div>
-        </article>
-        <article class="wf-soon rv" style="--ac: var(--cyan); --d:.16s">
-          <div class="lbl"><span>Workflow 04</span><b>Coming soon</b></div>
-          <h3>Applications</h3>
-          <p>Small apps and tools built with Claude, from idea to working code, using prompt engineering to plan, build and test.</p>
-          <div class="chain"><span>Idea</span><em>→</em><span>Spec</span><em>→</em><span>Build with Claude</span><em>→</em><span>Test</span><em>→</em><span>Ship</span></div>
-        </article>
+        <div style="display: contents" data-studio-grid data-exclude="stories">
+          <a class="wf-soon rv" style="--ac: var(--lime)" href="ads/"><h3>Ads Videos Studio</h3><p>TikTok Shop products and other ad videos.</p></a>
+          <a class="wf-soon rv" style="--ac: var(--pink)" href="kids/"><h3>Kids Studio</h3><p>Videos made for kids.</p></a>
+          <a class="wf-soon rv" style="--ac: var(--cyan)" href="apps/"><h3>Applications Studio</h3><p>Web and mobile applications.</p></a>
+        </div>
       </div>
+      <div class="sub-head">
+        <h3>Latest from the studios <span data-new-total></span></h3>
+        <span class="mono-note">Videos marked NEW were published in the last 7 days.</span>
+      </div>
+      <div data-latest data-limit="6"><div class="studio-state">Loading the latest outputs…</div></div>
+    </div>
+  </section>
+
+  <!-- HOW THE STUDIOS WORK -->
+  <section class="band" id="workflow" style="padding-top: 0">
+    <div class="wrap">
+      <div class="head">
+        <span class="log rv"><b>&gt;</b> tracing the pipeline…</span>
+        <h2>How every project is made</h2>
+        <p class="rv">Each studio runs the same idea: Claude plans and writes, my custom skills do the specialist jobs, and every step is checked before anything goes out. Pick a studio to see its steps and the skills used.</p>
+      </div>
+      <div data-workflow><div class="studio-state">Loading the workflow…</div></div>
+    </div>
+  </section>
+
+  <!-- CLAUDE SKILLS -->
+  <section class="band" id="claude-skills" style="padding-top: 0">
+    <div class="wrap">
+      <div class="head">
+        <span class="log rv"><b>&gt;</b> listing skills…</span>
+        <h2>Claude skills I built</h2>
+        <p class="rv">Small, reusable instruction sets that teach Claude one job and do it the same way every time. Each card shows what the skill is responsible for and which projects use it.</p>
+      </div>
+      <div class="skill-cards" data-skills><div class="studio-state">Loading skills…</div></div>
+      <p class="skills-cta"><a class="btn go" href="https://github.com/syndeeann/custom-claude-skills" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>See the skills on GitHub ↗</a></p>
     </div>
   </section>
 
@@ -694,5 +714,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 })();
 </script>
 
+<script src="assets/studio.js" defer></script>
 </body>
 </html>

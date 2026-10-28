@@ -1,0 +1,102 @@
+{
+  "newBadgeDays": 7,
+  "studios": [
+    {
+      "id": "ads",
+      "name": "Ads Videos Studio",
+      "tagline": "TikTok Shop products and other ad videos.",
+      "description": "Short UGC-style ads for TikTok Shop products and other promotions, scripted by Claude and generated in Google Flow.",
+      "path": "ads/",
+      "kind": "video",
+      "pipeline": "ads",
+      "icon": "ads",
+      "keywords": [
+        "ad",
+        "ads",
+        "advert",
+        "advertisement",
+        "tiktok shop",
+        "affiliate",
+        "product",
+        "promo",
+        "promotion",
+        "commercial",
+        "ugc",
+        "brand",
+        "sale"
+      ]
+    },
+    {
+      "id": "kids",
+      "name": "Kids Studio",
+      "tagline": "Videos made for kids.",
+      "description": "Videos made for children, produced with the same AI pipeline as my other video studios.",
+      "path": "kids/",
+      "kind": "video",
+      "pipeline": "kids",
+      "icon": "kids",
+      "keywords": [
+        "kids",
+        "kid",
+        "children",
+        "child",
+        "toddler",
+        "nursery",
+        "bedtime",
+        "cartoon",
+        "learning",
+        "rhyme",
+        "preschool"
+      ]
+    },
+    {
+      "id": "apps",
+      "name": "Applications Studio",
+      "tagline": "Web and mobile applications.",
+      "description": "Web and mobile applications built with Claude, each with a live link and its source.",
+      "path": "apps/",
+      "kind": "app",
+      "pipeline": "apps",
+      "icon": "apps",
+      "keywords": [
+        "app",
+        "application",
+        "web app",
+        "mobile app",
+        "website",
+        "web",
+        "mobile",
+        "android",
+        "ios",
+        "dashboard",
+        "system",
+        "react",
+        "flutter"
+      ]
+    },
+    {
+      "id": "stories",
+      "name": "Stories Studio",
+      "tagline": "Horror stories from Filipino folklore.",
+      "description": "Kwento: Kilabot, Tagalog horror stories based on Filipino folklore, written by Claude and generated in Google Flow.",
+      "path": "studio/kwento-kilabot.html",
+      "kind": "video",
+      "pipeline": "stories",
+      "icon": "stories",
+      "keywords": [
+        "horror",
+        "story",
+        "stories",
+        "kwento",
+        "kilabot",
+        "folklore",
+        "aswang",
+        "multo",
+        "ghost",
+        "creepy",
+        "scary",
+        "tagalog"
+      ]
+    }
+  ]
+}
