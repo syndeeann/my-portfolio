@@ -108,7 +108,8 @@
         "scary",
         "tagalog"
       ],
-      "accent": "209, 26, 34"
+      "accent": "209, 26, 34",
+      "analytics_name": "kwento_kilabot"
     }
   ]
 }

@@ -43,6 +43,8 @@
   const PLAY = '<path d="M7 4.5v15l13-7.5z" fill="currentColor" stroke="none"/>';
   const GITHUB = '<path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>';
 
+  const T = (name, params) => { try { window.track && window.track(name, params); } catch (_) {} };
+
   /* ---------- data ---------- */
   const load = name => fetch(`${BASE}/data/${name}.json`, { cache: 'no-cache' })
     .then(r => { if (!r.ok) throw new Error(`${name}.json: ${r.status}`); return r.json(); })
@@ -108,6 +110,7 @@
     if (src) media = h('video', { src, controls: true, autoplay: true, playsinline: true, preload: 'metadata', poster: poster(item) || null });
     else if (id) media = h('iframe', { src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`, title: item.title, allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen', allowfullscreen: true, loading: 'lazy' });
     else return;
+    T('video_start', { video_title: item.title, video_id: id || '', video_provider: id ? 'youtube' : 'site', video_source: 'on_page_player', video_destination: 'on_page_player', link_group: 'studio_outputs' });
     const frame = h('div', { class: 'vframe' }, media);
     btn.replaceWith(frame);
     const badge = frame.parentElement && frame.parentElement.querySelector('.badge-slot');
@@ -230,7 +233,7 @@
       const btn = h('button', { class: 'node' + ((st.skills || []).length ? ' claude' : ''), type: 'button', style: `--r:${row};--c:${col}`, 'data-i': i },
         h('span', { class: 'ix' }, `${pad2(i + 1)} · ${(st.tag || st.title.split(' ')[0]).toUpperCase()}`),
         h('b', {}, st.title), h('small', {}, who.length ? who.join(' · ') : 'Me'), h('i', { class: 'ok' }, '✓'));
-      btn.addEventListener('click', () => showDetail(i));
+      btn.addEventListener('click', () => { showDetail(i); T('ui_interaction', { interaction_type: 'workflow_step_view', interaction_label: (st.tag || st.title).toLowerCase() }); });
       nodes.push(btn); flow.append(btn);
     });
 
@@ -284,8 +287,9 @@
     const runBtn = h('button', { class: 'run', type: 'button' }, p.run_label || 'Run a sample');
     let running = false, clock = 0;
     const stamp = () => { clock += 1 + Math.floor(Math.random() * 2); return `00:${pad2(clock)}`; };
-    const run = async () => {
+    const run = async (how) => {
       if (running) return; running = true; runBtn.disabled = true; clock = 0;
+      T('ui_interaction', { interaction_type: 'workflow_run', interaction_label: how === 'auto' ? 'auto' : 'button' });
       nodes.forEach(n => n.classList.remove('done', 'warn', 'lit'));
       Object.values(wires).forEach(w => w.classList.remove('flowing'));
       consoleEl.replaceChildren();
@@ -304,7 +308,7 @@
       log(stamp(), p.end_log || 'Done ✓');
       running = false; runBtn.disabled = false; runBtn.textContent = 'Run it again';
     };
-    runBtn.addEventListener('click', run);
+    runBtn.addEventListener('click', () => run('button'));
 
     const root = h('div', { class: 'diagram' },
       h('div', { class: 'd-top' }, h('span', { class: 'lbl' }, h('b', {}, '● '), `pipeline: ${id}${p.trigger ? ' · trigger: ' + p.trigger : ''}`), runBtn),
@@ -314,7 +318,7 @@
     requestAnimationFrame(() => { geom(); showDetail(Math.min(2, steps.length - 1)); });
     if ('ResizeObserver' in window) new ResizeObserver(geom).observe(flow); else addEventListener('resize', geom);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(geom);
-    if ('IntersectionObserver' in window && !reduce) { const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { run(); io.disconnect(); } }, { threshold: .45 }); io.observe(flow); }
+    if ('IntersectionObserver' in window && !reduce) { const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { run('auto'); io.disconnect(); } }, { threshold: .45 }); io.observe(flow); }
     return root;
   };
 

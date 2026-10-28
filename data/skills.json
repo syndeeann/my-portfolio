@@ -72,6 +72,7 @@
         "Classifies it into Ads, Kids, Stories or Applications",
         "Shows a NEW badge for 7 days after it is published",
         "Keeps each studio page, the workflow and the skills showcase up to date",
+        "Keeps analytics, the Tag Manager export and the Looker Studio guide in step, and lists the manual steps left",
         "Pushes the update to the live branch and checks it"
       ],
       "projects": [
@@ -80,7 +81,7 @@
         "portfolio"
       ],
       "category": "automation",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "order": 4,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/portfolio-updater"
     }

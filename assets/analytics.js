@@ -60,7 +60,10 @@
   /* friendly section names: element id -> section_name */
   var SECTIONS = {
     top: 'hero', focus: 'focus', studio: 'ai_studio', credentials: 'credentials', origin: 'background', contact: 'contact',
-    gate: 'hero', workflow: 'workflow_diagram', videos: 'videos', channels: 'channels'
+    gate: 'hero', workflow: 'workflow_diagram', videos: 'videos', channels: 'channels',
+    /* portfolio-updater:sections:begin */
+    outputs: 'studio_outputs', skills: 'skills_used', studios: 'other_studios', 'claude-skills': 'claude_skills'
+    /* portfolio-updater:sections:end */
   };
   var groupOf = function (el) {
     if (el.closest('nav')) return 'nav';
@@ -97,9 +100,23 @@
   var labelOf = function (el) {
     return el.getAttribute('data-track-label') || el.getAttribute('aria-label') || el.innerText || el.textContent || el.title || '(no text)';
   };
-  var workflowFromUrl = function (url) {
-    var m = /studio\/([a-z0-9-]+)/i.exec(url || '');
-    return m ? m[1].replace(/-/g, '_').replace(/\.html$/, '') : '(unknown)';
+  /* studio pages and their workflow_name (kept in step with data/studios.json by the portfolio-updater skill) */
+  /* portfolio-updater:studios:begin */
+  var STUDIO_PAGES = {
+    'ads/': 'ads',
+    'kids/': 'kids',
+    'apps/': 'apps',
+    'studio/kwento-kilabot.html': 'kwento_kilabot'
+  };
+  /* portfolio-updater:studios:end */
+  var studioOf = function (href) {
+    var path;
+    try { path = new URL(href, location.href).pathname; } catch (e) { return null; }
+    for (var key in STUDIO_PAGES) {
+      var k = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      if (new RegExp('(^|/)' + k + (key.slice(-1) === '/' ? '(index\\.html)?$' : '$')).test(path)) return STUDIO_PAGES[key];
+    }
+    return null;
   };
 
   /* ---------- every link and button click ---------- */
@@ -122,7 +139,8 @@
     if (isLink && /^mailto:/i.test(el.getAttribute('href') || '')) track('contact_intent', { contact_method: 'email_app', link_group: group });
     if (el.id === 'copyBtn') track('contact_intent', { contact_method: 'copy_email', link_group: group });
     if (isLink && /linkedin\.com/i.test(url)) track('contact_intent', { contact_method: 'linkedin', link_group: group });
-    if (isLink && /studio\/[a-z0-9-]+/i.test(el.getAttribute('href') || '')) track('workflow_open', { workflow_name: workflowFromUrl(el.getAttribute('href')), link_group: group });
+    var wf = isLink && studioOf(el.getAttribute('href') || '');
+    if (wf) track('workflow_open', { workflow_name: wf, link_group: group });
   }, true);
 
   /* ---------- section views + scroll depth ---------- */
