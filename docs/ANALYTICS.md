@@ -147,3 +147,32 @@ The footer of each page says the site uses Google Analytics. GA4 doesn't log or 
    ```
 3. Give each section an `id`, and add any new ids to `SECTIONS` in `assets/analytics.js` so they report a readable `section_name`.
 4. Link to it from a card on the main page. Clicks on `studio/...` links fire `workflow_open` automatically.
+
+<!-- portfolio-updater:begin -->
+
+## 8. Studios and workflows (kept up to date by the portfolio-updater skill)
+
+Do not edit this section by hand: the skill rewrites it whenever it publishes. Last sync: 2026-10-28.
+
+Every studio page reports its own `workflow_name`, and clicks on a studio card or link send `workflow_open` with it.
+
+| Studio | Page | `workflow_name` | Kind |
+|---|---|---|---|
+| Ads Videos Studio | `ads/` | `ads` | video |
+| Kids Studio | `kids/` | `kids` | video |
+| Applications Studio | `apps/` | `apps` | app |
+| Stories Studio | `studio/kwento-kilabot.html` | `kwento_kilabot` | video |
+
+- **Events the site sends:** `contact_intent`, `cv_open`, `scroll_depth`, `section_view`, `ui_click`, `ui_interaction`, `video_click`, `video_complete`, `video_progress`, `video_start`, `video_trailer_view`, `workflow_open`. Each has a trigger and a tag in the Tag Manager container export in this folder.
+- **Studio page sections** report these extra `section_name` values: `claude_skills`, `other_studios`, `skills_used`, `studio_outputs`.
+- **In the studio pages:** playing a video or app preview in the page sends `video_start` (`video_source` = `on_page_player`, `link_group` = `studio_outputs`); the workflow diagram sends `ui_interaction` with `workflow_run` (`auto` or `button`) and `workflow_step_view` (the step, e.g. `quality`).
+
+**Looker Studio, page 4 (AI Studio).** Make the drop-down filter on **Workflow** list `ads`, `kids`, `apps`, `kwento_kilabot`, then add:
+- Pivot table: rows Workflow, columns Event name, metric Event count, filter Event name in (`workflow_open`, `video_start`, `workflow_run`). This shows how far each studio takes a visitor.
+- Bar chart: Interaction label by Event count, filter Interaction type = `workflow_step_view`, with a Workflow control (which pipeline steps people open, per studio).
+- Table: Link text, Click platform, Event count, filter Click group = `skills_used` or `claude_skills` (which skills people open, and the GitHub button).
+
+**Pending manual steps** (only you can do these; the skill cannot reach GA4, Tag Manager or Looker Studio). Tick them off, then tell Claude "confirm analytics" so the list resets:
+- [ ] Tag Manager: import `docs/gtm-container-GTM-K8G85R8D.json` (Admin, Import container, Merge, overwrite conflicting items), check it in Preview, then Publish. Changed: `GA4 - Event - video_start` (now sends link_group, video_destination).
+- [ ] Looker Studio: open the report and check the Workflow drop-down lists `ads`, `kids`, `apps`; add the studio charts from section 8 of `docs/ANALYTICS.md` to page 4.
+<!-- portfolio-updater:end -->

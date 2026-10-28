@@ -1,0 +1,145 @@
+{
+  "gtm_tags": {
+    "GA4 - Google tag (page views)": [],
+    "GA4 - Event - section_view": [
+      "page_type",
+      "section_name",
+      "site_version",
+      "workflow_name"
+    ],
+    "GA4 - Event - scroll_depth": [
+      "page_type",
+      "percent_scrolled",
+      "site_version",
+      "workflow_name"
+    ],
+    "GA4 - Event - ui_click": [
+      "link_group",
+      "link_platform",
+      "link_text",
+      "link_type",
+      "link_url",
+      "page_type",
+      "site_version",
+      "workflow_name"
+    ],
+    "GA4 - Event - ui_interaction": [
+      "interaction_label",
+      "interaction_type",
+      "page_type",
+      "site_version",
+      "video_percent",
+      "video_title",
+      "workflow_name"
+    ],
+    "GA4 - Event - video_trailer_view": [
+      "page_type",
+      "site_version",
+      "video_id",
+      "video_number",
+      "video_provider",
+      "video_source",
+      "video_title",
+      "video_url",
+      "workflow_name"
+    ],
+    "GA4 - Event - video_click": [
+      "link_group",
+      "page_type",
+      "site_version",
+      "video_destination",
+      "video_id",
+      "video_number",
+      "video_provider",
+      "video_source",
+      "video_title",
+      "video_url",
+      "workflow_name"
+    ],
+    "GA4 - Event - video_start": [
+      "page_type",
+      "site_version",
+      "video_id",
+      "video_number",
+      "video_percent",
+      "video_provider",
+      "video_source",
+      "video_title",
+      "video_url",
+      "workflow_name"
+    ],
+    "GA4 - Event - video_progress": [
+      "page_type",
+      "site_version",
+      "video_current_time",
+      "video_duration",
+      "video_id",
+      "video_number",
+      "video_percent",
+      "video_provider",
+      "video_source",
+      "video_title",
+      "video_url",
+      "workflow_name"
+    ],
+    "GA4 - Event - video_complete": [
+      "page_type",
+      "site_version",
+      "video_id",
+      "video_number",
+      "video_percent",
+      "video_provider",
+      "video_source",
+      "video_title",
+      "video_url",
+      "workflow_name"
+    ],
+    "GA4 - Event - contact_intent": [
+      "contact_method",
+      "link_group",
+      "page_type",
+      "site_version",
+      "workflow_name"
+    ],
+    "GA4 - Event - cv_open": [
+      "link_group",
+      "page_type",
+      "site_version",
+      "workflow_name"
+    ],
+    "GA4 - Event - workflow_open": [
+      "link_group",
+      "page_type",
+      "site_version",
+      "workflow_name"
+    ]
+  },
+  "ga4_dimensions": [
+    "contact_method",
+    "interaction_label",
+    "interaction_type",
+    "link_group",
+    "link_platform",
+    "link_text",
+    "link_type",
+    "link_url",
+    "page_type",
+    "percent_scrolled",
+    "section_name",
+    "site_version",
+    "video_current_time",
+    "video_destination",
+    "video_duration",
+    "video_id",
+    "video_number",
+    "video_percent",
+    "video_provider",
+    "video_source",
+    "video_title",
+    "video_url",
+    "workflow_name"
+  ],
+  "looker_workflows": [
+    "kwento_kilabot"
+  ]
+}
