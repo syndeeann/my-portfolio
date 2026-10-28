@@ -1,0 +1,88 @@
+{
+  "repo": "https://github.com/syndeeann/custom-claude-skills",
+  "generated": "2026-10-28",
+  "skills": [
+    {
+      "id": "storyteller",
+      "name": "Storyteller",
+      "role": "Script writer",
+      "summary": "Writes detailed, uncommon video scripts: a hook, beat-by-beat narration and a visual prompt for every clip.",
+      "responsibilities": [
+        "Picks an angle the audience has not seen before",
+        "Writes narration clip by clip within the word budget",
+        "Checks every line for clichés and repeated words",
+        "Saves the script to the project folder on GitHub"
+      ],
+      "projects": [
+        "kwento-kilabot",
+        "tiktok-shop-ads"
+      ],
+      "category": "content",
+      "version": "1.0.0",
+      "order": 1,
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/storyteller"
+    },
+    {
+      "id": "ai-prompt-expert",
+      "name": "AI Prompt Expert",
+      "role": "Video prompt engineer",
+      "summary": "Turns a script into clean, photoreal prompts for Google Flow and other AI video generators.",
+      "responsibilities": [
+        "Writes one prompt per clip with no repeated words",
+        "Shows on screen what the narrator says",
+        "Keeps the on-screen character from dubbing the narrator",
+        "Keeps looks consistent with reusable character and place descriptions"
+      ],
+      "projects": [
+        "kwento-kilabot",
+        "tiktok-shop-ads"
+      ],
+      "category": "content",
+      "version": "1.0.0",
+      "order": 2,
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/ai-prompt-expert"
+    },
+    {
+      "id": "flow-clip-qa",
+      "name": "Flow Clip QA",
+      "role": "Quality gate",
+      "summary": "Checks Google Flow clips and finished reels, then gives a pass or fail verdict with the cheapest fix.",
+      "responsibilities": [
+        "Runs automatic checks for format, black or frozen frames and cut-off narration",
+        "Reviews contact sheets for wrong scenes, text, watermarks and garbled faces",
+        "Spots lip-sync dubbing and repeated words",
+        "Reports a verdict with evidence, and never posts or regenerates"
+      ],
+      "projects": [
+        "kwento-kilabot",
+        "tiktok-shop-ads"
+      ],
+      "category": "qa",
+      "version": "1.0.0",
+      "order": 3,
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/flow-clip-qa"
+    },
+    {
+      "id": "portfolio-updater",
+      "name": "Portfolio Updater",
+      "role": "Portfolio publisher",
+      "summary": "Adds every delivered video or app to the right studio on the portfolio, with a NEW badge for its first week, and keeps the workflow and skills sections current.",
+      "responsibilities": [
+        "Adds each delivered video or app to the portfolio",
+        "Classifies it into Ads, Kids, Stories or Applications",
+        "Shows a NEW badge for 7 days after it is published",
+        "Keeps each studio page, the workflow and the skills showcase up to date",
+        "Pushes the update to the live branch and checks it"
+      ],
+      "projects": [
+        "kwento-kilabot",
+        "tiktok-shop-ads",
+        "portfolio"
+      ],
+      "category": "automation",
+      "version": "1.0.0",
+      "order": 4,
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/portfolio-updater"
+    }
+  ]
+}

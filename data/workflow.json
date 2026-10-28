@@ -1,0 +1,54 @@
+{
+  "pipelines": {
+    "stories": {
+      "title": "Stories",
+      "intro": "How a Kwento: Kilabot story goes from an idea to a published video.",
+      "steps": [
+        {"title": "Pick the next topic", "text": "The next topic comes from a queue of Filipino folklore ideas, so there is always a story ready to make.", "tools": ["GitHub"]},
+        {"title": "Write the story", "text": "Claude writes a Tagalog horror script in clip-sized beats: a hook, a build and a twist, with an angle viewers have not seen before.", "skills": ["storyteller"]},
+        {"title": "Write the prompts", "text": "Every narration line gets a vertical video prompt that shows what is being said. The narrator stays off screen, so nobody on screen lip-syncs.", "skills": ["ai-prompt-expert"]},
+        {"title": "Generate in Google Flow", "text": "The clips are generated in Google Flow, one prompt per clip.", "tools": ["Google Flow", "Veo", "Omni"]},
+        {"title": "Edit and sync", "text": "The clips are joined and the voice-over is locked to the picture.", "tools": ["ffmpeg"]},
+        {"title": "Quality check", "text": "Automatic checks and a visual review catch black frames, cut-off narration, wrong scenes, text overlays and lip movement before anything is delivered.", "skills": ["flow-clip-qa"]},
+        {"title": "Publish and showcase", "text": "The video is posted to Facebook and YouTube, then added to this portfolio with a NEW badge for its first week.", "skills": ["portfolio-updater"], "tools": ["Facebook", "YouTube"]}
+      ]
+    },
+    "ads": {
+      "title": "Ads",
+      "intro": "How a TikTok Shop ad is made, from a product listing to a published video.",
+      "steps": [
+        {"title": "Pick a product", "text": "A product from my TikTok Shop showcase, studied for what it does and how people really use it.", "tools": ["TikTok Shop"]},
+        {"title": "Write the ad", "text": "Claude writes a Taglish, UGC-style script with an honest angle. Every claim comes from the product listing.", "skills": ["storyteller"]},
+        {"title": "Write the prompts", "text": "Prompts keep the product looking exactly like its listing photo, with the Ate Host speaking on camera and silent hero shots in between.", "skills": ["ai-prompt-expert"]},
+        {"title": "Generate in Google Flow", "text": "Narrated clips use the Ate Host character, and product hero shots use Veo.", "tools": ["Google Flow", "Veo", "Omni"]},
+        {"title": "Edit and sync", "text": "The clips are joined and the voice-over is locked to the picture.", "tools": ["ffmpeg"]},
+        {"title": "Quality check", "text": "The same checks as every video, plus a minimum length and a product-accuracy check.", "skills": ["flow-clip-qa"]},
+        {"title": "Approve, post and showcase", "text": "I approve each ad before it goes to TikTok with the product linked, then it is added to this portfolio.", "skills": ["portfolio-updater"], "tools": ["TikTok"]}
+      ]
+    },
+    "kids": {
+      "title": "Kids",
+      "intro": "The same video pipeline, used for videos made for kids.",
+      "steps": [
+        {"title": "Choose the idea", "text": "Start from what the video should show or teach."},
+        {"title": "Write the script", "text": "Claude writes the script in clip-sized beats.", "skills": ["storyteller"]},
+        {"title": "Write the prompts", "text": "Every line gets a prompt that shows what is being said.", "skills": ["ai-prompt-expert"]},
+        {"title": "Generate in Google Flow", "text": "The clips are generated in Google Flow.", "tools": ["Google Flow", "Veo"]},
+        {"title": "Quality check", "text": "Every clip is checked before it is delivered.", "skills": ["flow-clip-qa"]},
+        {"title": "Publish and showcase", "text": "The finished video is added to this portfolio.", "skills": ["portfolio-updater"]}
+      ]
+    },
+    "apps": {
+      "title": "Applications",
+      "intro": "How a web or mobile application goes from an idea to a live link.",
+      "note": "A working outline that will grow as I add more Claude skills for building apps.",
+      "steps": [
+        {"title": "Define the app", "text": "Start from the problem and the people who will use it, and decide what the first version has to do."},
+        {"title": "Build with Claude", "text": "Claude helps write and review the code, trace bugs and draft the documentation.", "tools": ["Claude"]},
+        {"title": "Test and refine", "text": "Check it on the web and on mobile, and fix what breaks."},
+        {"title": "Deploy", "text": "Publish the web app or package the mobile app.", "tools": ["GitHub"]},
+        {"title": "Showcase", "text": "The app is added to this studio with a live link and its source.", "skills": ["portfolio-updater"]}
+      ]
+    }
+  }
+}

@@ -1,0 +1,70 @@
+/* Base styles for the standalone studio pages (ads/, kids/, apps/).
+   Same tokens and fonts as index.html so the pages feel like one site. index.html keeps its own inline copy. */
+:root {
+  --ink: #060814;
+  --ink-2: #0c1024;
+  --glass: rgba(18, 22, 46, 0.55);
+  --line: rgba(220, 228, 255, 0.10);
+  --text: #f1f3ff;
+  --dim: #9aa2c4;
+  --cyan: #3de8ff;
+  --pink: #ff4fd8;
+  --lime: #c6ff4a;
+  --font-display: "Sora", "Avenir Next", system-ui, sans-serif;
+  --font-body: "Geist", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --step--1: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+  --step-1: clamp(1.2rem, 1.08rem + 0.6vw, 1.5rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.5vw, 2.4rem);
+  --step-3: clamp(2.2rem, 1.4rem + 3.4vw, 4.2rem);
+  --step-4: clamp(2.6rem, 1.2rem + 6vw, 6.6rem);
+  --r: 20px;
+  --gl: max(16px, env(safe-area-inset-left, 0px));
+  --gr: max(16px, env(safe-area-inset-right, 0px));
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--ink); }
+body { margin: 0; background: radial-gradient(900px circle at 85% -10%, rgba(61,232,255,.10), transparent 60%), radial-gradient(700px circle at 0% 30%, rgba(255,79,216,.07), transparent 60%), var(--ink); color: var(--text); font-family: var(--font-body); font-size: var(--step-0); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 95; background: var(--ink); }
+::selection { background: var(--pink); color: #fff; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 800; line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance; }
+p { margin: 0; }
+.wrap { position: relative; width: 100%; max-width: 1200px; margin-inline: auto; padding-left: var(--gl); padding-right: var(--gr); }
+main, footer { position: relative; z-index: 2; }
+.band { position: relative; padding-block: clamp(64px, 9vw, 120px); }
+.grad { background: linear-gradient(95deg, var(--cyan), var(--pink) 55%, var(--lime)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.log { font-family: var(--font-mono); font-size: var(--step--1); color: var(--dim); display: inline-flex; gap: 10px; align-items: center; }
+.log b { color: var(--lime); font-weight: 500; }
+.head { display: grid; gap: 18px; max-width: 780px; margin-bottom: clamp(36px, 5vw, 60px); }
+.head h2 { font-size: var(--step-3); }
+.head p { color: var(--dim); max-width: 62ch; }
+
+/* nav: brand on the left, a way back on the right */
+.nav { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 90; background: rgba(6,8,20,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.nav .wrap { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.brand { white-space: nowrap; text-decoration: none; display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; letter-spacing: -0.03em; }
+.brand .orb { width: 26px; height: 26px; border-radius: 50%; background: conic-gradient(from 0deg, var(--cyan), var(--pink), var(--lime), var(--cyan)); position: relative; }
+.brand .orb::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--ink); }
+.menu { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
+.menu a { text-decoration: none; font-size: .88rem; color: var(--dim); transition: color .25s; }
+.menu a:hover { color: var(--text); }
+.hire { white-space: nowrap; text-decoration: none; font-weight: 600; font-size: .88rem; padding: 10px 18px; border-radius: 999px; color: var(--ink); background: linear-gradient(95deg, var(--cyan), var(--lime)); }
+@media (max-width: 760px) { .menu { display: none; } }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; font: 600 .95rem var(--font-body); padding: 14px 22px; border-radius: 999px; border: 1px solid var(--line); background: rgba(220,228,255,.05); color: var(--text); transition: transform .25s, border-color .25s, background .25s; }
+.btn:hover { border-color: var(--cyan); background: rgba(61,232,255,.08); transform: translateY(-2px); }
+.btn.go { border: 0; color: var(--ink); background: linear-gradient(95deg, var(--cyan), var(--pink)); box-shadow: 0 14px 34px -14px rgba(255,79,216,.7); }
+.btn svg { width: 17px; height: 17px; }
+
+footer { border-top: 1px solid var(--line); padding-block: 26px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .84rem; color: var(--dim); }
+footer a { color: var(--cyan); text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

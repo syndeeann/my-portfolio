@@ -178,6 +178,7 @@ body.leaving .curtain { opacity: 1; background: #f1f3ff; transition: opacity .7s
 .ovl .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .06em; }
 .tag { padding: 4px 8px; border-radius: 6px; background: rgba(5,0,0,.7); border: 1px solid var(--rust); white-space: nowrap; }
 .tag.tr { background: var(--blood); border-color: var(--blood); color: #fff; }
+.tag.fresh { background: #f1f3ff; border-color: #f1f3ff; color: #1a0305; font-weight: 600; letter-spacing: .1em; box-shadow: 0 0 18px rgba(241,243,255,.45); }
 .play { cursor: pointer; align-self: center; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; text-decoration: none; background: rgba(209,26,34,.3); border: 1px solid rgba(255,77,85,.7); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); transition: transform .35s, background .35s; }
 .play::before { content: ""; margin-left: 5px; border-left: 17px solid var(--bone); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
 .vid:hover .play, .play:focus-visible { transform: scale(1.1); background: var(--blood); }
@@ -384,11 +385,16 @@ footer a { color: var(--bone); }
   const FB = 'https://www.facebook.com/profile.php?id=61595994207467';
   const YT_CH = 'https://www.youtube.com/@KwentoKilabot-n2n';
   const VIDEOS = [
-    { n: 4, id: 'nJJ29cWjPDo', title: 'Tabi-tabi Po', folk: 'Nuno sa punso', dur: '0:52', sum: 'A family flattens a punso to build their house in Cavite. The nuno thanks them: their new house is his bigger punso.' },
-    { n: 3, id: 'rXdRtgvImKk', title: 'Ang Ilaw sa Laot', folk: 'Santelmo', dur: '0:49', sum: 'A capsized fisherman follows a santelmo to shore, finds his mother crying over his slippers, and realizes he is the light now.' },
-    { n: 2, id: 'Ns7v0NvKDRM', title: 'Mahina ang Tiktik', folk: 'Tiktik', dur: '0:50', sum: "A night-patrol tanod is relieved the tiktik sounds far away, until the faint tik-tik comes from his own wife's throat." },
-    { n: 1, id: '7g0JkRndtfM', url: 'https://www.youtube.com/watch?v=7g0JkRndtfM', title: 'Bote, Diyaryo, at Alaala', folk: 'Magbobote', dur: '3:07', sum: 'A 3 AM junk buyer pays cash for painful memories, and the narrator learns what his mother has already sold.' },
+    /* portfolio-updater:videos:begin */
+    { n: 5, id: "dNpQf1pS3sc", title: "Linya Trese", folk: "Call center (BPO)", dur: "1:46", sum: "A BPO graveyard-shift agent watches the forbidden 3 AM line ring one desk closer each night.", pub: "2026-10-28" },
+    { n: 4, id: "nJJ29cWjPDo", title: "Tabi-tabi Po", folk: "Nuno sa punso", dur: "0:52", sum: "A family flattens a punso to build their house in Cavite. The nuno thanks them: their new house is his bigger punso.", pub: "2026-10-27" },
+    { n: 3, id: "rXdRtgvImKk", title: "Ang Ilaw sa Laot", folk: "Santelmo", dur: "0:49", sum: "A capsized fisherman follows a santelmo to shore, finds his mother crying over his slippers, and realizes he is the light now.", pub: "2026-10-27" },
+    { n: 2, id: "Ns7v0NvKDRM", title: "Mahina ang Tiktik", folk: "Tiktik", dur: "0:50", sum: "A night-patrol tanod is relieved that the tiktik's call sounds far away, until the faint tik-tik comes from his own wife's throat.", pub: "2026-10-27" },
+    { n: 1, id: "7g0JkRndtfM", url: 'https://www.youtube.com/watch?v=7g0JkRndtfM', title: "Bote, Diyaryo, at Alaala", folk: "Magbobote", dur: "3:07", sum: "A 3 AM junk buyer pays cash for painful memories, and the narrator learns what his mother has already sold.", pub: "2026-10-27" },
+  /* portfolio-updater:videos:end */
   ];
+  /* NEW = published within the last 7 days (worked out here, so it turns itself off) */
+  const isNewVid = v => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v.pub || ''); if (!m) return false; const d = new Date(+m[1], +m[2] - 1, +m[3]), n = new Date(), t = new Date(n.getFullYear(), n.getMonth(), n.getDate()); const a = Math.round((t - d) / 864e5); return a >= 0 && a <= 7; };
   document.getElementById('storyCount').textContent = VIDEOS.length;
   const T = (n, p) => { try { window.track && window.track(n, p); } catch (_) {} };
   const vp = (v, extra) => Object.assign({ video_provider: 'youtube', video_title: `Kilabot #${v.n}: ${v.title}`, video_url: v.url || `https://youtube.com/shorts/${v.id}`, video_id: v.id || '(none)', video_number: v.n }, extra || {});
@@ -406,7 +412,7 @@ footer a { color: var(--bone); }
         ${v.id ? `<img class="poster" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">` : ''}
         ${v.id ? `<div class="yt"><div id="yt-${v.id}"></div></div>` : ''}
         <div class="ovl">
-          <div class="top"><span class="tag ${v.id ? 'tr' : ''}">${v.id ? 'TRAILER · 0:05' : 'LINK SOON'}</span><span class="tag">${v.dur}</span></div>
+          <div class="top"><span class="tag ${v.id ? 'tr' : ''}">${v.id ? 'TRAILER · 0:05' : 'LINK SOON'}</span>${isNewVid(v) ? '<span class="tag fresh">NEW</span>' : ''}<span class="tag">${v.dur}</span></div>
           ${v.id ? `<a class="play" href="${short(v.id)}" target="_blank" rel="noopener" data-full="${i}" aria-label="Watch the full story: ${v.title}"></a>` : `<a class="play" href="${FB}" target="_blank" rel="noopener" aria-label="Find ${v.title} on Facebook"></a>`}
           <div class="cap"><small>Kilabot #${v.n} · ${v.folk}</small><strong>${v.title}</strong><div class="tbar"><i></i></div></div>
         </div>
