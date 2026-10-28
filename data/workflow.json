@@ -44,12 +44,15 @@
         },
         {
           "title": "Edit and sync",
-          "text": "The clips are joined and the voice-over is locked to the picture.",
+          "text": "Jaiman puts the clips in the order Marites wrote, joins them without a glitch and locks the voice-over to its picture.",
           "tools": [
             "ffmpeg"
           ],
           "tag": "COMPILE",
-          "log": "Reel compiled at 720 × 1280"
+          "log": "Reel compiled at 720 × 1280",
+          "skills": [
+            "video-editor"
+          ]
         },
         {
           "title": "Quality check",
@@ -131,12 +134,15 @@
         },
         {
           "title": "Edit and sync",
-          "text": "The clips are joined and the voice-over is locked to the picture.",
+          "text": "Jaiman puts the clips in the order Marites wrote, joins them without a glitch and locks the voice-over to its picture.",
           "tools": [
             "ffmpeg"
           ],
           "tag": "COMPILE",
-          "log": "Ad compiled and voice-over synced"
+          "log": "Ad compiled and voice-over synced",
+          "skills": [
+            "video-editor"
+          ]
         },
         {
           "title": "Quality check",
@@ -210,6 +216,18 @@
           ],
           "tag": "GENERATE",
           "log": "Clips generated in Google Flow"
+        },
+        {
+          "title": "Edit and sync",
+          "text": "Jaiman puts the clips in story order, joins them without a glitch and locks the voice-over to its picture.",
+          "skills": [
+            "video-editor"
+          ],
+          "tools": [
+            "ffmpeg"
+          ],
+          "tag": "COMPILE",
+          "log": "Video compiled and voice-over synced"
         },
         {
           "title": "Quality check",
