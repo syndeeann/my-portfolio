@@ -83,6 +83,7 @@
     if (/tiktok\.com/i.test(url)) return 'tiktok';
     if (/linkedin\.com/i.test(url)) return 'linkedin';
     if (/github\.com/i.test(url)) return 'github';
+    if (/skillsoft\.com/i.test(url)) return 'skillsoft';
     try { return new URL(url, location.href).host === location.host ? 'site' : 'other'; } catch (e) { return 'other'; }
   };
   var linkTypeOf = function (a) {

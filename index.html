@@ -220,6 +220,10 @@ body.descend .curtain { opacity: 1; }
 .item .ico svg { width: 15px; height: 15px; }
 .item b { display: block; font-weight: 600; line-height: 1.35; font-size: .95rem; }
 .item small { font-family: var(--font-mono); font-size: .72rem; color: var(--dim); }
+a.item.cert { color: inherit; text-decoration: none; border-radius: 10px; transition: background .3s, padding .3s; }
+a.item.cert small em { font-style: normal; color: var(--lime); margin-left: 6px; opacity: .55; transition: opacity .3s; }
+a.item.cert:hover, a.item.cert:focus-visible { background: linear-gradient(90deg, rgba(198,255,74,.08), transparent); padding-left: 8px; }
+a.item.cert:hover small em, a.item.cert:focus-visible small em { opacity: 1; }
 .item.ph b { color: var(--dim); font-style: italic; font-weight: 500; }
 .item.ph .ico { background: transparent; border: 1px dashed var(--line); color: var(--dim); }
 @media (max-width: 960px) { .cgrid { grid-template-columns: 1fr; } }
@@ -407,9 +411,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="cgrid">
         <div class="col rv">
           <h3>AI certificates <span>✓ verified</span></h3>
-          <div class="item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>ChatGPT Prompt Engineering: Examples and Use Cases</b><small>Skillsoft</small></div></div>
-          <div class="item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>AI APIs for Practical Applications: An Introduction</b><small>Skillsoft</small></div></div>
-          <div class="item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Artificial Intelligence and Machine Learning</b><small>Skillsoft</small></div></div>
+          <a class="item cert" href="https://skillsoft.digitalbadges.skillsoft.com/014570f3-e9ec-4edf-9bad-18b80666ff3e" target="_blank" rel="noopener" data-track-label="Cert: ChatGPT Prompt Engineering Examples &amp; Use Cases"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>ChatGPT Prompt Engineering Examples &amp; Use Cases</b><small>Skillsoft · Mar 26, 2024 <em>Verify ↗</em></small></div></a>
+          <a class="item cert" href="https://skillsoft.digitalbadges.skillsoft.com/3015ba18-c001-4fd0-ba68-5cf333d85f72" target="_blank" rel="noopener" data-track-label="Cert: Generative AI APIs for Practical Applications"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Generative AI APIs for Practical Applications: An Introduction</b><small>Skillsoft · Mar 22, 2024 <em>Verify ↗</em></small></div></a>
+          <a class="item cert" href="https://skillsoft.digitalbadges.skillsoft.com/e5f77113-8a09-465c-9988-b7f0b7656ae7" target="_blank" rel="noopener" data-track-label="Cert: Artificial Intelligence and Machine Learning"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Artificial Intelligence and Machine Learning</b><small>Skillsoft · Mar 22, 2024 <em>Verify ↗</em></small></div></a>
           <div class="item ph"><span class="ico">+</span><div><b>New AI certificate</b><small>Issuer · Year</small></div></div>
         </div>
         <div class="col rv" style="--d:.08s">
