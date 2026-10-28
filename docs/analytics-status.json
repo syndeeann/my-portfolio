@@ -57,8 +57,10 @@
       "workflow_name"
     ],
     "GA4 - Event - video_start": [
+      "link_group",
       "page_type",
       "site_version",
+      "video_destination",
       "video_id",
       "video_number",
       "video_percent",
