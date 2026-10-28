@@ -45,6 +45,28 @@
       "persona": "Senyorita"
     },
     {
+      "id": "video-editor",
+      "name": "Video Editor",
+      "role": "Video editor",
+      "summary": "Edits and compiles the generated clips into one seamless video, in the right story order, with the voice-over in sync.",
+      "responsibilities": [
+        "Works with Marites to learn the flow of the story and cuts the clips in the right sequence",
+        "Trims and matches every clip so the joins are seamless, with no glitch, pop or jump",
+        "Lays the voice-over on so each line lands on its own picture and finishes inside its clip",
+        "Measures the finished video for black or frozen frames, audio drift and out-of-sync narration",
+        "Hands the final video and its cut list to Perpekto for the quality check"
+      ],
+      "projects": [
+        "kwento-kilabot",
+        "tiktok-shop-ads"
+      ],
+      "category": "production",
+      "version": "1.0.0",
+      "order": 3,
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/video-editor",
+      "persona": "Jaiman"
+    },
+    {
       "id": "flow-clip-qa",
       "name": "Flow Clip QA",
       "role": "Quality gate",
@@ -61,7 +83,7 @@
       ],
       "category": "qa",
       "version": "1.0.1",
-      "order": 3,
+      "order": 4,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/flow-clip-qa",
       "persona": "Perpekto"
     },
@@ -76,7 +98,10 @@
         "Shows a NEW badge for 7 days after it is published",
         "Keeps each studio page, the workflow and the skills showcase up to date",
         "Keeps analytics, the Tag Manager export and the Looker Studio guide in step, and lists the manual steps left",
-        "Pushes the update to the live branch and checks it"
+        "Watches everything happening in the owner's Claude projects and updates the portfolio when it changes",
+        "Adds or edits a teammate in The Team I built whenever a skill is added, named or changed",
+        "Updates the studio workflow pipelines when a project's instructions or video flow change",
+        "Pushes the update to the live branch and to gh-pages, and checks it"
       ],
       "projects": [
         "kwento-kilabot",
@@ -84,8 +109,8 @@
         "portfolio"
       ],
       "category": "automation",
-      "version": "1.1.1",
-      "order": 4,
+      "version": "1.2.0",
+      "order": 5,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/portfolio-updater",
       "persona": "Chelsea"
     }

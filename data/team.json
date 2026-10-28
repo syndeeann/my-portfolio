@@ -20,6 +20,11 @@
       "name": "Chelsea",
       "title": "The Portfolio Updater",
       "avatar": "assets/team/chelsea.svg"
+    },
+    "video-editor": {
+      "name": "Jaiman",
+      "title": "Video Editor",
+      "avatar": "assets/team/jaiman.svg"
     }
   }
 }
