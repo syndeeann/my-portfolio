@@ -72,7 +72,7 @@
   const fmtDur = s => { if (!s) return ''; const m = Math.floor(s / 60), r = Math.round(s % 60); return `${m}:${String(r).padStart(2, '0')}`; };
 
   /* ---------- lookups ---------- */
-  const makeCtx = ([studios, projects, items, skills, workflow]) => {
+  const makeCtx = ([studios, projects, items, skills, workflow, team]) => {
     const ctx = {
       studios: (studios && studios.studios) || [],
       newDays: (studios && studios.newBadgeDays) || 7,
@@ -80,7 +80,8 @@
       items: ((items && items.items) || []).slice().sort((a, b) => (b.published || '').localeCompare(a.published || '') || (b.id || '').localeCompare(a.id || '')),
       skills: (skills && skills.skills) || [],
       skillsRepo: (skills && skills.repo) || 'https://github.com/syndeeann/custom-claude-skills',
-      pipelines: (workflow && workflow.pipelines) || {}
+      pipelines: (workflow && workflow.pipelines) || {},
+      team: (team && team.members) || {}
     };
     ctx.skill = id => ctx.skills.find(s => s.id === id);
     ctx.studio = id => ctx.studios.find(s => s.id === id);
@@ -337,17 +338,23 @@
   /* ---------- Claude skills ---------- */
   const skillCard = (s, ctx, i) => {
     const projects = (s.projects && s.projects.length) ? s.projects.map(p => h('span', { class: 'chip-s' }, ctx.projectName(p))) : [h('span', { class: 'chip-s' }, 'All projects')];
-    return h('article', { class: 'skill-card', style: `--d:${Math.min(i, 8) * 0.06}s` },
-      h('div', { class: 'head' }, h('span', { class: 'mark', 'aria-hidden': 'true' }, (s.name || '?').trim()[0].toUpperCase()),
-        h('div', {}, h('h3', {}, s.name), h('div', { class: 'role' }, s.role || s.category))),
+    const m = ctx.team[s.id];
+    const avatar = m && safeUrl(m.avatar);
+    const mark = avatar
+      ? h('span', { class: 'mark avatar' }, h('img', { src: avatar, alt: '', width: '64', height: '64', loading: 'lazy', decoding: 'async' }))
+      : h('span', { class: 'mark', 'aria-hidden': 'true' }, ((m && m.name) || s.name || '?').trim()[0].toUpperCase());
+    return h('article', { class: 'skill-card' + (m ? ' member' : ''), style: `--d:${Math.min(i, 8) * 0.06}s` },
+      h('div', { class: 'head' }, mark,
+        h('div', {}, h('h3', {}, m ? m.name : s.name), h('div', { class: 'role' }, m ? m.title : (s.role || s.category)),
+          m && h('div', { class: 'skill-of' }, `Claude skill · ${s.name}`))),
       s.summary && h('p', { class: 'sum' }, s.summary),
       (s.responsibilities && s.responsibilities.length) && h('div', {}, h('div', { class: 'label' }, 'Responsibilities'), h('ul', {}, s.responsibilities.map(r => h('li', {}, r)))),
-      h('div', {}, h('div', { class: 'label' }, 'Used in'), h('div', { class: 'chips' }, projects)),
-      h('div', { class: 'foot' }, h('span', {}, `skill: ${s.id}${s.version ? ' · v' + s.version : ''}`), h('a', { href: s.url, target: '_blank', rel: 'noopener' }, 'Source ↗')));
+      h('div', {}, h('div', { class: 'label' }, 'Works on'), h('div', { class: 'chips' }, projects)),
+      h('div', { class: 'foot' }, h('span', {}, `skill: ${s.id}${s.version ? ' · v' + s.version : ''}`), h('a', { href: s.url, target: '_blank', rel: 'noopener', 'data-track-label': `Skill source: ${m ? m.name : s.name}` }, 'Source ↗')));
   };
 
   const fillSkills = (el, ctx) => {
-    if (!ctx.skills.length) { el.replaceChildren(h('div', { class: 'studio-state' }, 'My Claude skills will be listed here soon.')); return; }
+    if (!ctx.skills.length) { el.replaceChildren(h('div', { class: 'studio-state' }, 'The team will be introduced here soon.')); return; }
     el.replaceChildren(...ctx.skills.map((s, i) => skillCard(s, ctx, i)));
   };
 
@@ -381,7 +388,7 @@
   };
 
   /* ---------- go ---------- */
-  Promise.all(['studios', 'projects', 'videos', 'skills', 'workflow'].map(load)).then(data => {
+  Promise.all(['studios', 'projects', 'videos', 'skills', 'workflow', 'team'].map(load)).then(data => {
     const ctx = makeCtx(data);
     if (!ctx.studios.length) {
       document.querySelectorAll('[data-studio-grid], [data-latest], [data-outputs]').forEach(n => n.replaceChildren(h('div', { class: 'studio-state' }, 'The studio could not be loaded. Please refresh the page.')));

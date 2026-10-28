@@ -1,0 +1,9 @@
+{
+  "note": "Teammate personas for the Claude skills in skills.json, matched by skill id. Kept separate so regenerating skills.json never drops them.",
+  "members": {
+    "storyteller": { "name": "Marites", "title": "Storyteller", "avatar": "assets/team/marites.svg" },
+    "ai-prompt-expert": { "name": "Senyorita", "title": "The Prompt Expert", "avatar": "assets/team/senyorita.svg" },
+    "flow-clip-qa": { "name": "Perpekto", "title": "The Video QA", "avatar": "assets/team/perpekto.svg" },
+    "portfolio-updater": { "name": "Chelsea", "title": "The Portfolio Updater", "avatar": "assets/team/chelsea.svg" }
+  }
+}

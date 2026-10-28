@@ -103,6 +103,11 @@ a.chip-s:hover { border-color: var(--emerald); color: var(--cream); }
 .skill-card .head { max-width: none; margin: 0; display: flex; align-items: center; gap: 14px; }
 .skill-card .mark { flex: none; width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; background: var(--emerald-soft); color: var(--emerald); border: 1px solid rgba(var(--acc),.3); }
 .skill-card h3 { font-size: 1.1rem; font-weight: 600; line-height: 1.2; }
+.skill-card .mark.avatar { width: 64px; height: 64px; border-radius: 50%; padding: 0; overflow: hidden; background: none; border: 2px solid rgba(var(--acc),.45); box-shadow: 0 6px 18px rgba(0,0,0,.35); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+.skill-card .mark.avatar img { width: 100%; height: 100%; display: block; }
+.skill-card.member:hover .mark.avatar { transform: scale(1.07) rotate(-3deg); }
+.skill-card.member h3 { font-size: 1.3rem; }
+.skill-card .skill-of { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); margin-top: 4px; }
 .skill-card .role { font-family: var(--font-mono); font-size: .72rem; color: var(--emerald); letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
 .skill-card p.sum { color: var(--muted); font-size: .94rem; }
 .skill-card .label { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
