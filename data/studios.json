@@ -24,7 +24,12 @@
         "ugc",
         "brand",
         "sale"
-      ]
+      ],
+      "theme": "ads",
+      "accent": "255, 61, 129",
+      "fonts": "family=Anton&family=Manrope:wght@400;600;800&family=DM+Mono:wght@400;500",
+      "badge": "ON AIR",
+      "ticker": "NOW SHOWING ★ NEW ARRIVAL ★ LIMITED OFFER ★ TIKTOK SHOP FINDS ★"
     },
     {
       "id": "kids",
@@ -47,7 +52,10 @@
         "learning",
         "rhyme",
         "preschool"
-      ]
+      ],
+      "theme": "kids",
+      "accent": "255, 107, 157",
+      "fonts": "family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800"
     },
     {
       "id": "apps",
@@ -72,7 +80,10 @@
         "system",
         "react",
         "flutter"
-      ]
+      ],
+      "theme": "apps",
+      "accent": "56, 189, 248",
+      "fonts": "family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700"
     },
     {
       "id": "stories",
@@ -96,7 +107,8 @@
         "creepy",
         "scary",
         "tagalog"
-      ]
+      ],
+      "accent": "209, 26, 34"
     }
   ]
 }

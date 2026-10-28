@@ -182,7 +182,7 @@
     const fresh = mine.filter(x => isNew(x, ctx.newDays)).length;
     const noun = studio.kind === 'app' ? 'app' : 'video';
     const count = mine.length === 1 ? `1 ${noun}` : `${mine.length} ${noun}s`;
-    return h('a', { class: 'studio-tile' + (current ? ' current' : ''), href: `${BASE}/${studio.path}`, style: `--d:${i * 0.08}s`, 'aria-label': `${studio.name}: ${count}${fresh ? `, ${fresh} new` : ''}`, 'aria-current': current ? 'page' : null },
+    return h('a', { class: 'studio-tile' + (current ? ' current' : ''), href: `${BASE}/${studio.path}`, style: `--d:${i * 0.08}s;${studio.accent ? '--acc:' + studio.accent : ''}`, 'aria-label': `${studio.name}: ${count}${fresh ? `, ${fresh} new` : ''}`, 'aria-current': current ? 'page' : null },
       h('div', { class: 'top' }, h('span', { class: 'ico' }, svg(ICONS[studio.icon] || ICONS[studio.id] || ICONS.default)),
         fresh > 0 && h('span', { class: 'pill-new' }, `${fresh} new`)),
       h('h3', {}, studio.name), h('p', {}, studio.tagline),
@@ -202,38 +202,132 @@
     el.replaceChildren(...list.map((it, i) => card(it, ctx, i)));
   };
 
-  /* ---------- workflow ---------- */
-  const stepList = (pipeline, ctx) => h('ol', { class: 'flow-steps' }, pipeline.steps.map((st, i) =>
-    h('li', { class: 'flow-step' + ((st.skills || []).length ? ' has-skill' : ''), style: `--d:${i * 0.06}s` },
-      h('span', { class: 'num' }, String(i + 1).padStart(2, '0')),
-      h('h4', {}, st.title), h('p', {}, st.text),
-      ((st.skills || []).length || (st.tools || []).length) ? h('div', { class: 'chips' },
-        (st.skills || []).map(id => skillChip(ctx, id)),
-        (st.tools || []).map(t => h('span', { class: 'chip-s' }, t))) : null)));
+  /* ---------- workflow: the pipeline diagram (same design as the Kwento: Kilabot studio) ---------- */
+  const NS = 'http://www.w3.org/2000/svg';
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wait = ms => new Promise(r => setTimeout(r, reduce ? 0 : ms));
+  const COLS = 4;
+  const pad2 = n => String(n).padStart(2, '0');
+
+  const diagram = (id, p, ctx) => {
+    const steps = p.steps || [];
+    const nodes = [], wires = {};
+    const edges = [];
+    steps.forEach((st, i) => { if (i) edges.push([i - 1, i]); });
+    steps.forEach((st, i) => { if (st.loop) edges.push([i, st.loop.to, 'loop', st.loop.label || 'retry']); });
+
+    const flow = h('div', { class: 'flow' });
+    const wireSvg = document.createElementNS(NS, 'svg');
+    wireSvg.setAttribute('class', 'wires'); wireSvg.setAttribute('aria-hidden', 'true');
+    flow.append(wireSvg);
+    const detail = h('div', { class: 'detail', 'aria-live': 'polite' });
+    const consoleEl = h('div', { class: 'console', 'aria-live': 'polite', 'aria-label': 'Run log' }, h('span', { class: 't' }, '$ '), 'press run to watch a project move through the pipeline…');
+
+    steps.forEach((st, i) => {
+      const row = Math.floor(i / COLS) + 1, k = i % COLS;
+      const col = row % 2 ? k + 1 : COLS - k;
+      const who = [...(st.skills || []).map(sid => (ctx.skill(sid) || {}).name || sid), ...(st.tools || [])];
+      const btn = h('button', { class: 'node' + ((st.skills || []).length ? ' claude' : ''), type: 'button', style: `--r:${row};--c:${col}`, 'data-i': i },
+        h('span', { class: 'ix' }, `${pad2(i + 1)} · ${(st.tag || st.title.split(' ')[0]).toUpperCase()}`),
+        h('b', {}, st.title), h('small', {}, who.length ? who.join(' · ') : 'Me'), h('i', { class: 'ok' }, '✓'));
+      btn.addEventListener('click', () => showDetail(i));
+      nodes.push(btn); flow.append(btn);
+    });
+
+    const showDetail = i => {
+      const st = steps[i];
+      detail.replaceChildren(
+        h('span', { class: 'ix' }, `${pad2(i + 1)} · ${(st.tag || st.title.split(' ')[0]).toUpperCase()}`),
+        h('h3', {}, st.title), h('p', {}, st.text),
+        h('div', { class: 'chips' }, (st.skills || []).map(sid => skillChip(ctx, sid)), (st.tools || []).map(t => h('span', { class: 'chip-s' }, t))));
+      nodes.forEach((n, j) => n.classList.toggle('sel', i === j));
+    };
+
+    const geom = () => {
+      const fr = flow.getBoundingClientRect();
+      if (!fr.width) return;
+      const box = i => { const r = nodes[i].getBoundingClientRect(); return { x: r.left - fr.left, y: r.top - fr.top, w: r.width, h: r.height, cx: r.left - fr.left + r.width / 2, cy: r.top - fr.top + r.height / 2 }; };
+      wireSvg.replaceChildren();
+      edges.forEach(([a, b, kind, label]) => {
+        const A = box(a), B = box(b);
+        let d, lx, ly;
+        const sameRow = Math.abs(A.cy - B.cy) < Math.min(A.h, B.h) * .6;
+        if (kind === 'loop') {
+          if (sameRow) { const y = Math.min(A.y, B.y), lift = 46; d = `M${A.cx},${A.y} C${A.cx},${y - lift} ${B.cx},${y - lift} ${B.cx},${B.y}`; lx = (A.cx + B.cx) / 2; ly = y - lift + 6; }
+          else { const x = Math.max(A.x + A.w, B.x + B.w), push = 26; d = `M${A.x + A.w},${A.cy} C${x + push},${A.cy} ${x + push},${B.cy} ${B.x + B.w},${B.cy}`; lx = x + push + 2; ly = (A.cy + B.cy) / 2; }
+        } else if (sameRow) {
+          const dir = B.cx > A.cx ? 1 : -1, x1 = dir > 0 ? A.x + A.w : A.x, x2 = dir > 0 ? B.x : B.x + B.w, k = Math.abs(x2 - x1) * .45;
+          d = `M${x1},${A.cy} C${x1 + dir * k},${A.cy} ${x2 - dir * k},${B.cy} ${x2},${B.cy}`;
+        } else {
+          const down = B.cy > A.cy ? 1 : -1, y1 = down > 0 ? A.y + A.h : A.y, y2 = down > 0 ? B.y : B.y + B.h, k = Math.abs(y2 - y1) * .5;
+          d = `M${A.cx},${y1} C${A.cx},${y1 + down * k} ${B.cx},${y2 - down * k} ${B.cx},${y2}`;
+        }
+        const path = document.createElementNS(NS, 'path');
+        path.setAttribute('d', d); path.setAttribute('class', 'wire' + (kind === 'loop' ? ' loop' : ''));
+        wireSvg.append(path); wires[`${a}>${b}${kind ? '!' : ''}`] = path;
+        if (label) { const t = document.createElementNS(NS, 'text'); t.setAttribute('x', lx); t.setAttribute('y', ly); t.setAttribute('text-anchor', 'middle'); if (!sameRow) t.setAttribute('transform', `rotate(90 ${lx} ${ly})`); t.setAttribute('class', 'wire-label'); t.textContent = label; wireSvg.append(t); }
+      });
+    };
+
+    const log = (time, text, cls = 'g') => { consoleEl.append(h('div', {}, h('span', { class: 't' }, time + ' '), h('span', { class: cls }, text))); consoleEl.scrollTop = consoleEl.scrollHeight; };
+    const spark = key => new Promise(res => {
+      const path = wires[key]; if (!path) return res();
+      path.classList.add('flowing');
+      if (reduce) return res();
+      const c = document.createElementNS(NS, 'circle'); c.setAttribute('r', 4.5); c.setAttribute('class', 'spark'); wireSvg.append(c);
+      const L = path.getTotalLength(), t0 = performance.now(), dur = 600;
+      const step = now => { const k = Math.min(1, (now - t0) / dur), pt = path.getPointAtLength(L * k); c.setAttribute('cx', pt.x); c.setAttribute('cy', pt.y); if (k < 1) requestAnimationFrame(step); else { c.remove(); res(); } };
+      requestAnimationFrame(step);
+    });
+    const light = (i, cls = 'done') => { const n = nodes[i]; n.classList.remove('warn'); n.classList.add('lit', cls); setTimeout(() => n.classList.remove('lit'), reduce ? 0 : 900); };
+
+    const runBtn = h('button', { class: 'run', type: 'button' }, p.run_label || 'Run a sample');
+    let running = false, clock = 0;
+    const stamp = () => { clock += 1 + Math.floor(Math.random() * 2); return `00:${pad2(clock)}`; };
+    const run = async () => {
+      if (running) return; running = true; runBtn.disabled = true; clock = 0;
+      nodes.forEach(n => n.classList.remove('done', 'warn', 'lit'));
+      Object.values(wires).forEach(w => w.classList.remove('flowing'));
+      consoleEl.replaceChildren();
+      log('00:00', p.start_log || 'Run started');
+      for (let i = 0; i < steps.length; i++) {
+        const st = steps[i];
+        if (i) await spark(`${i - 1}>${i}`);
+        if (st.loop && st.warn) {
+          nodes[i].classList.add('warn'); showDetail(i); log(stamp(), st.warn, 'w'); await wait(650);
+          await spark(`${i}>${st.loop.to}!`); light(st.loop.to); log(stamp(), st.loop.log || 'Fixed and re-run'); await wait(250);
+          await spark(`${st.loop.to}>${i}`).catch(() => {});
+        }
+        light(i); if (i === 0 || st.tools || st.skills) showDetail(i);
+        log(stamp(), st.log || `${st.title} ✓`); await wait(280);
+      }
+      log(stamp(), p.end_log || 'Done ✓');
+      running = false; runBtn.disabled = false; runBtn.textContent = 'Run it again';
+    };
+    runBtn.addEventListener('click', run);
+
+    const root = h('div', { class: 'diagram' },
+      h('div', { class: 'd-top' }, h('span', { class: 'lbl' }, h('b', {}, '● '), `pipeline: ${id}${p.trigger ? ' · trigger: ' + p.trigger : ''}`), runBtn),
+      flow, h('div', { class: 'd-bottom' }, consoleEl, detail),
+      (p.claude_does || p.i_do) ? h('div', { class: 'd-role' }, p.claude_does && h('span', {}, h('b', {}, 'Claude does: '), p.claude_does), p.i_do && h('span', {}, h('b', {}, 'I do: '), p.i_do)) : null);
+    // measure once it is in the page
+    requestAnimationFrame(() => { geom(); showDetail(Math.min(2, steps.length - 1)); });
+    if ('ResizeObserver' in window) new ResizeObserver(geom).observe(flow); else addEventListener('resize', geom);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(geom);
+    if ('IntersectionObserver' in window && !reduce) { const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { run(); io.disconnect(); } }, { threshold: .45 }); io.observe(flow); }
+    return root;
+  };
 
   const fillWorkflow = (el, ctx) => {
     const only = el.dataset.pipeline;
-    const ids = only ? [only] : Object.keys(ctx.pipelines);
-    const valid = ids.filter(id => ctx.pipelines[id]);
-    if (!valid.length) { el.replaceChildren(h('div', { class: 'studio-state' }, 'The workflow will appear here soon.')); return; }
-    const panel = h('div', { role: 'tabpanel', 'aria-live': 'polite' });
-    const show = id => {
-      const p = ctx.pipelines[id];
-      panel.replaceChildren(...[p.intro && h('p', { class: 'flow-intro' }, p.intro), stepList(p, ctx), p.note && h('p', { class: 'mono-note flow-note' }, p.note)].filter(Boolean));
-    };
-    if (valid.length === 1) { show(valid[0]); el.replaceChildren(panel); return; }
-    const tabs = h('div', { class: 'flow-tabs', role: 'tablist', 'aria-label': 'Workflows' });
-    const buttons = valid.map((id, i) => h('button', { class: 'flow-tab', type: 'button', role: 'tab', 'aria-selected': i === 0 ? 'true' : 'false', tabindex: i === 0 ? '0' : '-1', onclick: () => select(i) }, ctx.pipelines[id].title || id));
-    const select = i => { buttons.forEach((b, j) => { b.setAttribute('aria-selected', String(i === j)); b.tabIndex = i === j ? 0 : -1; }); show(valid[i]); };
-    tabs.addEventListener('keydown', e => {
-      const cur = buttons.findIndex(b => b.getAttribute('aria-selected') === 'true');
-      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-      const next = (cur + (e.key === 'ArrowRight' ? 1 : buttons.length - 1)) % buttons.length;
-      select(next); buttons[next].focus(); e.preventDefault();
-    });
-    tabs.append(...buttons);
-    el.replaceChildren(tabs, panel);
-    show(valid[0]);
+    const ids = (only ? [only] : Object.keys(ctx.pipelines)).filter(id => ctx.pipelines[id]);
+    if (!ids.length) { el.replaceChildren(h('div', { class: 'studio-state' }, 'The workflow will appear here soon.')); return; }
+    const panel = h('div', { role: 'tabpanel' });
+    const show = id => { const p = ctx.pipelines[id]; panel.replaceChildren(...[p.intro && h('p', { class: 'flow-intro' }, p.intro), diagram(id, p, ctx), p.note && h('p', { class: 'mono-note flow-note' }, p.note)].filter(Boolean)); };
+    if (ids.length === 1) { show(ids[0]); el.replaceChildren(panel); return; }
+    const buttons = ids.map((id, i) => h('button', { class: 'flow-tab', type: 'button', role: 'tab', 'aria-selected': i === 0 ? 'true' : 'false', onclick: () => { buttons.forEach((b, j) => b.setAttribute('aria-selected', String(i === j))); show(id); } }, ctx.pipelines[id].title || id));
+    el.replaceChildren(h('div', { class: 'flow-tabs', role: 'tablist' }, buttons), panel);
+    show(ids[0]);
   };
 
   /* ---------- Claude skills ---------- */
