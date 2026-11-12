@@ -7,7 +7,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="analytics-page-type" content="portfolio">
 <script src="assets/analytics.js"></script>
-<meta name="description" content="Syndee Ann Sevilla: AI Specialist and AI video creator. Claude, Google Flow, CapCut and Microsoft Fabric, backed by nine years of software engineering.">
+<meta name="description" content="Syndee Ann Sevilla: Software Engineer, AI Specialist and content creator. Nine years building Java Spring Boot, AEM and web applications, now with Claude, GitHub Copilot, Gemini and Microsoft Fabric in every task.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IM+Fell+English:ital@0;1&display=swap">
@@ -228,23 +228,48 @@ a.item.cert:hover small em, a.item.cert:focus-visible small em { opacity: 1; }
 .item.ph .ico { background: transparent; border: 1px dashed var(--line); color: var(--dim); }
 @media (max-width: 960px) { .cgrid { grid-template-columns: 1fr; } }
 
-/* ---------- origin ---------- */
+/* ---------- engineering (origin) ---------- */
 .origin { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(30px, 5vw, 70px); align-items: start; }
 .origin > * { min-width: 0; }
 .big { font-family: var(--font-display); font-weight: 800; font-size: clamp(4rem, 2rem + 8vw, 8rem); line-height: .85; letter-spacing: -0.06em; }
 .big small { display: block; margin-top: 12px; font-size: 1.05rem; font-weight: 500; letter-spacing: 0; line-height: 1.3; color: var(--dim); font-family: var(--font-body); }
 .origin .txt { margin-top: 22px; display: grid; gap: 14px; color: var(--dim); max-width: 56ch; }
 .origin .txt strong { color: var(--text); font-weight: 500; }
-.film { display: grid; border-top: 1px solid var(--line); }
-.frame { display: grid; grid-template-columns: 120px 1fr auto; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); transition: padding .35s, background .35s; }
-.frame:hover { padding-left: 10px; background: linear-gradient(90deg, rgba(61,232,255,.06), transparent); }
-.frame > * { min-width: 0; }
-.frame .y { font-family: var(--font-mono); font-size: .76rem; color: var(--dim); font-variant-numeric: tabular-nums; }
-.frame b { font-weight: 600; } .frame b span { color: var(--dim); font-weight: 400; }
-.frame .s { font-family: var(--font-mono); font-size: .72rem; color: var(--cyan); white-space: nowrap; }
-.stack-line { margin-top: 20px; color: var(--dim); font-size: .92rem; } .stack-line b { color: var(--text); font-weight: 500; }
+.stats { margin-top: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 460px; }
+.stats div { padding: 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--glass); }
+.stats b { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; letter-spacing: -.03em; color: var(--cyan); }
+.stats span { font-size: .8rem; color: var(--dim); line-height: 1.3; display: block; }
+.jobs { display: grid; gap: 14px; position: relative; padding-left: 22px; }
+.jobs::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--cyan), var(--pink), transparent); opacity: .6; }
+.job { position: relative; padding: 20px 22px; border-radius: var(--r); border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: border-color .3s, transform .3s; }
+.job::before { content: ""; position: absolute; left: -22px; top: 26px; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); border: 2px solid var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+.job:hover { border-color: rgba(61,232,255,.4); transform: translateX(4px); }
+.job-top { display: grid; gap: 4px; }
+.job .y { font-family: var(--font-mono); font-size: .74rem; color: var(--cyan); font-variant-numeric: tabular-nums; }
+.job h3 { font-size: 1.08rem; font-weight: 600; line-height: 1.3; } .job h3 span { color: var(--dim); font-weight: 400; }
+.job .proj { margin-top: 6px; font-family: var(--font-mono); font-size: .74rem; color: var(--dim); }
+.job ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; font-size: .92rem; color: var(--text); opacity: .9; line-height: 1.5; }
+.job li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 8px; height: 2px; border-radius: 2px; background: var(--lime); }
+.tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font-family: var(--font-mono); font-size: .68rem; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--dim); }
+.sub { margin: clamp(48px, 7vw, 80px) 0 20px; font-family: var(--font-display); font-size: var(--step-1, 1.4rem); letter-spacing: -.02em; }
+.aitools { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.aitool { display: grid; gap: 14px; align-content: start; padding: 22px; border-radius: var(--r); border: 1px solid var(--line); background: linear-gradient(160deg, rgba(61,232,255,.07), rgba(255,79,216,.05) 60%, transparent), var(--glass); transition: transform .3s, border-color .3s; }
+.aitool:hover { transform: translateY(-4px); border-color: rgba(255,79,216,.45); }
+.aitool .ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; color: var(--cyan); background: rgba(61,232,255,.1); border: 1px solid rgba(61,232,255,.25); }
+.aitool .ic svg { width: 21px; height: 21px; }
+.aitool h3 { font-size: 1.05rem; font-weight: 600; }
+.aitool p { margin-top: 6px; font-size: .9rem; color: var(--dim); line-height: 1.5; }
+.skgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.sk { padding: 16px 18px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.02); display: grid; gap: 6px; }
+.sk b { font-family: var(--font-mono); font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--lime); }
+.sk span { font-size: .92rem; color: var(--text); opacity: .88; line-height: 1.5; }
+.sk.ai { grid-column: 1 / -1; border-color: rgba(255,79,216,.35); background: linear-gradient(90deg, rgba(61,232,255,.08), rgba(255,79,216,.08)); }
+.sk.ai b { color: var(--pink); }
+@media (max-width: 1000px) { .aitools { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 900px) { .origin { grid-template-columns: 1fr; } }
-@media (max-width: 560px) { .frame { grid-template-columns: 1fr; gap: 4px; } .frame .s { white-space: normal; } }
+@media (max-width: 560px) { .aitools { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } .job { padding: 18px; } }
 
 /* ---------- contact ---------- */
 .contact h2 { font-size: clamp(2.6rem, 1rem + 7.6vw, 7.6rem); letter-spacing: -0.055em; line-height: .92; }
@@ -293,7 +318,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <li><a class="kil" href="#studio">AI Studio</a></li>
       <li><a href="#claude-skills">The Team</a></li>
       <li><a href="#credentials">Credentials</a></li>
-      <li><a href="#origin">Background</a></li>
+      <li><a href="#origin">Engineering</a></li>
     </ul>
     <a class="hire" href="#contact">Let's talk</a>
   </div>
@@ -307,14 +332,14 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <div>
           <span class="log rv"><b>●</b> status: open to remote AI work · Philippines</span>
           <h1 data-scramble>Syndee Ann Sevilla</h1>
-          <p class="who">AI Specialist &amp; <span class="grad">AI video creator</span></p>
-          <p class="lede">I write with Claude, generate with Google Flow, edit in CapCut, and use nine years of software engineering to turn all of it into pipelines that actually ship.</p>
+          <p class="who">Software Engineer · AI Specialist · <span class="grad">Content Creator</span></p>
+          <p class="lede">By day I build enterprise software with Java Spring Boot and Adobe Experience Manager, pairing with Claude, GitHub Copilot, Gemini and Microsoft Fabric. By night I create AI videos with Google Flow and CapCut. Nine years of engineering is why both actually ship.</p>
           <div class="btns">
             <a class="btn go" href="#studio" data-magnet>Enter my AI studio
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="btn" href="#credentials" data-magnet>AI credentials</a>
+            <a class="btn" href="#origin" data-magnet>Engineering work</a>
           </div>
-          <div class="me"><img src="syndee.jpg" alt="Syndee Ann Sevilla" width="54" height="54"><span><b>Syndee Ann Sevilla</b><br>Senior Developer turned AI creator</span></div>
+          <div class="me"><img src="syndee.jpg" alt="Syndee Ann Sevilla" width="54" height="54"><span><b>Syndee Ann Sevilla</b><br>Senior Software Engineer &amp; content creator</span></div>
         </div>
         <div class="chat rv" style="--d:.15s" aria-label="Interactive demo of my AI video workflow">
           <div class="chat-top"><span class="live"><i></i>Claude · session</span><span>kwento-kilabot / reel</span></div>
@@ -331,8 +356,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>Claude</span><span>Google Flow</span><span>Veo</span><span>CapCut</span><span>Microsoft Fabric</span><span>Prompt engineering</span><span>AI video</span><span>AI model training</span>
-      <span>Claude</span><span>Google Flow</span><span>Veo</span><span>CapCut</span><span>Microsoft Fabric</span><span>Prompt engineering</span><span>AI video</span><span>AI model training</span>
+      <span>Software engineering</span><span>Claude</span><span>GitHub Copilot</span><span>Gemini</span><span>Microsoft Fabric</span><span>Java Spring Boot</span><span>Google Flow</span><span>CapCut</span><span>Prompt engineering</span><span>AI video</span>
+      <span>Software engineering</span><span>Claude</span><span>GitHub Copilot</span><span>Gemini</span><span>Microsoft Fabric</span><span>Java Spring Boot</span><span>Google Flow</span><span>CapCut</span><span>Prompt engineering</span><span>AI video</span>
     </div>
   </div>
 
@@ -346,10 +371,10 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
       <div class="mods">
         <article class="mod rv"><div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="13" height="14" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg></span><span class="st">creating</span></div><h3>AI Video Creation</h3><p>Short vertical stories made with generative video: scripted in beats, directed shot by shot, and finished as reels for YouTube, Facebook, Instagram and TikTok.</p><div class="meter"><i style="--v:92%"></i></div></article>
-        <article class="mod rv" style="--d:.06s"><div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></span><span class="st">daily driver</span></div><h3>Claude</h3><p>My AI partner. Claude runs my whole video studio on its own: writing stories, prompting Google Flow, compiling clips and posting to four platforms.</p><div class="meter"><i style="--v:95%"></i></div></article>
+        <article class="mod rv" style="--d:.06s"><div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></span><span class="st">daily driver</span></div><h3>Claude</h3><p>My AI partner. Claude runs my whole video studio on its own: writing stories, prompting Google Flow, compiling clips and posting to YouTube and Facebook.</p><div class="meter"><i style="--v:95%"></i></div></article>
         <article class="mod rv" style="--d:.12s"><div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-12 4 7 3-5 5 10z"/></svg></span><span class="st">creating</span></div><h3>Google Flow</h3><p>Google's AI filmmaking tool, where I generate cinematic 9:16 clips with consistent mood, characters and native narration.</p><div class="meter"><i style="--v:90%"></i></div></article>
         <article class="mod rv"><div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></span><span class="st">creating</span></div><h3>CapCut</h3><p>Where clips become a finished reel: pacing, transitions, sound and captions tuned for short-form platforms.</p><div class="meter"><i style="--v:85%"></i></div></article>
-        <article class="mod rv" style="--d:.06s"><div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><span class="st learn">learning</span></div><h3>Microsoft Fabric</h3><p>Microsoft's unified data and analytics platform. I'm building skills in its data engineering and AI features.</p><div class="meter"><i style="--v:55%"></i></div></article>
+        <article class="mod rv" style="--d:.06s"><div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><span class="st">in use</span></div><h3>Microsoft Fabric</h3><p>Microsoft's unified data and analytics platform, part of my software development work alongside Claude, Copilot and Gemini.</p><div class="meter"><i style="--v:70%"></i></div></article>
         <article class="mod rv" style="--d:.12s"><div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><span class="st learn">ongoing</span></div><h3>AI Trainings</h3><p>Courses that keep my AI skills current, plus hands-on work helping train AI models by evaluating and improving their responses.</p><div class="meter"><i style="--v:75%"></i></div></article>
       </div>
     </div>
@@ -434,32 +459,66 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </div>
   </section>
 
-  <!-- ORIGIN -->
+  <!-- ENGINEERING (ORIGIN) -->
   <section class="band" id="origin" style="padding-top: 0">
     <div class="wrap">
       <div class="head">
-        <span class="log rv"><b>&gt;</b> git log --before=ai</span>
-        <h2 data-scramble>Before AI, I shipped software</h2>
+        <span class="log rv"><b>&gt;</b> git log --author=syndee</span>
+        <h2 data-scramble>Software engineer, AI-assisted</h2>
+        <p class="rv">Nine years of building and supporting production software, and these days every task runs with an AI pair: Claude, GitHub Copilot, Gemini and Microsoft Fabric.</p>
       </div>
       <div class="origin">
         <div class="rv">
           <div class="big"><span class="grad">9+</span><small>years as a software engineer</small></div>
           <div class="txt">
-            <p>I started as a full-stack web developer in 2017 and grew into a <strong>Senior Developer</strong>, building enterprise Adobe Experience Manager sites, analytics integrations and Spring Boot microservices for global teams. I also spent two years teaching programming.</p>
-            <p>That's why my AI work is dependable: I build pipelines with queues, validation and automatic quality checks, not one-off experiments.</p>
+            <p>I'm a <strong>Senior Software Engineer</strong> who builds Java Spring Boot microservices, Adobe Experience Manager sites and React and Angular front ends for global teams. I write tests, review code, run root cause analysis on production issues and mentor new developers. I also taught programming for two years.</p>
+            <p>AI makes me faster without lowering the bar: every change still goes through tests, code review and quality gates. It's the same discipline behind my AI video pipelines.</p>
+          </div>
+          <div class="stats">
+            <div><b>5</b><span>AEM projects led</span></div>
+            <div><b>4</b><span>production apps supported</span></div>
+            <div><b>2</b><span>years teaching code</span></div>
           </div>
           <div style="margin-top:22px"><a class="btn" href="Syndee-Ann-Sevilla-CV.pdf" target="_blank" rel="noopener">View my full CV ↗</a></div>
         </div>
-        <div class="rv" style="--d:.1s">
-          <div class="film">
-            <div class="frame"><span class="y">2024 — Now</span><b>Senior Developer <span>· Myridius</span></b><span class="s">Spring Boot · AEM</span></div>
-            <div class="frame"><span class="y">2021 — 2024</span><b>App Dev Senior Analyst <span>· Accenture</span></b><span class="s">AEM · Adobe Analytics</span></div>
-            <div class="frame"><span class="y">2019 — 2021</span><b>Programming Instructor <span>· ACLC College</span></b><span class="s">Java · VB.NET</span></div>
-            <div class="frame"><span class="y">2017 — 2019</span><b>Full-stack Web Developer <span>· Startups</span></b><span class="s">PHP · JavaScript</span></div>
-          </div>
-          <p class="stack-line"><b>Core stack:</b> Java Spring Boot, Adobe Experience Manager, Adobe Analytics, React, Angular, PHP, SQL, JavaScript, HTML, CSS and Git.</p>
+        <div class="jobs">
+            <article class="job rv" style="--d:0s">
+              <div class="job-top"><span class="y">2024 — Now</span><h3>Senior Developer <span>· Myridius</span></h3></div>
+              <p class="proj">REMY 2.0 microservices · Production sustainment · AEM enhancement (lead)</p>
+              <ul><li>Design and build REST APIs in Java Spring Boot and SQL for a dining reservation platform that assigns tables automatically, with JUnit tests, Swagger specs and peer code reviews.</li><li>Support four production apps (Angular, Node.js, Spring Boot): triage, root cause analysis, on-call through PagerDuty, and enhancements.</li><li>Led enhancements across five AEM projects: React UIs, JUnit coverage for existing Java classes and SonarQube in the pipeline.</li></ul>
+              <div class="tags"><span>Java Spring Boot</span><span>SQL</span><span>JUnit</span><span>Angular</span><span>Node.js</span><span>React</span><span>AEM</span><span>SonarQube</span></div>
+            </article>
+            <article class="job rv" style="--d:0.06s">
+              <div class="job-top"><span class="y">2021 — 2024</span><h3>Application Development Senior Analyst <span>· Accenture</span></h3></div>
+              <p class="proj">CIO internal web platform</p>
+              <ul><li>Built reusable AEM components (Sling Models, HTL) and Java Sling Servlet services on the JCR.</li><li>Implemented Adobe Analytics and Adobe Target for tracking, personalization and A/B tests, and led the analytics integration of an internal mobile app.</li><li>Led code reviews and deployments, and mentored junior developers.</li></ul>
+              <div class="tags"><span>AEM</span><span>Java</span><span>Adobe Analytics</span><span>Adobe Target</span><span>Adobe Launch</span><span>Azure DevOps</span></div>
+            </article>
+            <article class="job rv" style="--d:0.12s">
+              <div class="job-top"><span class="y">2019 — 2021</span><h3>Programming Instructor <span>· ACLC College of Tacloban</span></h3></div>
+              <p class="proj">Java and VB.NET courses</p>
+              <ul><li>Taught programming fundamentals and object-oriented programming, built course materials and mentored capstone projects.</li></ul>
+              <div class="tags"><span>Java</span><span>VB.NET</span><span>SQL</span></div>
+            </article>
+            <article class="job rv" style="--d:0.18s">
+              <div class="job-top"><span class="y">2017 — 2019</span><h3>Full-stack Web Developer <span>· Zeend · Aktus Global Management</span></h3></div>
+              <p class="proj">E-commerce and accounting platforms</p>
+              <ul><li>Built an e-commerce marketplace with PHP CodeIgniter and SQL: authentication, cart, search, orders and payments.</li><li>Shipped accounting web platforms and deployed them to AWS.</li></ul>
+              <div class="tags"><span>PHP</span><span>JavaScript</span><span>jQuery</span><span>SQL</span><span>AWS</span></div>
+            </article>
         </div>
       </div>
+
+      <h3 class="sub rv">My AI pair-programming stack</h3>
+      <div class="aitools">
+          <article class="aitool rv" style="--d:0s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Claude</h3><p>Planning features, reasoning through tricky bugs and root causes, reviewing code and writing documentation and API specs.</p></div></article>
+          <article class="aitool rv" style="--d:0.06s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg></span><div><h3>GitHub Copilot</h3><p>Pair programming in the editor: completions, refactors and JUnit test scaffolding as I code.</p></div></article>
+          <article class="aitool rv" style="--d:0.12s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.6 4.8 4.2 8.4 9 9-4.8.6-8.4 4.2-9 9-.6-4.8-4.2-8.4-9-9 4.8-.6 8.4-4.2 9-9z"/></svg></span><div><h3>Gemini</h3><p>Researching APIs and frameworks, explaining unfamiliar code and drafting queries and scripts.</p></div></article>
+          <article class="aitool rv" style="--d:0.18s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><div><h3>Microsoft Fabric</h3><p>Working with data in one place: pipelines, analysis and reports that support the applications I build.</p></div></article>
+      </div>
+
+      <h3 class="sub rv">Engineering skills</h3>
+      <div class="skgrid"><div class="sk rv" style="--d:0.00s"><b>Backend</b><span>Java Spring Boot · Node.js · REST APIs · PHP (Laravel, CodeIgniter) · SQL · MariaDB</span></div><div class="sk rv" style="--d:0.05s"><b>Frontend</b><span>React · Angular · TypeScript · JavaScript · HTML5 · CSS, SASS, LESS · jQuery</span></div><div class="sk rv" style="--d:0.10s"><b>Adobe platforms</b><span>Adobe Experience Manager · Adobe Analytics · Adobe Target · Adobe Launch</span></div><div class="sk rv" style="--d:0.15s"><b>Quality &amp; delivery</b><span>JUnit · SonarQube · Swagger · Postman · CI/CD (Jenkins, GitLab, Azure DevOps) · Git · Jira · Agile Scrum</span></div><div class="sk ai rv" style="--d:0.20s"><b>AI-assisted development</b><span>Claude · GitHub Copilot · Gemini · Microsoft Fabric · Prompt engineering</span></div></div>
     </div>
   </section>
 
