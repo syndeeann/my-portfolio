@@ -1,6 +1,18 @@
 {
   "items": [
     {
+      "id": "mia-rosie-midnight-mysteries-the-mysterious-doll-at-midnight",
+      "studio": "mia-rosie",
+      "project": "mia-rosie-midnight-mysteries",
+      "type": "video",
+      "title": "The Mysterious Doll at Midnight",
+      "description": "Mia hears a tiny voice at midnight and finds that her rag doll Rosie can talk, and that a golden star is waiting in the toy chest.",
+      "published": "2026-11-12",
+      "language": "English",
+      "duration_s": 54,
+      "youtube": "4se5IXDJYUs"
+    },
+    {
       "id": "kwento-kilabot-linya-trese",
       "studio": "stories",
       "project": "kwento-kilabot",

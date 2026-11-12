@@ -110,6 +110,29 @@
       ],
       "accent": "209, 26, 34",
       "analytics_name": "kwento_kilabot"
+    },
+    {
+      "id": "mia-rosie",
+      "name": "Mia & Rosie Series",
+      "tagline": "A midnight mystery series for kids.",
+      "description": "Mia & Rosie: Midnight Mysteries is a family-friendly animated Shorts series. Mia and her living rag doll Rosie find a new gentle mystery every night. Written by Claude, generated in Google Flow and edited into 60-second episodes.",
+      "path": "mia-rosie/",
+      "kind": "video",
+      "pipeline": "mia-rosie",
+      "icon": "mia-rosie",
+      "keywords": [
+        "mia",
+        "rosie",
+        "midnight mysteries",
+        "rag doll",
+        "series",
+        "episode"
+      ],
+      "theme": "midnight",
+      "accent": "139, 108, 255",
+      "fonts": "family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800",
+      "badge": "SEASON 1",
+      "ticker": "EPISODE 1 ★ THE MYSTERIOUS DOLL AT MIDNIGHT ★ EVERY GREAT ADVENTURE STARTS WITH A FRIEND ★"
     }
   ]
 }

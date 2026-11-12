@@ -184,3 +184,25 @@ body[data-theme="apps"] .deco i:nth-child(6)::before { content: "// ship it"; } 
 
 /* team avatars keep their round portrait shape in every studio theme */
 body[data-theme] .skill-card .mark.avatar { border-radius: 50%; background: none; padding: 0; }
+
+/* Mia & Rosie Series: midnight lavender with golden star accents */
+body[data-theme="midnight"] {
+  --ink: #120d2e; --ink-2: #1c1546; --text: #f3eeff; --dim: #b7a9e6;
+  --cyan: #ffd36b; --pink: #ff6b8a; --lime: #c9b6ff;
+  --acc: 139, 108, 255; --acc2: 255, 211, 107; --fg: 243, 238, 255; --bgc: 18, 13, 46; --card: 32, 24, 76;
+  --emerald: #ffd36b; --cream: #f3eeff; --muted: #b7a9e6; --bg: #120d2e; --bg-2: #1c1546; --run-ink: #120d2e;
+  --font-display: "Fredoka", "Baloo 2", system-ui, sans-serif; --font-body: "Nunito", "Segoe UI", system-ui, sans-serif; --font-mono: "Nunito", system-ui, sans-serif;
+  --r: 26px; --radius: 26px; --dia-radius: 32px; --node-radius: 20px;
+  color-scheme: dark;
+  background: radial-gradient(700px circle at 85% 0%, rgba(255,211,107,.22), transparent 60%), radial-gradient(800px circle at 0% 60%, rgba(139,108,255,.28), transparent 60%), #120d2e;
+}
+body[data-theme="midnight"]::before { background: #120d2e; }
+body[data-theme="midnight"] ::selection { background: #ffd36b; color: #120d2e; }
+body[data-theme="midnight"] h1, body[data-theme="midnight"] h2, body[data-theme="midnight"] h3, body[data-theme="midnight"] h4 { font-weight: 700; letter-spacing: -.01em; line-height: 1.05; }
+body[data-theme="midnight"] .studio-hero h1 { font-size: clamp(3rem, 1.4rem + 8vw, 7rem); background: linear-gradient(90deg, #ffd36b, #ff9ec4 45%, #b7a1ff); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 4px 0 rgba(0,0,0,.25)); }
+body[data-theme="midnight"] .studio-hero p { color: #d9ceff; font-weight: 600; }
+body[data-theme="midnight"] .studio-hero::before { background: #8b6cff; opacity: .35; filter: blur(80px); }
+body[data-theme="midnight"] .hero-badge { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; padding: 7px 14px; background: #ffd36b; color: #120d2e; font: 800 .78rem var(--font-body); letter-spacing: .16em; border-radius: 999px; }
+body[data-theme="midnight"] .hero-badge::before { content: "\2605"; }
+body[data-theme="midnight"] .ticker { display: block; position: relative; z-index: 2; margin-top: 56px; overflow: hidden; white-space: nowrap; background: rgba(255,211,107,.12); color: #ffd36b; border-block: 2px solid rgba(255,211,107,.45); }
+body[data-theme="midnight"] .ticker span { display: inline-block; padding: 9px 0; font: 700 1.05rem var(--font-body); letter-spacing: .12em; animation: ticker 32s linear infinite; }

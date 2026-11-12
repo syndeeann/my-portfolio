@@ -339,6 +339,80 @@
       "end_log": "App shipped and added to the portfolio ✓",
       "claude_does": "code, review, debugging and documentation.",
       "i_do": "define the problem, test on real devices and decide what ships."
+    },
+    "mia-rosie": {
+      "title": "Mia & Rosie Series",
+      "intro": "How an episode of Mia & Rosie: Midnight Mysteries goes from a script to a posted Short. Dialogue is spoken by the characters themselves, and flaws are fixed in the edit instead of regenerating.",
+      "steps": [
+        {
+          "title": "Write the episode",
+          "text": "Marites writes a 60-second, six-scene script with real dialogue between Mia and Rosie, following the season's story flow and character sheet.",
+          "skills": [
+            "storyteller"
+          ],
+          "tag": "SCRIPT",
+          "log": "Episode script written in 6 scenes"
+        },
+        {
+          "title": "Write the prompts",
+          "text": "Senyorita turns each scene into a Google Flow prompt with the same locked character descriptions, so Mia, Rosie and the bedroom look the same in every scene. The spoken lines are quoted word for word.",
+          "skills": [
+            "ai-prompt-expert"
+          ],
+          "tag": "PROMPTS",
+          "log": "6 Google Flow prompts ready"
+        },
+        {
+          "title": "Generate in Google Flow",
+          "text": "Each scene is made from the same Mia and Rosie reference image, so the characters stay consistent. The clips come with their own voices and sound.",
+          "tools": [
+            "Google Flow",
+            "Omni"
+          ],
+          "tag": "GENERATE",
+          "log": "6 clips generated in Google Flow"
+        },
+        {
+          "title": "Check every clip",
+          "text": "Perpekto checks format, sound and picture, and looks for the wrong scene, stray text and garbled faces. It reports a verdict and evidence only; it never regenerates a clip.",
+          "skills": [
+            "flow-clip-qa"
+          ],
+          "tag": "QUALITY",
+          "log": "Clip check done"
+        },
+        {
+          "title": "Edit and fix in the cut",
+          "text": "Jaiman edits around any flaw: trims silent stretches, removes a repeated moment, matches colour and loudness, and joins the scenes with soft dissolves. Voices, music and lip sync stay untouched.",
+          "skills": [
+            "video-editor"
+          ],
+          "tools": [
+            "ffmpeg"
+          ],
+          "tag": "COMPILE",
+          "log": "Episode edited and joined"
+        },
+        {
+          "title": "Owner approval",
+          "text": "Nothing is published until the owner has watched the finished episode and approved it.",
+          "tag": "APPROVAL",
+          "log": "Approved by the owner"
+        },
+        {
+          "title": "Post and update the portfolio",
+          "text": "The approved episode is posted to YouTube Shorts and Facebook, then Chelsea adds it to this series page.",
+          "skills": [
+            "portfolio-updater"
+          ],
+          "tools": [
+            "YouTube",
+            "Facebook"
+          ],
+          "tag": "PUBLISH",
+          "log": "Posted and added to the portfolio"
+        }
+      ]
     }
   }
 }

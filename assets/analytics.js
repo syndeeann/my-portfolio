@@ -106,7 +106,8 @@
     'ads/': 'ads',
     'kids/': 'kids',
     'apps/': 'apps',
-    'studio/kwento-kilabot.html': 'kwento_kilabot'
+    'studio/kwento-kilabot.html': 'kwento_kilabot',
+    'mia-rosie/': 'mia_rosie'
   };
   /* portfolio-updater:studios:end */
   var studioOf = function (href) {
