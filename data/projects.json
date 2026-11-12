@@ -14,6 +14,11 @@
       "name": "This portfolio",
       "studio": null,
       "summary": "The portfolio site itself."
+    },
+    "mia-rosie-midnight-mysteries": {
+      "name": "Mia & Rosie: Midnight Mysteries",
+      "studio": "mia-rosie",
+      "summary": "A family-friendly animated Shorts series for kids 6 to 10: Mia and her living rag doll Rosie solve gentle mysteries after midnight."
     }
   }
 }
