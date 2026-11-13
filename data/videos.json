@@ -1,6 +1,18 @@
 {
   "items": [
     {
+      "id": "mia-rosie-midnight-mysteries-the-missing-teddy-bear",
+      "studio": "mia-rosie",
+      "project": "mia-rosie-midnight-mysteries",
+      "type": "video",
+      "title": "The Missing Teddy Bear",
+      "description": "Mia's teddy bear is missing, and a trail of golden sparkles leads her and Rosie on a midnight search. A gentle story about kindness and helping others.",
+      "published": "2026-11-14",
+      "language": "English",
+      "duration_s": 61,
+      "youtube": "InMc8kaBnQg"
+    },
+    {
       "id": "mia-rosie-midnight-mysteries-the-mysterious-doll-at-midnight",
       "studio": "mia-rosie",
       "project": "mia-rosie-midnight-mysteries",
