@@ -265,6 +265,7 @@ a.item.cert:hover small em, a.item.cert:focus-visible small em { opacity: 1; }
 .sk { padding: 16px 18px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.02); display: grid; gap: 6px; }
 .sk b { font-family: var(--font-mono); font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--lime); }
 .sk span { font-size: .92rem; color: var(--text); opacity: .88; line-height: 1.5; }
+.sub-note { margin: -10px 0 20px; color: var(--dim); max-width: 60ch; }
 .sk.ai { grid-column: 1 / -1; border-color: rgba(255,79,216,.35); background: linear-gradient(90deg, rgba(61,232,255,.08), rgba(255,79,216,.08)); }
 .sk.ai b { color: var(--pink); }
 @media (max-width: 1000px) { .aitools { grid-template-columns: repeat(2, 1fr); } }
@@ -333,7 +334,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <span class="log rv"><b>●</b> status: open to remote AI work · Philippines</span>
           <h1 data-scramble>Syndee Ann Sevilla</h1>
           <p class="who">Software Engineer · AI Specialist · <span class="grad">Content Creator</span></p>
-          <p class="lede">By day I build enterprise software with Java Spring Boot and Adobe Experience Manager, pairing with Claude, GitHub Copilot, Gemini and Microsoft Fabric. By night I create AI videos with Google Flow and CapCut. Nine years of engineering is why both actually ship.</p>
+          <p class="lede">By day I build enterprise software with Java Spring Boot and Adobe Experience Manager, and I'm now adding Claude, GitHub Copilot, Gemini and Microsoft Fabric to how I work. By night I create AI videos with Google Flow and CapCut. Nine years of engineering is why both actually ship.</p>
           <div class="btns">
             <a class="btn go" href="#studio" data-magnet>Enter my AI studio
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -464,15 +465,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="wrap">
       <div class="head">
         <span class="log rv"><b>&gt;</b> git log --author=syndee</span>
-        <h2 data-scramble>Software engineer, AI-assisted</h2>
-        <p class="rv">Nine years of building and supporting production software, and these days every task runs with an AI pair: Claude, GitHub Copilot, Gemini and Microsoft Fabric.</p>
+        <h2 data-scramble>Engineer first, adding AI now</h2>
+        <p class="rv">Nine years of building and supporting production software, hands-on. Today I'm adapting AI tools into my workflow to develop faster, while the logic and the checking still come from me.</p>
       </div>
       <div class="origin">
         <div class="rv">
           <div class="big"><span class="grad">9+</span><small>years as a software engineer</small></div>
           <div class="txt">
             <p>I'm a <strong>Senior Software Engineer</strong> who builds Java Spring Boot microservices, Adobe Experience Manager sites and React and Angular front ends for global teams. I write tests, review code, run root cause analysis on production issues and mentor new developers. I also taught programming for two years.</p>
-            <p>AI makes me faster without lowering the bar: every change still goes through tests, code review and quality gates. It's the same discipline behind my AI video pipelines.</p>
+            <p>All of the experience here was built the traditional way, before AI tools. Now I use Claude, GitHub Copilot, Gemini and Microsoft Fabric to speed up the repetitive parts of development. I still design the solution, write the logic, and review and test everything before it ships.</p>
           </div>
           <div class="stats">
             <div><b>5</b><span>AEM projects led</span></div>
@@ -509,16 +510,17 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </div>
       </div>
 
-      <h3 class="sub rv">My AI pair-programming stack</h3>
+      <h3 class="sub rv">How I'm using AI now</h3>
+      <p class="sub-note rv">AI speeds up the work. I make the decisions and verify every result.</p>
       <div class="aitools">
-          <article class="aitool rv" style="--d:0s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Claude</h3><p>Planning features, reasoning through tricky bugs and root causes, reviewing code and writing documentation and API specs.</p></div></article>
-          <article class="aitool rv" style="--d:0.06s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg></span><div><h3>GitHub Copilot</h3><p>Pair programming in the editor: completions, refactors and JUnit test scaffolding as I code.</p></div></article>
-          <article class="aitool rv" style="--d:0.12s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.6 4.8 4.2 8.4 9 9-4.8.6-8.4 4.2-9 9-.6-4.8-4.2-8.4-9-9 4.8-.6 8.4-4.2 9-9z"/></svg></span><div><h3>Gemini</h3><p>Researching APIs and frameworks, explaining unfamiliar code and drafting queries and scripts.</p></div></article>
-          <article class="aitool rv" style="--d:0.18s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><div><h3>Microsoft Fabric</h3><p>Working with data in one place: pipelines, analysis and reports that support the applications I build.</p></div></article>
+          <article class="aitool rv" style="--d:0s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Claude</h3><p>A second opinion while I plan features and trace bugs, and a first draft for documentation and API specs that I then edit.</p></div></article>
+          <article class="aitool rv" style="--d:0.06s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg></span><div><h3>GitHub Copilot</h3><p>Suggestions in the editor for boilerplate, refactors and test scaffolding. I decide what stays and adjust it.</p></div></article>
+          <article class="aitool rv" style="--d:0.12s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.6 4.8 4.2 8.4 9 9-4.8.6-8.4 4.2-9 9-.6-4.8-4.2-8.4-9-9 4.8-.6 8.4-4.2 9-9z"/></svg></span><div><h3>Gemini</h3><p>Quick research on APIs and frameworks and explanations of unfamiliar code, checked against the official docs.</p></div></article>
+          <article class="aitool rv" style="--d:0.18s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><div><h3>Microsoft Fabric</h3><p>Bringing data into one place for analysis and reports, with the logic and validation set by me.</p></div></article>
       </div>
 
       <h3 class="sub rv">Engineering skills</h3>
-      <div class="skgrid"><div class="sk rv" style="--d:0.00s"><b>Backend</b><span>Java Spring Boot · Node.js · REST APIs · PHP (Laravel, CodeIgniter) · SQL · MariaDB</span></div><div class="sk rv" style="--d:0.05s"><b>Frontend</b><span>React · Angular · TypeScript · JavaScript · HTML5 · CSS, SASS, LESS · jQuery</span></div><div class="sk rv" style="--d:0.10s"><b>Adobe platforms</b><span>Adobe Experience Manager · Adobe Analytics · Adobe Target · Adobe Launch</span></div><div class="sk rv" style="--d:0.15s"><b>Quality &amp; delivery</b><span>JUnit · SonarQube · Swagger · Postman · CI/CD (Jenkins, GitLab, Azure DevOps) · Git · Jira · Agile Scrum</span></div><div class="sk ai rv" style="--d:0.20s"><b>AI-assisted development</b><span>Claude · GitHub Copilot · Gemini · Microsoft Fabric · Prompt engineering</span></div></div>
+      <div class="skgrid"><div class="sk rv" style="--d:0.00s"><b>Backend</b><span>Java Spring Boot · Node.js · REST APIs · PHP (Laravel, CodeIgniter) · SQL · MariaDB</span></div><div class="sk rv" style="--d:0.05s"><b>Frontend</b><span>React · Angular · TypeScript · JavaScript · HTML5 · CSS, SASS, LESS · jQuery</span></div><div class="sk rv" style="--d:0.10s"><b>Adobe platforms</b><span>Adobe Experience Manager · Adobe Analytics · Adobe Target · Adobe Launch</span></div><div class="sk rv" style="--d:0.15s"><b>Quality &amp; delivery</b><span>JUnit · SonarQube · Swagger · Postman · CI/CD (Jenkins, GitLab, Azure DevOps) · Git · Jira · Agile Scrum</span></div><div class="sk ai rv" style="--d:0.20s"><b>AI tools I'm adopting now</b><span>Claude · GitHub Copilot · Gemini · Microsoft Fabric · Prompt engineering</span></div></div>
     </div>
   </section>
 
