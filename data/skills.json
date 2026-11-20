@@ -1,6 +1,6 @@
 {
   "repo": "https://github.com/syndeeann/custom-claude-skills",
-  "generated": "2026-10-29",
+  "generated": "2026-11-20",
   "skills": [
     {
       "id": "storyteller",
@@ -18,7 +18,7 @@
         "tiktok-shop-ads"
       ],
       "category": "content",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "order": 1,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/storyteller",
       "persona": "Marites"
@@ -39,7 +39,7 @@
         "tiktok-shop-ads"
       ],
       "category": "content",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "order": 2,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/ai-prompt-expert",
       "persona": "Senyorita"
@@ -61,7 +61,7 @@
         "tiktok-shop-ads"
       ],
       "category": "production",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "order": 3,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/video-editor",
       "persona": "Jaiman"
@@ -74,7 +74,7 @@
       "responsibilities": [
         "Runs automatic checks for format, black or frozen frames and cut-off narration",
         "Reviews contact sheets for wrong scenes, text, watermarks and garbled faces",
-        "Spots lip-sync dubbing and repeated words",
+        "Spots lip-sync dubbing, and repeated words in the script and in the audio itself",
         "Reports a verdict with evidence, and never posts or regenerates"
       ],
       "projects": [
@@ -82,7 +82,7 @@
         "tiktok-shop-ads"
       ],
       "category": "qa",
-      "version": "1.0.1",
+      "version": "1.2.0",
       "order": 4,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/flow-clip-qa",
       "persona": "Perpekto"
