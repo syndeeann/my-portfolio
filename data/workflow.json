@@ -135,7 +135,7 @@
         },
         {
           "title": "Write the prompts",
-          "text": "Prompts keep the product looking exactly like its listing photo, with the Ate Host speaking on camera and silent hero shots in between.",
+          "text": "Prompts keep the product looking exactly like its listing photo, with the Ate Host speaking on camera and silent hero shots in between. Spoken lines are exact and short, prices are spelled in words with one price per clip, and brand words are written as plain words.",
           "skills": [
             "ai-prompt-expert"
           ],
@@ -155,7 +155,7 @@
         },
         {
           "title": "Edit and sync",
-          "text": "Jaiman puts the clips in the order Marites wrote, joins them without a glitch and locks the voice-over to its picture.",
+          "text": "Jaiman puts the clips in the order Marites wrote, joins them without a glitch and locks the voice-over to its picture. Every transition starts only after the voice finishes, repeats are cut from the audio alone, and he hands over a listen list of prices and brand words.",
           "tools": [
             "ffmpeg"
           ],
@@ -167,17 +167,17 @@
         },
         {
           "title": "Quality check",
-          "text": "The same checks as every video, plus a minimum length and a product-accuracy check.",
+          "text": "The same checks as every video, plus a minimum length and a product-accuracy check. For UGC ads Perpekto also checks exact wording, stutters, caption legibility and a clean last frame, and lists what to listen to.",
           "skills": [
             "flow-clip-qa"
           ],
           "tag": "QUALITY",
           "log": "Quality check passed ✓",
-          "warn": "Quality check: product looks different from its listing photo in one clip",
+          "warn": "Quality check: a word is missing, wrong or garbled in a spoken line or price",
           "loop": {
-            "to": 3,
-            "label": "auto-fix",
-            "log": "Fix: regenerate that clip from the listing photo"
+            "to": 2,
+            "label": "amend prompt",
+            "log": "Fix: Jaiman writes the prompt amendment, then only that clip is regenerated"
           }
         },
         {
