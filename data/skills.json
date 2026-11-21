@@ -3,6 +3,25 @@
   "generated": "2026-11-21",
   "skills": [
     {
+      "id": "video-director",
+      "name": "Video Director",
+      "role": "Director and producer",
+      "summary": "Runs every helper in order, from the brief to the approved final video, and stops at the owner's approval gates.",
+      "responsibilities": [
+        "Writes the brief, including the style: real-life, anime, cartoon, 3D animation or claymation",
+        "Runs Marites, the look bible, Senyorita, Perpekto, Jaiman and finishing in the right order",
+        "Keeps a take log so the same failure isn't paid for twice",
+        "Holds every video to the quality bar for its style",
+        "Never posts anything until the owner has watched and approved the final"
+      ],
+      "projects": [],
+      "category": "production",
+      "version": "1.0.0",
+      "order": 0,
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/video-director",
+      "persona": ""
+    },
+    {
       "id": "storyteller",
       "name": "Storyteller",
       "role": "Script writer",
@@ -11,6 +30,7 @@
         "Picks an angle the audience has not seen before",
         "Writes narration clip by clip within the word budget",
         "Checks every line for clichés and repeated words",
+        "Writes for the chosen style, from real-life footage to anime, cartoon and 3D animation",
         "Saves the script to the project folder on GitHub"
       ],
       "projects": [
@@ -18,7 +38,7 @@
         "tiktok-shop-ads"
       ],
       "category": "content",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "order": 1,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/storyteller",
       "persona": "Marites"
@@ -27,19 +47,20 @@
       "id": "ai-prompt-expert",
       "name": "AI Prompt Expert",
       "role": "Video prompt engineer",
-      "summary": "Turns a script into clean, photoreal prompts for Google Flow and other AI video generators.",
+      "summary": "Turns a script into clean prompts for Google Flow and other AI video generators, in any style from photoreal to anime, cartoon and 3D animation.",
       "responsibilities": [
         "Writes one prompt per clip with no repeated words",
         "Shows on screen what the narrator says",
         "Keeps the on-screen character from dubbing the narrator",
-        "Keeps looks consistent with reusable character and place descriptions"
+        "Keeps looks consistent with reusable character and place descriptions",
+        "Locks one visual style per video, from real-life footage to anime, cartoon and 3D animation"
       ],
       "projects": [
         "kwento-kilabot",
         "tiktok-shop-ads"
       ],
       "category": "content",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "order": 2,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/ai-prompt-expert",
       "persona": "Senyorita"
@@ -74,6 +95,8 @@
       "responsibilities": [
         "Runs automatic checks for format, black or frozen frames and cut-off narration",
         "Reviews contact sheets for wrong scenes, text, watermarks and garbled faces",
+        "Judges each video against its own style, from real-life footage to anime, cartoon and 3D animation",
+        "Reads motion strips for floaty movement, sliding feet and crawling outlines",
         "Spots lip-sync dubbing, and repeated words in the script and in the audio itself",
         "Reports a verdict with evidence, and never posts or regenerates"
       ],
@@ -82,7 +105,7 @@
         "tiktok-shop-ads"
       ],
       "category": "qa",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "order": 4,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/flow-clip-qa",
       "persona": "Perpekto"
@@ -113,6 +136,44 @@
       "order": 5,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/portfolio-updater",
       "persona": "Chelsea"
+    },
+    {
+      "id": "video-look-bible",
+      "name": "Look Bible",
+      "role": "Continuity and style keeper",
+      "summary": "Locks the style, characters, places and products of a video before any clip is generated, so every clip matches.",
+      "responsibilities": [
+        "Writes the Style card for the video, from real-life footage to anime, cartoon and 3D animation",
+        "Makes reference sheets for every recurring character, place and product",
+        "Uses the owner's real photos, logo and mascot instead of inventing them",
+        "Keeps characters original, never copied from a studio or brand",
+        "Saves the bible where Marites, Senyorita and Perpekto can find it"
+      ],
+      "projects": [],
+      "category": "content",
+      "version": "1.0.0",
+      "order": 6,
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/video-look-bible",
+      "persona": ""
+    },
+    {
+      "id": "video-finishing",
+      "name": "Video Finishing",
+      "role": "Colourist and sound designer",
+      "summary": "Gives a cut video its final look and sound for its style: grade, texture, sound design, real captions and end cards.",
+      "responsibilities": [
+        "Matches and grades every shot to the video's Style card",
+        "Adds grain and softness only to real-life footage, and keeps anime and cartoon lines crisp",
+        "Builds the sound bed and foley so no scene is silent or too clean",
+        "Adds captions, prices, phone numbers, logos and end cards as real text",
+        "Keeps Flow's watermark and provenance data, and hands the final to Perpekto"
+      ],
+      "projects": [],
+      "category": "production",
+      "version": "1.0.0",
+      "order": 7,
+      "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/video-finishing",
+      "persona": ""
     }
   ]
 }
