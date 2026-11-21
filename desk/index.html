@@ -77,7 +77,8 @@
           <button class="btn small" type="button" id="copy">Copy as a message for Claude</button>
           <span class="sent" id="copied" role="status"></span>
         </div>
-        <ol class="rail" id="rail"></ol>
+        <div class="scene" id="scene" aria-hidden="true"></div>
+        <details class="steps-list"><summary>Step list</summary><ol class="rail" id="rail"></ol></details>
         <div class="log" id="log" aria-label="Activity" hidden></div>
         <div class="review" id="review" hidden></div>
       </div>
@@ -98,6 +99,7 @@
     <span><a href="../index.html#studio">Back to the portfolio</a></span>
   </div>
 </footer>
+<script src="../assets/desk-scene.js" defer></script>
 <script src="../assets/desk.js" defer></script>
 </body>
 </html>
