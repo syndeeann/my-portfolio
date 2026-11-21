@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-base="..">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Video Desk · Syndee Ann Sevilla</title>
+<meta name="description" content="Tell the helpers what video to make, watch them work, and approve it before anything goes on the portfolio.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#060814">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/desk.css">
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><span class="orb" aria-hidden="true"></span>Syndee Sevilla</a>
+    <ul class="menu">
+      <li><a href="#request">Request</a></li>
+      <li><a href="#floor">Studio floor</a></li>
+      <li><a href="#recent">Recent</a></li>
+    </ul>
+    <a class="hire" href="../index.html#studio">All studios</a>
+  </div>
+</nav>
+
+<main>
+  <header class="desk-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="../index.html">Portfolio</a><span class="sep">/</span><span>Video Desk</span></div>
+      <h1>Video <span class="grad">Desk</span></h1>
+      <p>Describe the video you want. Angge runs the team, you watch them work, and you approve the result before anything reaches the portfolio.</p>
+    </div>
+  </header>
+
+  <section class="band" id="request" style="padding-top: 24px">
+    <div class="wrap">
+      <form class="card desk-form" id="desk-form" novalidate>
+        <div class="field">
+          <label for="idea">What video should the helpers make?</label>
+          <textarea id="idea" name="idea" maxlength="3000" placeholder="For example: a 40-second Kwento: Kilabot story about a night guard who hears a buzzer from a ward that was closed years ago…" required></textarea>
+          <span class="hint">Include anything that must appear: a product, a character, a phone number, a twist, the language.</span>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="tool">Generate with</label><select id="tool" name="tool"></select><input type="text" id="tool-other" placeholder="Which tool?" hidden></div>
+          <div class="field"><label for="project">Project</label><select id="project" name="project"></select><input type="text" id="project-new" placeholder="New project name" hidden></div>
+          <div class="field"><label for="type">Video type</label><select id="type" name="type"></select></div>
+          <div class="field"><label for="look">Character look</label><select id="look" name="look"></select><span class="hint">Pixar-style and anime mean the look only. The characters are always original.</span></div>
+          <div class="field"><label for="length">Length</label><select id="length" name="length"></select><input type="number" id="length-custom" min="5" max="180" placeholder="Seconds" hidden></div>
+        </div>
+        <fieldset class="field">
+          <legend>Where will it be posted?</legend>
+          <div class="chips" id="platforms"></div>
+          <span class="hint">Pick none to just receive the video. Posting stays in your hands: Angge prepares the ready-to-post kit after you approve.</span>
+        </fieldset>
+        <div class="row">
+          <button class="btn go" type="submit" id="generate">Generate</button>
+          <button class="btn" type="button" id="demo">Watch a demo of the flow</button>
+          <span class="err" id="form-err" role="alert"></span>
+        </div>
+        <p class="note">Generate opens a prefilled request on GitHub for you to submit, because this page can't start Claude by itself. Once Angge picks it up, the floor below shows who is working. A video is only added to the portfolio after you approve it here.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="band floor-wrap" id="floor" hidden style="padding-top: 0">
+    <div class="wrap">
+      <div class="card">
+        <div class="floor-head">
+          <div class="now" aria-live="polite"><span id="now">Ready</span><small id="now-sub"></small></div>
+          <div class="row"><span class="tag" id="mode"></span><button class="btn small" type="button" id="clear">Clear</button></div>
+        </div>
+        <div class="row" id="handoff" hidden style="margin-bottom: 20px">
+          <a class="btn go small" id="send" href="#" target="_blank" rel="noopener">Send to Angge on GitHub</a>
+          <button class="btn small" type="button" id="copy">Copy as a message for Claude</button>
+          <span class="sent" id="copied" role="status"></span>
+        </div>
+        <ol class="rail" id="rail"></ol>
+        <div class="log" id="log" aria-label="Activity" hidden></div>
+        <div class="review" id="review" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="recent" style="padding-top: 0">
+    <div class="wrap">
+      <h2 style="font-size: var(--step-2); margin-bottom: 18px">Recent requests</h2>
+      <div class="recent" id="recent-list"><p class="note">Nothing yet.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Syndee Ann Sevilla</span>
+    <span><a href="../index.html#studio">Back to the portfolio</a></span>
+  </div>
+</footer>
+<script src="../assets/desk.js" defer></script>
+</body>
+</html>
