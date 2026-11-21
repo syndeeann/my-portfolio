@@ -1,0 +1,52 @@
+{
+  "note": "Drives the Video Desk page (desk/index.html) and the 'run' commands of the portfolio updater. Edit the lists to add a tool, look or platform; edit 'steps' when the video workflow changes.",
+  "repo": "syndeeann/my-portfolio",
+  "owner": "syndeeann",
+  "labels": { "request": "video-request", "approval": "video-approval" },
+  "defaults": { "tool": "Google Flow", "look": "auto", "length": "auto", "type": "story" },
+  "tools": ["Google Flow", "Runway", "Kling", "Sora", "Other"],
+  "types": [
+    { "id": "story", "label": "Story or series episode" },
+    { "id": "ad", "label": "Product ad" },
+    { "id": "ugc", "label": "UGC-style ad" },
+    { "id": "kids", "label": "Kids episode" },
+    { "id": "explainer", "label": "Explainer" },
+    { "id": "other", "label": "Something else" }
+  ],
+  "looks": [
+    { "id": "auto", "label": "Let Claude decide" },
+    { "id": "real", "label": "Real person (photoreal)" },
+    { "id": "pixar", "label": "Pixar-style 3D (original characters)" },
+    { "id": "cartoon", "label": "2D cartoon" },
+    { "id": "anime", "label": "Anime" },
+    { "id": "clay", "label": "Claymation" },
+    { "id": "none", "label": "No characters (product or places only)" }
+  ],
+  "lengths": [
+    { "id": "auto", "label": "Claude decides" },
+    { "id": "15", "label": "About 15 seconds" },
+    { "id": "30", "label": "About 30 seconds" },
+    { "id": "60", "label": "About 60 seconds" },
+    { "id": "90", "label": "About 90 seconds" },
+    { "id": "custom", "label": "I will type it" }
+  ],
+  "platforms": [
+    { "id": "facebook", "label": "Facebook Page" },
+    { "id": "youtube", "label": "YouTube channel" },
+    { "id": "tiktok", "label": "TikTok" },
+    { "id": "instagram", "label": "Instagram Reels" }
+  ],
+  "steps": [
+    { "key": "brief", "label": "Brief", "skill": "video-director", "doing": "is turning your idea into a brief" },
+    { "key": "script", "label": "Script", "skill": "storyteller", "doing": "is writing the script" },
+    { "key": "bible", "label": "Look bible", "skill": "video-look-bible", "doing": "is locking the look and the characters" },
+    { "key": "prompts", "label": "Prompts", "skill": "ai-prompt-expert", "doing": "is writing the clip prompts" },
+    { "key": "generate", "label": "Generate clips", "skill": null, "who": "tool", "doing": "are generating the clips" },
+    { "key": "rawqa", "label": "Check the clips", "skill": "flow-clip-qa", "doing": "is checking every clip" },
+    { "key": "cut", "label": "Edit and sync", "skill": "video-editor", "doing": "is cutting the clips in story order" },
+    { "key": "finish", "label": "Colour and sound", "skill": "video-finishing", "doing": "is finishing the colour and sound" },
+    { "key": "finalqa", "label": "Final check", "skill": "flow-clip-qa", "doing": "is checking the finished video" },
+    { "key": "approve", "label": "Your approval", "skill": null, "who": "you", "doing": "is waiting for you to watch it" },
+    { "key": "publish", "label": "Update the portfolio", "skill": "portfolio-updater", "doing": "is adding it to the portfolio" }
+  ]
+}
