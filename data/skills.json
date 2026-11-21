@@ -16,10 +16,10 @@
       ],
       "projects": [],
       "category": "production",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "order": 0,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/video-director",
-      "persona": ""
+      "persona": "Angge"
     },
     {
       "id": "storyteller",
@@ -151,10 +151,10 @@
       ],
       "projects": [],
       "category": "content",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "order": 6,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/video-look-bible",
-      "persona": ""
+      "persona": "Cassey"
     },
     {
       "id": "video-finishing",
@@ -170,10 +170,10 @@
       ],
       "projects": [],
       "category": "production",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "order": 7,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/video-finishing",
-      "persona": ""
+      "persona": "Etel"
     }
   ]
 }

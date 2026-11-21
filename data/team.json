@@ -25,6 +25,21 @@
       "name": "Jaiman",
       "title": "Video Editor",
       "avatar": "assets/team/jaiman.svg"
+    },
+    "video-director": {
+      "name": "Angge",
+      "title": "Video Director",
+      "avatar": "assets/team/bot-placeholder.svg"
+    },
+    "video-look-bible": {
+      "name": "Cassey",
+      "title": "Look Bible",
+      "avatar": "assets/team/bot-placeholder.svg"
+    },
+    "video-finishing": {
+      "name": "Etel",
+      "title": "Video Finishing",
+      "avatar": "assets/team/bot-placeholder.svg"
     }
   }
 }
