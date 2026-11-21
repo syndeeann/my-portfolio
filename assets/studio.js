@@ -336,13 +336,15 @@
   };
 
   /* ---------- Claude skills ---------- */
+  /* helpers without a picture yet show a placeholder bot; the path is relative to the site root, like team avatars */
+  const BOT_AVATAR = 'assets/team/bot-placeholder.svg';
   const skillCard = (s, ctx, i) => {
     const projects = (s.projects && s.projects.length) ? s.projects.map(p => h('span', { class: 'chip-s' }, ctx.projectName(p))) : [h('span', { class: 'chip-s' }, 'All projects')];
     const m = ctx.team[s.id];
     const avatar = m && safeUrl(m.avatar);
     const mark = avatar
       ? h('span', { class: 'mark avatar' }, h('img', { src: avatar, alt: '', width: '64', height: '64', loading: 'lazy', decoding: 'async' }))
-      : h('span', { class: 'mark', 'aria-hidden': 'true' }, ((m && m.name) || s.name || '?').trim()[0].toUpperCase());
+      : h('span', { class: 'mark avatar' }, h('img', { src: safeUrl(BOT_AVATAR), alt: '', width: '64', height: '64', loading: 'lazy', decoding: 'async' }));
     return h('article', { class: 'skill-card' + (m ? ' member' : ''), id: `helper-${s.id}`, style: `--d:${Math.min(i, 8) * 0.06}s` },
       h('div', { class: 'head' }, mark,
         h('div', {}, h('h3', {}, m ? m.name : s.name), h('div', { class: 'role' }, m ? m.title : (s.role || s.category)),
@@ -360,7 +362,7 @@
     const avatar = m && safeUrl(m.avatar);
     const mark = avatar
       ? h('span', { class: 'mark avatar' }, h('img', { src: avatar, alt: '', width: '84', height: '84', loading: 'lazy', decoding: 'async' }))
-      : h('span', { class: 'mark', 'aria-hidden': 'true' }, (name || '?').trim()[0].toUpperCase());
+      : h('span', { class: 'mark avatar' }, h('img', { src: safeUrl(BOT_AVATAR), alt: '', width: '84', height: '84', loading: 'lazy', decoding: 'async' }));
     return h('a', { class: 'helper-mini', href: `${page}#helper-${s.id}`, style: `--d:${Math.min(i, 8) * 0.06}s`, 'data-track-label': `Helper: ${name}` },
       mark, h('b', {}, name), h('span', {}, m ? m.title : (s.role || s.category)));
   };
