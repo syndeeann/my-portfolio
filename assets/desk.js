@@ -30,7 +30,10 @@
   let cfg, team = {}, skills = {}, projects = {};
   let active = null;          // { id, brief, created, demo }
   let run = null;             // latest run record (live) or the simulated one (demo)
-  let timer = null, demoTimer = null, sentApproval = null;
+  let timer = null, demoTimer = null, sentApproval = null, scene = null;
+  const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ensureScene = () => { if (!scene && window.DeskScene && cfg) scene = window.DeskScene.create($('scene'), { steps: cfg.steps, person, base: BASE, reduced: reducedMotion() }); return scene; };
+  window.addEventListener('resize', () => scene && scene.resize());
 
   const opts = (sel, list, value) => list.forEach(o => sel.append(h('option', { value: o.id || o, selected: (o.id || o) === value }, o.label || o)));
 
@@ -90,7 +93,7 @@
   function onGenerate(e) {
     e.preventDefault();
     const brief = readBrief(); if (!brief) return;
-    stopAll();
+    stopAll(); scene && scene.reset();
     active = { id: newId(), brief, created: Date.now(), demo: false };
     store.set('desk.active', active);
     run = null; sentApproval = null;
@@ -108,7 +111,7 @@
 
   /* ---------- floor ---------- */
   function showFloor() {
-    $('floor').hidden = false; $('handoff').hidden = !!(active && active.demo);
+    $('floor').hidden = false; ensureScene(); if (scene && active) scene.setTool(active.brief.tool); $('handoff').hidden = !!(active && active.demo);
     $('copied').textContent = '';
     render();
     $('floor').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
@@ -123,6 +126,7 @@
     if (!active) return;
     const steps = cfg.steps;
     const rs = {}; ((run && run.steps) || []).forEach(s => { rs[s.key] = s; });
+    if (ensureScene()) scene.apply(rs, { animate: true, waiting: !run && !active.demo });
     const failed = run && run.status === 'failed';
     const rail = $('rail'); rail.replaceChildren();
     let working = null;
@@ -204,7 +208,7 @@
 
   /* ---------- demo ---------- */
   function startDemo() {
-    stopAll();
+    stopAll(); scene && scene.reset();
     const brief = { idea: 'A demo run. Nothing is sent and nothing is made.', tool: cfg.defaults.tool, project: 'demo', type: cfg.defaults.type, look: 'auto', length: 'auto', platforms: [] };
     active = { id: 'demo', brief, created: Date.now(), demo: true };
     run = { status: 'working', steps: cfg.steps.map(s => ({ key: s.key, status: 'pending' })), log: [] };
@@ -217,13 +221,13 @@
       steps[i].status = 'working';
       run.log.push({ t: new Date().toISOString(), text: `${cfg.steps[i].label} started` });
       render(); i += 1;
-      demoTimer = setTimeout(tick, 1700);
+      demoTimer = setTimeout(tick, 5200);
     };
     tick();
   }
 
   function stopAll() { clearInterval(timer); timer = null; clearTimeout(demoTimer); demoTimer = null; }
-  function clearAll() { stopAll(); store.del('desk.active'); active = null; run = null; $('floor').hidden = true; }
+  function clearAll() { stopAll(); scene && scene.reset(); store.del('desk.active'); active = null; run = null; $('floor').hidden = true; }
 
   /* ---------- recent ---------- */
   async function refreshRecent() {
@@ -236,7 +240,7 @@
   }
   async function openRun(id) {
     const r = await load(`runs/${id}`, true); if (!r) return;
-    stopAll(); active = { id, brief: r.brief || {}, created: Date.parse(r.created) || Date.now(), demo: false }; run = r; sentApproval = null;
+    stopAll(); scene && scene.reset(); active = { id, brief: r.brief || {}, created: Date.parse(r.created) || Date.now(), demo: false }; run = r; sentApproval = null;
     store.set('desk.active', { id, brief: active.brief, created: active.created, demo: false });
     showFloor(); $('handoff').hidden = true;
     if (!['published', 'failed', 'cancelled'].includes(r.status)) timer = setInterval(poll, 10000);
