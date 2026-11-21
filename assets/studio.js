@@ -343,7 +343,7 @@
     const mark = avatar
       ? h('span', { class: 'mark avatar' }, h('img', { src: avatar, alt: '', width: '64', height: '64', loading: 'lazy', decoding: 'async' }))
       : h('span', { class: 'mark', 'aria-hidden': 'true' }, ((m && m.name) || s.name || '?').trim()[0].toUpperCase());
-    return h('article', { class: 'skill-card' + (m ? ' member' : ''), style: `--d:${Math.min(i, 8) * 0.06}s` },
+    return h('article', { class: 'skill-card' + (m ? ' member' : ''), id: `helper-${s.id}`, style: `--d:${Math.min(i, 8) * 0.06}s` },
       h('div', { class: 'head' }, mark,
         h('div', {}, h('h3', {}, m ? m.name : s.name), h('div', { class: 'role' }, m ? m.title : (s.role || s.category)),
           m && h('div', { class: 'skill-of' }, `Claude skill · ${s.name}`))),
@@ -353,9 +353,27 @@
       h('div', { class: 'foot' }, h('span', {}, `skill: ${s.id}${s.version ? ' · v' + s.version : ''}`), h('a', { href: s.url, target: '_blank', rel: 'noopener', 'data-track-label': `Skill source: ${m ? m.name : s.name}` }, 'Source ↗')));
   };
 
+  /* compact helper card for the home page: avatar, name and role, linking to the Helpers page */
+  const helperMini = (s, ctx, i, page) => {
+    const m = ctx.team[s.id];
+    const name = m ? m.name : s.name;
+    const avatar = m && safeUrl(m.avatar);
+    const mark = avatar
+      ? h('span', { class: 'mark avatar' }, h('img', { src: avatar, alt: '', width: '84', height: '84', loading: 'lazy', decoding: 'async' }))
+      : h('span', { class: 'mark', 'aria-hidden': 'true' }, (name || '?').trim()[0].toUpperCase());
+    return h('a', { class: 'helper-mini', href: `${page}#helper-${s.id}`, style: `--d:${Math.min(i, 8) * 0.06}s`, 'data-track-label': `Helper: ${name}` },
+      mark, h('b', {}, name), h('span', {}, m ? m.title : (s.role || s.category)));
+  };
+
   const fillSkills = (el, ctx) => {
-    if (!ctx.skills.length) { el.replaceChildren(h('div', { class: 'studio-state' }, 'The team will be introduced here soon.')); return; }
+    if (!ctx.skills.length) { el.replaceChildren(h('div', { class: 'studio-state' }, 'My helpers will be introduced here soon.')); return; }
+    if (el.dataset.skills === 'mini') {
+      const page = el.dataset.page || 'helpers/';
+      el.replaceChildren(...ctx.skills.map((s, i) => helperMini(s, ctx, i, page)));
+      return;
+    }
     el.replaceChildren(...ctx.skills.map((s, i) => skillCard(s, ctx, i)));
+    if (location.hash) { const t = document.getElementById(location.hash.slice(1)); if (t) { t.classList.add('is-target'); setTimeout(() => t.scrollIntoView({ block: 'center' }), 60); } }
   };
 
   /* ---------- studio page ---------- */

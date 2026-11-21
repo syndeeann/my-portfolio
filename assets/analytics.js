@@ -60,7 +60,7 @@
   /* friendly section names: element id -> section_name */
   var SECTIONS = {
     top: 'hero', focus: 'focus', studio: 'ai_studio', credentials: 'credentials', origin: 'background', contact: 'contact',
-    gate: 'hero', workflow: 'workflow_diagram', videos: 'videos', channels: 'channels',
+    gate: 'hero', helpers: 'helpers', workflow: 'workflow_diagram', videos: 'videos', channels: 'channels',
     /* portfolio-updater:sections:begin */
     outputs: 'studio_outputs', skills: 'skills_used', studios: 'other_studios', 'claude-skills': 'claude_skills'
     /* portfolio-updater:sections:end */

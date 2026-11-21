@@ -192,3 +192,19 @@ a.chip-s:hover { border-color: var(--emerald); color: var(--cream); }
   .flow > .node { grid-area: auto; grid-column: 1 / -1; }
   .d-bottom { grid-template-columns: 1fr; }
 }
+
+/* ---------- Helpers (home preview + target highlight) ---------- */
+.helper-minis { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.helper-minis > .helper-mini { flex: 0 1 190px; }
+.helper-mini { display: grid; justify-items: center; gap: 6px; padding: 26px 16px 22px; text-align: center; text-decoration: none; color: inherit; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); transition: transform .3s, border-color .3s; animation: studio-rise .6s cubic-bezier(.2,.8,.2,1) both; animation-delay: var(--d, 0s); }
+.helper-mini:hover, .helper-mini:focus-visible { transform: translateY(-5px); border-color: rgba(var(--acc),.55); }
+.helper-mini .mark { width: 84px; height: 84px; margin-bottom: 8px; border-radius: 50%; display: grid; place-items: center; overflow: hidden; font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; background: var(--emerald-soft); color: var(--emerald); border: 2px solid rgba(var(--acc),.45); box-shadow: 0 8px 22px rgba(0,0,0,.35); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+.helper-mini .mark img { width: 100%; height: 100%; display: block; }
+.helper-mini:hover .mark { transform: scale(1.07) rotate(-3deg); }
+.helper-mini b { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
+.helper-mini span:last-child { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--emerald); }
+.helpers-cta { margin-top: 30px; display: flex; justify-content: center; }
+.skill-card:target, .skill-card.is-target { border-color: rgba(var(--acc),.75); box-shadow: 0 0 0 3px rgba(var(--acc),.18); }
+.skill-card { scroll-margin-top: 110px; }
+@media (max-width: 560px) { .helper-minis { gap: 12px; } .helper-minis > .helper-mini { flex-basis: calc(50% - 6px); } .helper-mini { padding: 20px 10px 18px; } .helper-mini .mark { width: 68px; height: 68px; } }
+@media (prefers-reduced-motion: reduce) { .helper-mini { animation: none; } }
