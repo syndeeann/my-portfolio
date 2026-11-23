@@ -1,6 +1,6 @@
 {
   "repo": "https://github.com/syndeeann/custom-claude-skills",
-  "generated": "2026-11-21",
+  "generated": "2026-11-23",
   "skills": [
     {
       "id": "video-director",
@@ -82,7 +82,7 @@
         "tiktok-shop-ads"
       ],
       "category": "production",
-      "version": "1.1.0",
+      "version": "1.2.1",
       "order": 3,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/video-editor",
       "persona": "Jaiman"
@@ -105,7 +105,7 @@
         "tiktok-shop-ads"
       ],
       "category": "qa",
-      "version": "1.3.0",
+      "version": "1.3.1",
       "order": 4,
       "url": "https://github.com/syndeeann/custom-claude-skills/tree/main/skills/flow-clip-qa",
       "persona": "Perpekto"
