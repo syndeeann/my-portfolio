@@ -6,12 +6,12 @@
       "project": "nineone-car-rental",
       "type": "video",
       "title": "Nineone Car Rental: Christmas UGC Ad",
-      "description": "A Filipino UGC-style creator promotes self-drive rentals with the Xpander GLS 2026 (₱1,950 monthly) and Kia Sonet LX AT (₱1,650 monthly), unlimited mileage, in Nineone's orange palette with Christmas touches.",
+      "description": "A Filipino UGC-style creator promotes self-drive rentals with the Xpander GLS 2026 (₱1,950 per day) and Kia Sonet LX AT (₱1,650 per day) for a minimum one-month rent, unlimited mileage, in Nineone's orange palette with Christmas touches.",
       "published": "2026-11-20",
       "language": "Taglish",
       "poster": "assets/posters/nineone-ugc-ad.jpg",
       "src": "assets/videos/nineone-ugc-ad.mp4",
-      "duration_s": 43
+      "duration_s": 48
     },
     {
       "id": "mia-rosie-midnight-mysteries-the-missing-teddy-bear",
